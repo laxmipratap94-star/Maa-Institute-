@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maa Institute | English by Shobhit Sir</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#f7f8fc;
+  color:#172033;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#07152f;
+  padding:12px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 4px 20px rgba(0,0,0,.2);
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:white;
+  font-weight:800;
+  font-size:20px;
+}
+
+.logo-box{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ffd45a,#c48b18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#07152f;
+  font-weight:900;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:18px;
+  font-size:14px;
+}
+
+.hero{
+  min-height:620px;
+  padding:70px 7%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:40px;
+  background:
+    radial-gradient(circle at 80% 20%,rgba(255,205,70,.2),transparent 35%),
+    linear-gradient(135deg,#06142f,#102b58);
+  color:white;
+}
+
+.hero-text{
+  max-width:650px;
+}
+
+.badge{
+  display:inline-block;
+  padding:8px 14px;
+  border:1px solid #e8c45a;
+  border-radius:30px;
+  color:#ffd866;
+  margin-bottom:18px;
+  font-size:13px;
+}
+
+.hero h1{
+  font-size:52px;
+  line-height:1.05;
+  margin-bottom:18px;
+}
+
+.hero h1 span{
+  color:#ffd45a;
+}
+
+.hero p{
+  color:#d9e0ee;
+  line-height:1.7;
+  font-size:17px;
+}
+
+.buttons{
+  margin-top:28px;
+}
+
+.btn{
+  display:inline-block;
+  padding:13px 22px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:bold;
+  margin-right:10px;
+}
+
+.primary{
+  background:#e7b83f;
+  color:#07152f;
+}
+
+.secondary{
+  border:1px solid #fff;
+  color:white;
+}
+
+.teacher{
+  width:330px;
+  height:390px;
+  border-radius:25px;
+  background:linear-gradient(145deg,#173966,#0a1933);
+  border:2px solid #d8ad45;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+}
+
+.teacher-circle{
+  width:210px;
+  height:210px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#e8c45a,#734d09);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:70px;
+  margin:auto;
+}
+
+.teacher h2{
+  margin-top:20px;
+}
+
+.teacher p{
+  color:#d7dce6;
+  margin-top:8px;
+}
+
+section{
+  padding:75px 7%;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.section-title h2{
+  font-size:34px;
+  color:#0a1c3d;
+}
+
+.section-title p{
+  margin-top:10px;
+  color:#667085;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.card{
+  background:white;
+  padding:28px;
+  border-radius:18px;
+  box-shadow:0 8px 30px rgba(20,30,60,.08);
+  border:1px solid #edf0f5;
+}
+
+.card-icon{
+  font-size:35px;
+  margin-bottom:15px;
+}
+
+.card h3{
+  margin-bottom:10px;
+  color:#102c5b;
+}
+
+.card p{
+  color:#667085;
+  line-height:1.6;
+}
+
+.about{
+  background:#eef2f8;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  margin-top:35px;
+}
+
+.stat{
+  background:#07152f;
+  color:white;
+  padding:25px;
+  text-align:center;
+  border-radius:15px;
+}
+
+.stat strong{
+  display:block;
+  font-size:32px;
+  color:#ffd45a;
+}
+
+.results{
+  background:white;
+}
+
+.result-box{
+  background:linear-gradient(135deg,#07152f,#173766);
+  color:white;
+  padding:35px;
+  border-radius:22px;
+  text-align:center;
+}
+
+.result-box h3{
+  color:#ffd45a;
+  font-size:28px;
+  margin-bottom:15px;
+}
+
+.login{
+  background:#eef2f8;
+}
+
+.login-box{
+  max-width:450px;
+ 
