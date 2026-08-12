@@ -1,1 +1,426 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Login | Maa Institute</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(135deg,#07183d,#102a63,#1d4fa3);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  color:#222;
+}
+
+/* BACKGROUND EFFECT */
+body::before{
+  content:"";
+  position:fixed;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  background:rgba(244,197,66,.08);
+  top:-80px;
+  right:-70px;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:rgba(255,255,255,.05);
+  bottom:-80px;
+  left:-60px;
+}
+
+/* LOGIN CARD */
+.login-card{
+  width:100%;
+  max-width:420px;
+  background:#fff;
+  border-radius:22px;
+  padding:34px 28px;
+  box-shadow:0 20px 60px rgba(0,0,0,.30);
+  position:relative;
+  z-index:2;
+}
+
+/* LOGO */
+.logo-box{
+  text-align:center;
+  margin-bottom:24px;
+}
+
+.logo{
+  width:78px;
+  height:78px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #f4c542;
+  background:white;
+  padding:2px;
+}
+
+.brand{
+  margin-top:12px;
+  font-size:25px;
+  font-weight:bold;
+  color:#102a63;
+}
+
+.brand span{
+  color:#d49f00;
+}
+
+.portal-title{
+  margin-top:5px;
+  font-size:14px;
+  color:#777;
+}
+
+/* FORM */
+.form-group{
+  margin-top:18px;
+}
+
+label{
+  display:block;
+  font-size:14px;
+  font-weight:bold;
+  color:#102a63;
+  margin-bottom:7px;
+}
+
+.input-box{
+  position:relative;
+}
+
+input{
+  width:100%;
+  padding:14px 45px 14px 15px;
+  border:1px solid #d8dce5;
+  border-radius:10px;
+  outline:none;
+  font-size:15px;
+  transition:.2s;
+}
+
+input:focus{
+  border-color:#1d4fa3;
+  box-shadow:0 0 0 3px rgba(29,79,163,.10);
+}
+
+.eye{
+  position:absolute;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%);
+  cursor:pointer;
+  color:#666;
+  user-select:none;
+}
+
+/* OPTIONS */
+.options{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:14px;
+  font-size:13px;
+}
+
+.remember{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:#666;
+}
+
+.remember input{
+  width:auto;
+  padding:0;
+}
+
+.forgot{
+  color:#1d4fa3;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.forgot:hover{
+  text-decoration:underline;
+}
+
+/* LOGIN BUTTON */
+.login-btn{
+  width:100%;
+  border:none;
+  background:#102a63;
+  color:white;
+  padding:14px;
+  border-radius:10px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:23px;
+  transition:.2s;
+}
+
+.login-btn:hover{
+  background:#1d4fa3;
+  transform:translateY(-1px);
+}
+
+/* DEMO MESSAGE */
+.demo-message{
+  display:none;
+  margin-top:15px;
+  padding:11px;
+  border-radius:8px;
+  background:#fff7d6;
+  color:#765b00;
+  font-size:13px;
+  text-align:center;
+}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  margin-top:22px;
+  padding-top:18px;
+  border-top:1px solid #eee;
+  color:#888;
+  font-size:12px;
+}
+
+.back-home{
+  display:inline-block;
+  margin-top:9px;
+  color:#102a63;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.back-home:hover{
+  color:#d49f00;
+}
+
+/* MOBILE */
+@media(max-width:480px){
+
+  body{
+    padding:15px;
+  }
+
+  .login-card{
+    padding:28px 20px;
+    border-radius:18px;
+  }
+
+  .logo{
+    width:70px;
+    height:70px;
+  }
+
+  .brand{
+    font-size:23px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-card">
+
+  <!-- LOGO -->
+  <div class="logo-box">
+
+    <img
+      src="logo.jpg"
+      alt="Maa Institute Logo"
+      class="logo">
+
+    <div class="brand">
+      Maa <span>Institute</span>
+    </div>
+
+    <div class="portal-title">
+      Student Portal
+    </div>
+
+  </div>
+
+
+  <!-- LOGIN FORM -->
+  <form id="loginForm">
+
+    <div class="form-group">
+
+      <label for="studentId">
+        Student ID / Mobile Number
+      </label>
+
+      <div class="input-box">
+
+        <input
+          type="text"
+          id="studentId"
+          placeholder="Enter Student ID or Mobile"
+          autocomplete="username"
+          required>
+
+      </div>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label for="password">
+        Password
+      </label>
+
+      <div class="input-box">
+
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          autocomplete="current-password"
+          required>
+
+        <span
+          class="eye"
+          onclick="togglePassword()"
+          id="eyeIcon">
+          👁
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="options">
+
+      <label class="remember">
+        <input type="checkbox" id="remember">
+        Remember me
+      </label>
+
+      <a href="#" class="forgot" onclick="forgotPassword(event)">
+        Forgot Password?
+      </a>
+
+    </div>
+
+
+    <button
+      type="submit"
+      class="login-btn">
+
+      Login to Student Portal
+
+    </button>
+
+    <div
+      class="demo-message"
+      id="demoMessage">
+      Student authentication will be connected with the secure database.
+    </div>
+
+  </form>
+
+
+  <!-- FOOTER -->
+  <div class="footer">
+
+    <div>
+      © 2026 Maa Institute
+    </div>
+
+    <div>
+      English by Shobhit Sir
+    </div>
+
+    <a
+      href="index.html"
+      class="back-home">
+
+      ← Back to Main Website
+
+    </a>
+
+  </div>
+
+</div>
+
+
+<script>
+
+function togglePassword(){
+
+  const password =
+    document.getElementById("password");
+
+  const eye =
+    document.getElementById("eyeIcon");
+
+  if(password.type === "password"){
+
+    password.type = "text";
+    eye.textContent = "🙈";
+
+  }else{
+
+    password.type = "password";
+    eye.textContent = "👁";
+
+  }
+
+}
+
+
+function forgotPassword(event){
+
+  event.preventDefault();
+
+  alert(
+    "Password reset will be available after secure student authentication is connected."
+  );
+
+}
+
+
+document
+.getElementById("loginForm")
+.addEventListener("submit",function(event){
+
+  event.preventDefault();
+
+  document
+  .getElementById("demoMessage")
+  .style.display="block";
+
+});
+
+</script>
+
+</body>
+</html>
