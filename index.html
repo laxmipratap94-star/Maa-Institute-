@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>Maa Institute | Shobhit Singh</title>
 
@@ -26,8 +26,6 @@ body{
   line-height:1.6;
 }
 
-/* ================= THEME ================= */
-
 :root{
   --blue:#102a63;
   --blue2:#1d4fa3;
@@ -35,6 +33,8 @@ body{
   --yellow:#f4c542;
   --light:#f5f7fb;
   --white:#fff;
+  --green:#16834b;
+  --red:#d93025;
 }
 
 body::before{
@@ -49,7 +49,7 @@ body::before{
   pointer-events:none;
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 
 header{
   position:sticky;
@@ -84,7 +84,9 @@ header{
   font-weight:bold;
 }
 
-.logo span{
+.logo span,
+.portal-title span,
+.dashboard-header h2 span{
   color:var(--yellow);
 }
 
@@ -106,7 +108,7 @@ nav a:hover{
   color:var(--yellow);
 }
 
-/* ================= HERO ================= */
+/* HERO */
 
 .hero{
   min-height:560px;
@@ -170,7 +172,7 @@ nav a:hover{
   opacity:.9;
 }
 
-/* ================= SECTIONS ================= */
+/* SECTIONS */
 
 section{
   padding:65px 6%;
@@ -190,7 +192,7 @@ section{
   color:#666;
 }
 
-/* ================= CARDS ================= */
+/* CARDS */
 
 .cards{
   max-width:1100px;
@@ -213,7 +215,7 @@ section{
   margin-bottom:10px;
 }
 
-/* ================= AIM ================= */
+/* AIM */
 
 .aim-box{
   max-width:1000px;
@@ -240,7 +242,7 @@ section{
   color:var(--blue);
 }
 
-/* ================= TEACHER ================= */
+/* TEACHER */
 
 .teacher{
   max-width:1000px;
@@ -281,7 +283,7 @@ section{
   margin:8px 0 15px;
 }
 
-/* ================= BATCHES ================= */
+/* BATCHES */
 
 .batch-grid{
   max-width:1100px;
@@ -321,7 +323,7 @@ section{
   color:var(--blue);
 }
 
-/* ================= STATS ================= */
+/* STATS */
 
 .stats{
   max-width:1000px;
@@ -345,7 +347,7 @@ section{
   color:var(--yellow);
 }
 
-/* ================= RESULTS ================= */
+/* RESULTS */
 
 .results{
   max-width:1100px;
@@ -377,7 +379,7 @@ section{
   padding:10px;
 }
 
-/* ================= PAYMENT ================= */
+/* PAYMENT */
 
 .payment{
   max-width:1000px;
@@ -418,7 +420,7 @@ section{
   border-radius:10px;
 }
 
-/* ================= NOTICES ================= */
+/* NOTICES */
 
 .notice{
   max-width:900px;
@@ -430,7 +432,7 @@ section{
   box-shadow:0 3px 12px rgba(0,0,0,.06);
 }
 
-/* ================= CONTACT ================= */
+/* CONTACT */
 
 .contact{
   background:var(--blue);
@@ -453,7 +455,7 @@ section{
   font-weight:bold;
 }
 
-/* ================= PORTAL LOGIN PAGE ================= */
+/* PORTAL */
 
 #portalPage{
   display:none;
@@ -463,7 +465,7 @@ section{
 }
 
 .portal-container{
-  max-width:1000px;
+  max-width:1100px;
   margin:auto;
 }
 
@@ -480,8 +482,11 @@ section{
   font-weight:bold;
 }
 
-.portal-title span{
-  color:var(--yellow);
+.back-btn{
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  cursor:pointer;
 }
 
 .portal-card{
@@ -505,7 +510,8 @@ section{
   margin-bottom:25px;
 }
 
-.input{
+.input,
+.select-input{
   width:100%;
   padding:13px;
   margin-bottom:14px;
@@ -513,9 +519,11 @@ section{
   border-radius:8px;
   outline:none;
   font-size:15px;
+  background:white;
 }
 
-.input:focus{
+.input:focus,
+.select-input:focus{
   border-color:var(--yellow);
 }
 
@@ -531,24 +539,13 @@ section{
   font-size:16px;
 }
 
-.portal-btn:hover{
-  opacity:.9;
-}
-
 .portal-message{
   text-align:center;
   margin-top:15px;
   font-weight:bold;
 }
 
-.back-btn{
-  color:white;
-  text-decoration:none;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-/* ================= DASHBOARD ================= */
+/* DASHBOARD */
 
 #dashboard{
   display:none;
@@ -565,10 +562,6 @@ section{
   align-items:center;
 }
 
-.dashboard-header h2 span{
-  color:var(--yellow);
-}
-
 .logout-btn{
   background:var(--yellow);
   color:var(--blue);
@@ -580,7 +573,7 @@ section{
 }
 
 .dashboard-content{
-  max-width:1100px;
+  max-width:1150px;
   margin:auto;
   padding:35px 20px;
 }
@@ -609,7 +602,135 @@ section{
   margin-top:8px;
 }
 
-/* ================= FOOTER ================= */
+/* PROFILE */
+
+.profile-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+  margin-top:20px;
+}
+
+.profile-item{
+  background:#f7f9fd;
+  padding:15px;
+  border-radius:10px;
+  border-left:4px solid var(--blue);
+}
+
+.profile-item small{
+  display:block;
+  color:#777;
+  margin-bottom:4px;
+}
+
+.profile-item strong{
+  color:var(--blue);
+}
+
+/* STATUS */
+
+.status{
+  display:inline-block;
+  padding:5px 12px;
+  border-radius:20px;
+  font-weight:bold;
+}
+
+.status.active{
+  background:#dff5e8;
+  color:var(--green);
+}
+
+.status.inactive{
+  background:#fde4e1;
+  color:var(--red);
+}
+
+.fee-paid{
+  color:var(--green);
+  font-weight:bold;
+}
+
+.fee-pending{
+  color:var(--red);
+  font-weight:bold;
+}
+
+/* ADMIN */
+
+.admin-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.admin-form{
+  background:#f8faff;
+  padding:20px;
+  border-radius:12px;
+}
+
+.admin-form h4{
+  color:var(--blue);
+  margin-bottom:15px;
+}
+
+.admin-form label{
+  display:block;
+  font-size:13px;
+  font-weight:bold;
+  color:#555;
+  margin-bottom:5px;
+}
+
+.admin-form .input,
+.admin-form .select-input{
+  margin-bottom:12px;
+}
+
+.small-btn{
+  padding:9px 14px;
+  background:var(--blue);
+  color:white;
+  border:none;
+  border-radius:7px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.delete-btn{
+  background:var(--red);
+}
+
+.student-list{
+  overflow-x:auto;
+  margin-top:20px;
+}
+
+.student-table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:750px;
+}
+
+.student-table th,
+.student-table td{
+  border-bottom:1px solid #ddd;
+  padding:11px;
+  text-align:left;
+}
+
+.student-table th{
+  background:var(--blue);
+  color:white;
+}
+
+.student-table tr:hover{
+  background:#f8faff;
+}
+
+/* FOOTER */
 
 footer{
   background:var(--dark);
@@ -622,7 +743,7 @@ footer p{
   margin:5px;
 }
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 
 @media(max-width:700px){
 
@@ -674,872 +795,595 @@ footer p{
     flex-direction:column;
     gap:12px;
   }
+
+  .admin-grid{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- =====================================================
-     MAIN WEBSITE
-===================================================== -->
+<!-- ================= MAIN WEBSITE ================= -->
 
 <div id="mainWebsite">
 
 <header>
 
-  <div class="logo-area">
+<div class="logo-area">
+<img src="logo.jpg" class="logo-img" alt="Maa Institute Logo">
 
-    <img src="logo.jpg"
-         alt="Maa Institute Logo"
-         class="logo-img">
+<div class="logo">
+Maa <span>Institute</span>
+</div>
+</div>
 
-    <div class="logo">
-      Maa <span>Institute</span>
-    </div>
-
-  </div>
-
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#aim">Aim</a>
-    <a href="#teacher">Sir</a>
-    <a href="#batches">Batches</a>
-    <a href="#results">Results</a>
-    <a href="#payment">Fees</a>
-    <a href="#notices">Notices</a>
-    <a href="#contact">Contact</a>
-    <a href="#" onclick="openPortal();return false;">Portal</a>
-  </nav>
+<nav>
+<a href="#home">Home</a>
+<a href="#aim">Aim</a>
+<a href="#teacher">Sir</a>
+<a href="#batches">Batches</a>
+<a href="#results">Results</a>
+<a href="#payment">Fees</a>
+<a href="#notices">Notices</a>
+<a href="#contact">Contact</a>
+<a href="#" onclick="openPortal();return false;">Student Portal</a>
+</nav>
 
 </header>
 
-
-<!-- HERO -->
-
 <section class="hero" id="home">
 
-  <div class="hero-content">
+<div class="hero-content">
 
-    <div class="badge">
-      SHIKSHA + SANSKAR
-    </div>
+<div class="badge">
+SHIKSHA + SANSKAR
+</div>
 
-    <h1>
-      Welcome to <span>Maa Institute</span>
-    </h1>
+<h1>
+Welcome to <span>Maa Institute</span>
+</h1>
 
-    <h2>
-      English by Shobhit Sir
-    </h2>
+<h2>
+English by Shobhit Sir
+</h2>
 
-    <p>
-      Learn • Practice • Improve • Succeed
-    </p>
+<p>
+Learn • Practice • Improve • Succeed
+</p>
 
-    <p>
-      Quality Education • Strong Character • Moral Values
-    </p>
+<p>
+Quality Education • Strong Character • Moral Values
+</p>
 
-    <a class="btn"
-       href="#batches">
-      View Batches
-    </a>
+<a class="btn" href="#batches">
+View Batches
+</a>
 
-    <a class="btn"
-       href="#" onclick="openPortal();return false;">
-      Student Portal
-    </a>
+<a class="btn" href="#" onclick="openPortal();return false;">
+Student Portal
+</a>
 
-  </div>
+</div>
 
 </section>
-
-
-<!-- AIM -->
 
 <section id="aim">
 
-  <h2 class="section-title">
-    Our Aim
-  </h2>
+<h2 class="section-title">Our Aim</h2>
 
-  <p class="section-subtitle">
-    Our vision is to make education simple, meaningful and accessible.
-  </p>
+<p class="section-subtitle">
+Our vision is to make education simple, meaningful and accessible.
+</p>
 
-  <div class="aim-box">
+<div class="aim-box">
 
-    <ul>
+<ul>
+<li>To make any subject so easy that even an average student can understand it.</li>
 
-      <li>
-        To make any subject so easy that even an average student
-        can understand it.
-      </li>
+<li>To provide best quality in terms of content as well as in teaching.</li>
 
-      <li>
-        To provide best quality in terms of content as well as
-        in teaching.
-      </li>
+<li>To build good characters having great moral values as well as deep current knowledge.</li>
+</ul>
 
-      <li>
-        To build good characters having great moral values as well
-        as deep current knowledge.
-      </li>
+<div class="motto">
+Shiksha + Sanskar
+</div>
 
-    </ul>
-
-    <div class="motto">
-      Shiksha + Sanskar
-    </div>
-
-  </div>
+</div>
 
 </section>
-
-
-<!-- SUBJECTS -->
 
 <section>
 
-  <h2 class="section-title">
-    Subjects We Teach
-  </h2>
+<h2 class="section-title">
+Subjects We Teach
+</h2>
 
-  <p class="section-subtitle">
-    Academic and competitive preparation with concept-focused teaching.
-  </p>
+<p class="section-subtitle">
+Academic and competitive preparation with concept-focused teaching.
+</p>
 
-  <div class="cards">
+<div class="cards">
 
-    <div class="card">
-      <h3>English</h3>
-      <p>
-        Grammar, academic English and competitive examination preparation.
-      </p>
-    </div>
+<div class="card">
+<h3>English</h3>
+<p>Grammar, academic English and competitive examination preparation.</p>
+</div>
 
-    <div class="card">
-      <h3>Physics</h3>
-      <p>
-        Concept-based Physics learning with simple explanations and practice.
-      </p>
-    </div>
+<div class="card">
+<h3>Physics</h3>
+<p>Concept-based Physics learning with simple explanations and practice.</p>
+</div>
 
-    <div class="card">
-      <h3>Reasoning</h3>
-      <p>
-        Logical thinking and reasoning practice for competitive preparation.
-      </p>
-    </div>
+<div class="card">
+<h3>Reasoning</h3>
+<p>Logical thinking and reasoning practice for competitive preparation.</p>
+</div>
 
-    <div class="card">
-      <h3>Academic + Competitive</h3>
-      <p>
-        Focused teaching for school students and competitive examinations.
-      </p>
-    </div>
+<div class="card">
+<h3>Academic + Competitive</h3>
+<p>Focused teaching for school students and competitive examinations.</p>
+</div>
 
-  </div>
-
+</div>
 </section>
-
-
-<!-- TEACHER -->
 
 <section id="teacher">
 
-  <h2 class="section-title">
-    Meet Your Educator
-  </h2>
+<h2 class="section-title">
+Meet Your Educator
+</h2>
 
-  <div class="teacher">
+<div class="teacher">
 
-    <div class="teacher-photo">
+<div class="teacher-photo">
+<img src="shobhit-sir.jpg" alt="Shobhit Singh">
+</div>
 
-      <img src="shobhit-sir.jpg"
-           alt="Shobhit Singh">
+<div>
 
-    </div>
+<h3>Shobhit Singh</h3>
 
-    <div>
+<div class="teacher-role">
+Educator • Motivator • Social Worker
+</div>
 
-      <h3>Shobhit Singh</h3>
+<p>
+Highly spiritual and intellectual personality,
+motivator, social worker and nature lover.
+</p>
 
-      <div class="teacher-role">
-        Educator • Motivator • Social Worker
-      </div>
+<br>
 
-      <p>
-        Highly spiritual and intellectual personality,
-        motivator, social worker and nature lover.
-      </p>
+<p>
+<strong>Qualifications:</strong>
+B.Tech (Mechanical), D.El.Ed (Hons.), M.A. (English)
+</p>
 
-      <br>
+<p>
+<strong>Experience:</strong>
+9 Years of Deep Teaching Experience
+</p>
 
-      <p>
-        <strong>Qualifications:</strong>
-        B.Tech (Mechanical), D.El.Ed (Hons.), M.A. (English)
-      </p>
+<p>
+<strong>Teaching:</strong>
+English + Physics + Reasoning
+</p>
 
-      <p>
-        <strong>Experience:</strong>
-        9 Years of Deep Teaching Experience
-      </p>
+<p>
+<strong>Area:</strong>
+Competitive + Academic
+</p>
 
-      <p>
-        <strong>Teaching:</strong>
-        English + Physics + Reasoning
-      </p>
-
-      <p>
-        <strong>Area:</strong>
-        Competitive + Academic
-      </p>
-
-    </div>
-
-  </div>
-
+</div>
+</div>
 </section>
-
-
-<!-- BATCHES -->
 
 <section id="batches">
 
-  <h2 class="section-title">
-    Our Batches
-  </h2>
+<h2 class="section-title">
+Our Batches
+</h2>
 
-  <p class="section-subtitle">
-    Total – 08 batches
-  </p>
+<p class="section-subtitle">
+Total – 08 batches
+</p>
 
-  <div class="batch-grid">
+<div class="batch-grid">
 
-    <div class="batch">
-      <span class="class-name">CLASS 12TH</span>
-      <h3>Batch 01</h3>
-      <p class="time">7:00 AM – 8:00 AM</p>
-    </div>
+<div class="batch">
+<span class="class-name">CLASS 12TH</span>
+<h3>Batch 01</h3>
+<p class="time">7:00 AM – 8:00 AM</p>
+</div>
 
-    <div class="batch">
-      <span class="class-name">CLASS 12TH</span>
-      <h3>Batch 02</h3>
-      <p class="time">1:00 PM – 2:00 PM</p>
-    </div>
+<div class="batch">
+<span class="class-name">CLASS 12TH</span>
+<h3>Batch 02</h3>
+<p class="time">1:00 PM – 2:00 PM</p>
+</div>
 
-    <div class="batch">
-      <span class="class-name">CLASS 12TH</span>
-      <h3>Batch 03</h3>
-      <p class="time">2:00 PM – 3:00 PM</p>
-    </div>
+<div class="batch">
+<span class="class-name">CLASS 12TH</span>
+<h3>Batch 03</h3>
+<p class="time">2:00 PM – 3:00 PM</p>
+</div>
 
-    <div class="batch">
-      <span class="class-name">CLASS 12TH</span>
-      <h3>Batch 04</h3>
-      <p class="time">6:00 PM – 7:00 PM</p>
-    </div>
+<div class="batch">
+<span class="class-name">CLASS 12TH</span>
+<h3>Batch 04</h3>
+<p class="time">6:00 PM – 7:00 PM</p>
+</div>
 
-    <div class="batch">
-      <span class="class-name">CLASS 11TH</span>
-      <h3>Batch 05</h3>
-      <p class="time">6:00 AM – 7:00 AM</p>
-    </div>
+<div class="batch">
+<span class="class-name">CLASS 11TH</span>
+<h3>Batch 05</h3>
+<p class="time">6:00 AM – 7:00 AM</p>
+</div>
 
-    <div class="batch">
-      <span class="class-name">CLASS 10TH</span>
-      <h3>Batch 06</h3>
-      <p class="time">3:00 PM – 4:00 PM</p>
-    </div>
+<div class="batch">
+<span class="class-name">CLASS 10TH</span>
+<h3>Batch 06</h3>
+<p class="time">3:00 PM – 4:00 PM</p>
+</div>
 
-    <div class="batch">
-      <span class="class-name">CLASS 10TH</span>
-      <h3>Batch 07</h3>
-      <p class="time">5:00 PM – 6:00 PM</p>
-    </div>
+<div class="batch">
+<span class="class-name">CLASS 10TH</span>
+<h3>Batch 07</h3>
+<p class="time">5:00 PM – 6:00 PM</p>
+</div>
 
-    <div class="batch">
-      <span class="class-name">CLASS 9TH</span>
-      <h3>Batch 08</h3>
-      <p class="time">4:00 PM – 5:00 PM</p>
-    </div>
+<div class="batch">
+<span class="class-name">CLASS 9TH</span>
+<h3>Batch 08</h3>
+<p class="time">4:00 PM – 5:00 PM</p>
+</div>
 
-  </div>
-
+</div>
 </section>
-
-
-<!-- STATS -->
 
 <section>
 
-  <h2 class="section-title">
-    Institute Overview
-  </h2>
+<h2 class="section-title">
+Institute Overview
+</h2>
 
-  <div class="stats">
+<div class="stats">
 
-    <div class="stat">
-      <strong>08</strong>
-      Total Batches
-    </div>
+<div class="stat">
+<strong>08</strong>
+Total Batches
+</div>
 
-    <div class="stat">
-      <strong>9th–12th</strong>
-      Classes
-    </div>
+<div class="stat">
+<strong>9th–12th</strong>
+Classes
+</div>
 
-    <div class="stat">
-      <strong>9+</strong>
-      Years Experience
-    </div>
+<div class="stat">
+<strong>9+</strong>
+Years Experience
+</div>
 
-    <div class="stat">
-      <strong>3</strong>
-      Core Subjects
-    </div>
+<div class="stat">
+<strong>3</strong>
+Core Subjects
+</div>
 
-  </div>
-
+</div>
 </section>
-
-
-<!-- RESULTS -->
 
 <section id="results">
 
-  <h2 class="section-title">
-    Our Results
-  </h2>
+<h2 class="section-title">
+Our Results
+</h2>
 
-  <div class="results">
+<div class="results">
 
-    <div class="result-card">
-      <div class="result-title">2023 Result</div>
-      <img src="2023.jpg" alt="2023 Result">
-    </div>
+<div class="result-card">
+<div class="result-title">2023 Result</div>
+<img src="2023.jpg" alt="2023 Result">
+</div>
 
-    <div class="result-card">
-      <div class="result-title">2024 Result</div>
-      <img src="2024.jpg" alt="2024 Result">
-    </div>
+<div class="result-card">
+<div class="result-title">2024 Result</div>
+<img src="2024.jpg" alt="2024 Result">
+</div>
 
-    <div class="result-card">
-      <div class="result-title">2025 Result</div>
-      <img src="2025.jpg" alt="2025 Result">
-    </div>
+<div class="result-card">
+<div class="result-title">2025 Result</div>
+<img src="2025.jpg" alt="2025 Result">
+</div>
 
-    <div class="result-card">
-      <div class="result-title">2026 Result</div>
-      <img src="2026.jpg" alt="2026 Result">
-    </div>
+<div class="result-card">
+<div class="result-title">2026 Result</div>
+<img src="2026.jpg" alt="2026 Result">
+</div>
 
-  </div>
-
+</div>
 </section>
-
-
-<!-- PAYMENT -->
 
 <section id="payment">
 
-  <h2 class="section-title">
-    Fee & Online Payment
-  </h2>
+<h2 class="section-title">
+Fee & Online Payment
+</h2>
 
-  <p class="section-subtitle">
-    Fee facility available through both online and offline mode.
-  </p>
+<p class="section-subtitle">
+Fee facility available through both online and offline mode.
+</p>
 
-  <div class="payment">
+<div class="payment">
 
-    <div class="payment-info">
+<div class="payment-info">
 
-      <h3>Online / Offline Fee</h3>
+<h3>Online / Offline Fee</h3>
 
-      <p>
-        <strong>Online Payment:</strong>
-      </p>
+<p><strong>Online Payment:</strong></p>
 
-      <p class="payment-number">
-        📱 9555497601
-      </p>
+<p class="payment-number">
+📱 9555497601
+</p>
 
-      <p>
-        Offline fee submission is also available.
-        Contact Maa Institute for details.
-      </p>
+<h3 style="margin-top:25px;">
+Class 12th Fee
+</h3>
 
-      <a class="btn"
-         href="tel:+919555497601">
-        Fee Enquiry
-      </a>
+<p>
+1 Month: <strong>₹350</strong>
+</p>
 
-    </div>
+<p>
+2 Months Together: <strong>₹600</strong>
+</p>
 
-    <div class="qr-box">
+<p style="margin-top:15px;">
+Class 9th: <strong>₹....</strong>
+</p>
 
-      <h3>Scan to Pay</h3>
+<p>
+Class 10th: <strong>₹....</strong>
+</p>
 
-      <img src="qr.jpg"
-           alt="Maa Institute Payment QR">
+<p>
+Class 11th: <strong>₹....</strong>
+</p>
 
-      <p>
-        Scan QR for online fee payment.
-      </p>
+<a class="btn" href="tel:+919555497601">
+Fee Enquiry
+</a>
 
-    </div>
+</div>
 
-  </div>
+<div class="qr-box">
 
+<h3>Scan to Pay</h3>
+
+<img src="qr.jpg" alt="Maa Institute Payment QR">
+
+<p>
+Scan QR for online fee payment.
+</p>
+
+</div>
+
+</div>
 </section>
-
-
-<!-- NOTICES -->
 
 <section id="notices">
 
-  <h2 class="section-title">
-    Latest Notices
-  </h2>
+<h2 class="section-title">
+Latest Notices
+</h2>
 
-  <div class="notice">
-    <strong>New Batches:</strong>
-    Contact Maa Institute for current batch availability.
-  </div>
+<div class="notice">
+<strong>New Batches:</strong>
+Contact Maa Institute for current batch availability.
+</div>
 
-  <div class="notice">
-    <strong>Classes:</strong>
-    Students are requested to attend their respective batches regularly.
-  </div>
+<div class="notice">
+<strong>Classes:</strong>
+Students are requested to attend their respective batches regularly.
+</div>
 
-  <div class="notice">
-    <strong>Fee:</strong>
-    Online and offline fee payment facilities are available.
-  </div>
+<div class="notice">
+<strong>Fee:</strong>
+Online and offline fee payment facilities are available.
+</div>
 
 </section>
-
-
-<!-- CONTACT -->
 
 <section id="contact" class="contact">
 
-  <h2 class="section-title">
-    Contact Maa Institute
-  </h2>
+<h2 class="section-title">
+Contact Maa Institute
+</h2>
 
-  <div class="contact-item">
-    📞 Call:
-    <a href="tel:+919335893878">
-      +91 93358 93878
-    </a>
-  </div>
+<div class="contact-item">
+📞 Call:
+<a href="tel:+919335893878">
++91 93358 93878
+</a>
+</div>
 
-  <div class="contact-item">
-    💬 WhatsApp:
-    <a href="https://wa.me/919555497601">
-      +91 95554 97601
-    </a>
-  </div>
+<div class="contact-item">
+💬 WhatsApp:
+<a href="https://wa.me/919555497601">
++91 95554 97601
+</a>
+</div>
 
-  <div class="contact-item">
-    ✉️ Email:
-    <a href="mailto:ssshobhitsingh786@gmail.com">
-      ssshobhitsingh786@gmail.com
-    </a>
-  </div>
+<div class="contact-item">
+✉️ Email:
+<a href="mailto:ssshobhitsingh786@gmail.com">
+ssshobhitsingh786@gmail.com
+</a>
+</div>
 
 </section>
 
-
 <footer>
-
-  <p>© 2026 Maa Institute | English by Shobhit Sir</p>
-  <p>Shiksha + Sanskar</p>
-
+<p>© 2026 Maa Institute | English by Shobhit Sir</p>
+<p>Shiksha + Sanskar</p>
 </footer>
 
 </div>
 
 
-<!-- =====================================================
-     SECOND PAGE / PORTAL
-===================================================== -->
+<!-- ================= PORTAL LOGIN ================= -->
 
 <div id="portalPage">
 
-  <div class="portal-container">
+<div class="portal-container">
 
-    <div class="portal-top">
+<div class="portal-top">
 
-      <div class="portal-title">
-        Maa <span>Institute</span> Portal
-      </div>
+<div class="portal-title">
+Maa <span>Institute</span> Portal
+</div>
 
-      <a class="back-btn"
-         onclick="closePortal()">
-        ← Back to Website
-      </a>
+<a class="back-btn" onclick="closePortal()">
+← Back to Website
+</a>
 
-    </div>
+</div>
 
+<div class="portal-card">
 
-    <div class="portal-card">
+<h2>Student / Admin Login</h2>
 
-      <h2>Student / Admin Login</h2>
+<p>
+Login using your registered email and password.
+</p>
 
-      <p>
-        Login using your registered email and password.
-      </p>
+<input
+class="input"
+type="email"
+id="loginEmail"
+placeholder="Enter Email"
+autocomplete="email">
 
-      <input
-        class="input"
-        type="email"
-        id="loginEmail"
-        placeholder="Enter Email"
-        autocomplete="email"
-      >
+<input
+class="input"
+type="password"
+id="loginPassword"
+placeholder="Enter Password"
+autocomplete="current-password">
 
-      <input
-        class="input"
-        type="password"
-        id="loginPassword"
-        placeholder="Enter Password"
-        autocomplete="current-password"
-      >
+<button class="portal-btn" onclick="loginUser()">
+Login
+</button>
 
-      <button
-        class="portal-btn"
-        onclick="loginUser()">
-        Login
-      </button>
+<div id="loginMessage" class="portal-message"></div>
 
-      <div
-        id="loginMessage"
-        class="portal-message">
-      </div>
+</div>
 
-    </div>
-
-  </div>
+</div>
 
 </div>
 
 
-<!-- =====================================================
-     DASHBOARD
-===================================================== -->
+<!-- ================= DASHBOARD ================= -->
 
 <div id="dashboard">
 
-  <div class="dashboard-header">
+<div class="dashboard-header">
 
-    <h2>
-      Maa <span>Institute</span> Dashboard
-    </h2>
+<h2>
+Maa <span>Institute</span> Dashboard
+</h2>
 
-    <button
-      class="logout-btn"
-      onclick="logoutUser()">
-      Logout
-    </button>
+<button class="logout-btn" onclick="logoutUser()">
+Logout
+</button>
 
-  </div>
+</div>
 
+<div class="dashboard-content">
 
-  <div class="dashboard-content">
+<!-- USER INFO -->
 
-    <div class="dashboard-card">
+<div class="dashboard-card">
 
-      <h3>
-        Welcome 👋
-      </h3>
+<h3>Welcome 👋</h3>
 
-      <p id="userEmail">
-        Loading...
-      </p>
+<p id="userEmail">
+Loading...
+</p>
 
-      <div
-        id="adminBadge"
-        class="admin-badge"
-        style="display:none;">
-        ADMIN / SIR
-      </div>
-
-    </div>
-
-
-    <div class="dashboard-card">
-
-      <h3>
-        Student Portal
-      </h3>
-
-      <p>
-        Your secure Maa Institute portal is connected with
-        Supabase Authentication.
-      </p>
-
-      <p style="margin-top:10px;">
-        Student profile, attendance, fees, notices and other
-        records can be added here in the next portal phase.
-      </p>
-
-    </div>
-
-
-    <div
-      id="adminPanel"
-      class="dashboard-card"
-      style="display:none;">
-
-      <h3>
-        Admin Panel 👨‍🏫
-      </h3>
-
-      <p>
-        You are logged in as an authorized administrator.
-      </p>
-
-      <p style="margin-top:10px;">
-        Student management features will be connected to the
-        database after the exact students-table fields are finalized.
-      </p>
-
-    </div>
-
-  </div>
+<div
+id="adminBadge"
+class="admin-badge"
+style="display:none;">
+ADMIN / SIR
+</div>
 
 </div>
 
 
-<script>
+<!-- STUDENT PROFILE -->
 
-/* =====================================================
-   SUPABASE CONNECTION
-===================================================== */
+<div
+id="studentProfileCard"
+class="dashboard-card"
+style="display:none;">
 
-const SUPABASE_URL =
-"https://pfrhffflhfgzlmadxerj.supabase.co";
+<h3>
+Student Profile 🎓
+</h3>
 
-const SUPABASE_PUBLISHABLE_KEY =
-"sb_publishable_8swiPL_ZNFOCDHUsGN4ciA_iiSoTvAB";
+<div id="studentProfile"
+class="profile-grid">
+</div>
 
-const supabaseClient =
-supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
-);
+</div>
 
 
-/* =====================================================
-   OPEN PORTAL
-===================================================== */
+<!-- STUDENT MESSAGE -->
 
-function openPortal(){
+<div
+id="studentEmptyCard"
+class="dashboard-card"
+style="display:none;">
 
-  document.getElementById("mainWebsite").style.display="none";
+<h3>
+Student Portal
+</h3>
 
-  document.getElementById("portalPage").style.display="block";
+<p>
+Your account is logged in, but your student record has not
+been added yet. Please contact Maa Institute.
+</p>
 
-  document.getElementById("dashboard").style.display="none";
+</div>
 
-  window.scrollTo(0,0);
-}
 
+<!-- ADMIN PANEL -->
 
-/* =====================================================
-   CLOSE PORTAL
-===================================================== */
+<div
+id="adminPanel"
+class="dashboard-card"
+style="display:none;">
 
-function closePortal(){
+<h3>
+Admin Panel 👨‍🏫
+</h3>
 
-  document.getElementById("portalPage").style.display="none";
+<p>
+Authorized administrator controls.
+</p>
 
-  document.getElementById("dashboard").style.display="none";
+<div class="admin-grid">
 
-  document.getElementById("mainWebsite").style.display="block";
+<!-- ADD / UPDATE STUDENT -->
 
-  window.scrollTo(0,0);
-}
+<div class="admin-form">
 
+<h4>
+Create / Update Student Record
+</h4>
 
-/* =====================================================
-   LOGIN
-===================================================== */
-
-async function loginUser(){
-
-  const email =
-    document.getElementById("loginEmail").value.trim();
-
-  const password =
-    document.getElementById("loginPassword").value;
-
-  const message =
-    document.getElementById("loginMessage");
-
-  message.style.color="#102a63";
-
-  if(!email || !password){
-
-    message.innerText =
-      "Email aur password dono bharo.";
-
-    return;
-  }
-
-  message.innerText =
-    "Logging in...";
-
-  const {data,error} =
-    await supabaseClient.auth.signInWithPassword({
-
-      email:email,
-
-      password:password
-
-    });
-
-
-  if(error){
-
-    message.style.color="red";
-
-    message.innerText =
-      "Login failed: " + error.message;
-
-    return;
-  }
-
-
-  message.style.color="green";
-
-  message.innerText =
-    "Login successful!";
-
-
-  await showDashboard(data.user);
-}
-
-
-/* =====================================================
-   SHOW DASHBOARD
-===================================================== */
-
-async function showDashboard(user){
-
-  document.getElementById("mainWebsite").style.display="none";
-
-  document.getElementById("portalPage").style.display="none";
-
-  document.getElementById("dashboard").style.display="block";
-
-  window.scrollTo(0,0);
-
-
-  document.getElementById("userEmail").innerText =
-    "Logged in as: " + user.email;
-
-
-  /*
-    Check whether this user exists inside
-    public.admin_users.
-  */
-
-  const {data,error} =
-    await supabaseClient
-      .from("admin_users")
-      .select("user_id")
-      .eq("user_id",user.id)
-      .maybeSingle();
-
-
-  if(!error && data){
-
-    document.getElementById("adminBadge")
-      .style.display="inline-block";
-
-    document.getElementById("adminPanel")
-      .style.display="block";
-
-  }else{
-
-    document.getElementById("adminBadge")
-      .style.display="none";
-
-    document.getElementById("adminPanel")
-      .style.display="none";
-  }
-}
-
-
-/* =====================================================
-   LOGOUT
-===================================================== */
-
-async function logoutUser(){
-
-  await supabaseClient.auth.signOut();
-
-  document.getElementById("dashboard").style.display="none";
-
-  document.getElementById("portalPage").style.display="block";
-
-  document.getElementById("loginEmail").value="";
-
-  document.getElementById("loginPassword").value="";
-
-  document.getElementById("loginMessage").innerText="";
-
-  window.scrollTo(0,0);
-}
-
-
-/* =====================================================
-   CHECK EXISTING SESSION
-===================================================== */
-
-async function checkSession(){
-
-  const {data} =
-    await supabaseClient.auth.getSession();
-
-  if(data && data.session){
-
-    await showDashboard(data.session.user);
-
-  }
-}
-
-
-/* =====================================================
-   AUTH STATE
-===================================================== */
-
-supabaseClient.auth.onAuthStateChange(
-  async (event,session)=>{
-
-    if(event==="SIGNED_OUT"){
-
-      document.getElementById("dashboard").style.display="none";
-
-      document.getElementById("portalPage").style.display="block";
-
-    }
-
-  }
-);
-
-
-/* Check login when website opens */
-
-checkSession();
-
-</script>
-
-</body>
-</html>
+<label>Stud
