@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Maa Institute | Shobhit Singh</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+
 *{
   margin:0;
   padding:0;
@@ -33,8 +34,6 @@ body{
   --yellow:#f4c542;
   --light:#f5f7fb;
   --white:#fff;
-  --green:#16834b;
-  --red:#d93025;
 }
 
 body::before{
@@ -84,9 +83,7 @@ header{
   font-weight:bold;
 }
 
-.logo span,
-.portal-title span,
-.dashboard-header h2 span{
+.logo span{
   color:var(--yellow);
 }
 
@@ -379,7 +376,7 @@ section{
   padding:10px;
 }
 
-/* PAYMENT */
+/* FEES */
 
 .payment{
   max-width:1000px;
@@ -410,6 +407,28 @@ section{
   margin:10px 0;
 }
 
+.fee-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:20px;
+}
+
+.fee-table th,
+.fee-table td{
+  padding:12px;
+  border:1px solid #ddd;
+  text-align:center;
+}
+
+.fee-table th{
+  background:var(--blue);
+  color:white;
+}
+
+.fee-table td{
+  background:#fff;
+}
+
 .qr-box{
   text-align:center;
 }
@@ -418,6 +437,26 @@ section{
   width:100%;
   max-width:280px;
   border-radius:10px;
+}
+
+.payment-apps{
+  margin-top:18px;
+}
+
+.payment-app{
+  display:block;
+  width:100%;
+  margin:8px 0;
+  padding:12px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:bold;
+  background:var(--blue);
+  color:white;
+}
+
+.payment-app:hover{
+  background:var(--blue2);
 }
 
 /* NOTICES */
@@ -453,281 +492,6 @@ section{
   color:var(--yellow);
   text-decoration:none;
   font-weight:bold;
-}
-
-/* PORTAL */
-
-#portalPage{
-  display:none;
-  min-height:100vh;
-  background:linear-gradient(135deg,var(--blue),var(--blue2));
-  padding:30px 15px;
-}
-
-.portal-container{
-  max-width:1100px;
-  margin:auto;
-}
-
-.portal-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  color:white;
-  margin-bottom:30px;
-}
-
-.portal-title{
-  font-size:30px;
-  font-weight:bold;
-}
-
-.back-btn{
-  color:white;
-  text-decoration:none;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.portal-card{
-  max-width:460px;
-  margin:40px auto;
-  background:white;
-  padding:35px;
-  border-radius:18px;
-  box-shadow:0 10px 35px rgba(0,0,0,.25);
-}
-
-.portal-card h2{
-  text-align:center;
-  color:var(--blue);
-  margin-bottom:8px;
-}
-
-.portal-card p{
-  text-align:center;
-  color:#666;
-  margin-bottom:25px;
-}
-
-.input,
-.select-input{
-  width:100%;
-  padding:13px;
-  margin-bottom:14px;
-  border:1px solid #ddd;
-  border-radius:8px;
-  outline:none;
-  font-size:15px;
-  background:white;
-}
-
-.input:focus,
-.select-input:focus{
-  border-color:var(--yellow);
-}
-
-.portal-btn{
-  width:100%;
-  padding:14px;
-  background:var(--yellow);
-  color:var(--blue);
-  border:none;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
-  font-size:16px;
-}
-
-.portal-message{
-  text-align:center;
-  margin-top:15px;
-  font-weight:bold;
-}
-
-/* DASHBOARD */
-
-#dashboard{
-  display:none;
-  min-height:100vh;
-  background:#f5f7fb;
-}
-
-.dashboard-header{
-  background:var(--blue);
-  color:white;
-  padding:18px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.logout-btn{
-  background:var(--yellow);
-  color:var(--blue);
-  border:none;
-  padding:9px 15px;
-  border-radius:7px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.dashboard-content{
-  max-width:1150px;
-  margin:auto;
-  padding:35px 20px;
-}
-
-.dashboard-card{
-  background:white;
-  border-radius:15px;
-  padding:25px;
-  margin-bottom:20px;
-  box-shadow:0 5px 18px rgba(0,0,0,.08);
-  border-top:4px solid var(--yellow);
-}
-
-.dashboard-card h3{
-  color:var(--blue);
-  margin-bottom:10px;
-}
-
-.admin-badge{
-  display:inline-block;
-  background:var(--yellow);
-  color:var(--blue);
-  padding:5px 12px;
-  border-radius:20px;
-  font-weight:bold;
-  margin-top:8px;
-}
-
-/* PROFILE */
-
-.profile-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
-  margin-top:20px;
-}
-
-.profile-item{
-  background:#f7f9fd;
-  padding:15px;
-  border-radius:10px;
-  border-left:4px solid var(--blue);
-}
-
-.profile-item small{
-  display:block;
-  color:#777;
-  margin-bottom:4px;
-}
-
-.profile-item strong{
-  color:var(--blue);
-}
-
-/* STATUS */
-
-.status{
-  display:inline-block;
-  padding:5px 12px;
-  border-radius:20px;
-  font-weight:bold;
-}
-
-.status.active{
-  background:#dff5e8;
-  color:var(--green);
-}
-
-.status.inactive{
-  background:#fde4e1;
-  color:var(--red);
-}
-
-.fee-paid{
-  color:var(--green);
-  font-weight:bold;
-}
-
-.fee-pending{
-  color:var(--red);
-  font-weight:bold;
-}
-
-/* ADMIN */
-
-.admin-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-}
-
-.admin-form{
-  background:#f8faff;
-  padding:20px;
-  border-radius:12px;
-}
-
-.admin-form h4{
-  color:var(--blue);
-  margin-bottom:15px;
-}
-
-.admin-form label{
-  display:block;
-  font-size:13px;
-  font-weight:bold;
-  color:#555;
-  margin-bottom:5px;
-}
-
-.admin-form .input,
-.admin-form .select-input{
-  margin-bottom:12px;
-}
-
-.small-btn{
-  padding:9px 14px;
-  background:var(--blue);
-  color:white;
-  border:none;
-  border-radius:7px;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-.delete-btn{
-  background:var(--red);
-}
-
-.student-list{
-  overflow-x:auto;
-  margin-top:20px;
-}
-
-.student-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:750px;
-}
-
-.student-table th,
-.student-table td{
-  border-bottom:1px solid #ddd;
-  padding:11px;
-  text-align:left;
-}
-
-.student-table th{
-  background:var(--blue);
-  color:white;
-}
-
-.student-table tr:hover{
-  background:#f8faff;
 }
 
 /* FOOTER */
@@ -785,6 +549,943 @@ footer p{
     grid-template-columns:1fr;
   }
 
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="mainWebsite">
+
+<header>
+
+  <div class="logo-area">
+
+    <img
+      src="logo.jpg"
+      alt="Maa Institute Logo"
+      class="logo-img"
+    >
+
+    <div class="logo">
+      Maa <span>Institute</span>
+    </div>
+
+  </div>
+
+  <nav>
+
+    <a href="#home">Home</a>
+    <a href="#aim">Aim</a>
+    <a href="#teacher">Sir</a>
+    <a href="#batches">Batches</a>
+    <a href="#results">Results</a>
+    <a href="#payment">Fees</a>
+    <a href="#notices">Notices</a>
+    <a href="#contact">Contact</a>
+
+    <a
+      href="#"
+      onclick="openPortal();return false;"
+    >
+      Student Portal
+    </a>
+
+  </nav>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+  <div class="hero-content">
+
+    <div class="badge">
+      SHIKSHA + SANSKAR
+    </div>
+
+    <h1>
+      Welcome to <span>Maa Institute</span>
+    </h1>
+
+    <h2>
+      English by Shobhit Sir
+    </h2>
+
+    <p>
+      Learn • Practice • Improve • Succeed
+    </p>
+
+    <p>
+      Quality Education • Strong Character • Moral Values
+    </p>
+
+    <a
+      class="btn"
+      href="#batches"
+    >
+      View Batches
+    </a>
+
+    <a
+      class="btn"
+      href="#"
+      onclick="openPortal();return false;"
+    >
+      Student Portal
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- AIM -->
+
+<section id="aim">
+
+  <h2 class="section-title">
+    Our Aim
+  </h2>
+
+  <p class="section-subtitle">
+    Our vision is to make education simple, meaningful and accessible.
+  </p>
+
+  <div class="aim-box">
+
+    <ul>
+
+      <li>
+        To make any subject so easy that even an average
+        student can understand it.
+      </li>
+
+      <li>
+        To provide best quality in terms of content as well
+        as in teaching.
+      </li>
+
+      <li>
+        To build good characters having great moral values
+        as well as deep current knowledge.
+      </li>
+
+    </ul>
+
+    <div class="motto">
+      Shiksha + Sanskar
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SUBJECTS -->
+
+<section>
+
+  <h2 class="section-title">
+    Subjects We Teach
+  </h2>
+
+  <p class="section-subtitle">
+    Academic and competitive preparation with concept-focused teaching.
+  </p>
+
+  <div class="cards">
+
+    <div class="card">
+
+      <h3>English</h3>
+
+      <p>
+        Grammar, academic English and competitive
+        examination preparation.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Physics</h3>
+
+      <p>
+        Concept-based Physics learning with simple
+        explanations and practice.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Reasoning</h3>
+
+      <p>
+        Logical thinking and reasoning practice for
+        competitive preparation.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Academic + Competitive</h3>
+
+      <p>
+        Focused teaching for school students and
+        competitive examinations.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- TEACHER -->
+
+<section id="teacher">
+
+  <h2 class="section-title">
+    Meet Your Educator
+  </h2>
+
+  <div class="teacher">
+
+    <div class="teacher-photo">
+
+      <img
+        src="shobhit-sir.jpg"
+        alt="Shobhit Singh"
+      >
+
+    </div>
+
+    <div>
+
+      <h3>
+        Shobhit Singh
+      </h3>
+
+      <div class="teacher-role">
+        Educator • Motivator • Social Worker
+      </div>
+
+      <p>
+        Highly spiritual and intellectual personality,
+        motivator, social worker and nature lover.
+      </p>
+
+      <br>
+
+      <p>
+        <strong>Qualifications:</strong>
+        B.Tech (Mechanical), D.El.Ed (Hons.),
+        M.A. (English)
+      </p>
+
+      <p>
+        <strong>Experience:</strong>
+        9 Years of Deep Teaching Experience
+      </p>
+
+      <p>
+        <strong>Teaching:</strong>
+        English + Physics + Reasoning
+      </p>
+
+      <p>
+        <strong>Area:</strong>
+        Competitive + Academic
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- BATCHES -->
+
+<section id="batches">
+
+  <h2 class="section-title">
+    Our Batches
+  </h2>
+
+  <p class="section-subtitle">
+    Total – 08 batches
+  </p>
+
+  <div class="batch-grid">
+
+    <div class="batch">
+      <span class="class-name">CLASS 12TH</span>
+      <h3>Batch 01</h3>
+      <p class="time">7:00 AM – 8:00 AM</p>
+    </div>
+
+    <div class="batch">
+      <span class="class-name">CLASS 12TH</span>
+      <h3>Batch 02</h3>
+      <p class="time">1:00 PM – 2:00 PM</p>
+    </div>
+
+    <div class="batch">
+      <span class="class-name">CLASS 12TH</span>
+      <h3>Batch 03</h3>
+      <p class="time">2:00 PM – 3:00 PM</p>
+    </div>
+
+    <div class="batch">
+      <span class="class-name">CLASS 12TH</span>
+      <h3>Batch 04</h3>
+      <p class="time">6:00 PM – 7:00 PM</p>
+    </div>
+
+    <div class="batch">
+      <span class="class-name">CLASS 11TH</span>
+      <h3>Batch 05</h3>
+      <p class="time">6:00 AM – 7:00 AM</p>
+    </div>
+
+    <div class="batch">
+      <span class="class-name">CLASS 10TH</span>
+      <h3>Batch 06</h3>
+      <p class="time">3:00 PM – 4:00 PM</p>
+    </div>
+
+    <div class="batch">
+      <span class="class-name">CLASS 10TH</span>
+      <h3>Batch 07</h3>
+      <p class="time">5:00 PM – 6:00 PM</p>
+    </div>
+
+    <div class="batch">
+      <span class="class-name">CLASS 9TH</span>
+      <h3>Batch 08</h3>
+      <p class="time">4:00 PM – 5:00 PM</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- STATS -->
+
+<section>
+
+  <h2 class="section-title">
+    Institute Overview
+  </h2>
+
+  <div class="stats">
+
+    <div class="stat">
+      <strong>08</strong>
+      Total Batches
+    </div>
+
+    <div class="stat">
+      <strong>9th–12th</strong>
+      Classes
+    </div>
+
+    <div class="stat">
+      <strong>9+</strong>
+      Years Experience
+    </div>
+
+    <div class="stat">
+      <strong>3</strong>
+      Core Subjects
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- RESULTS -->
+
+<section id="results">
+
+  <h2 class="section-title">
+    Our Results
+  </h2>
+
+  <div class="results">
+
+    <div class="result-card">
+
+      <div class="result-title">
+        2023 Result
+      </div>
+
+      <img
+        src="2023.jpg"
+        alt="2023 Result"
+      >
+
+    </div>
+
+
+    <div class="result-card">
+
+      <div class="result-title">
+        2024 Result
+      </div>
+
+      <img
+        src="2024.jpg"
+        alt="2024 Result"
+      >
+
+    </div>
+
+
+    <div class="result-card">
+
+      <div class="result-title">
+        2025 Result
+      </div>
+
+      <img
+        src="2025.jpg"
+        alt="2025 Result"
+      >
+
+    </div>
+
+
+    <div class="result-card">
+
+      <div class="result-title">
+        2026 Result
+      </div>
+
+      <img
+        src="2026.jpg"
+        alt="2026 Result"
+      >
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PAYMENT -->
+
+<section id="payment">
+
+  <h2 class="section-title">
+    Fee & Online Payment
+  </h2>
+
+  <p class="section-subtitle">
+    Fee facility available through both online and offline mode.
+  </p>
+
+  <div class="payment">
+
+    <div class="payment-info">
+
+      <h3>
+        Class-wise Fee Structure
+      </h3>
+
+      <table class="fee-table">
+
+        <tr>
+          <th>Class</th>
+          <th>1 Month</th>
+          <th>2 Months</th>
+        </tr>
+
+        <tr>
+          <td>12th</td>
+          <td>₹350</td>
+          <td>₹600</td>
+        </tr>
+
+        <tr>
+          <td>11th</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+
+        <tr>
+          <td>10th</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+
+        <tr>
+          <td>9th</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+
+      </table>
+
+      <br>
+
+      <p>
+        <strong>Online Payment:</strong>
+      </p>
+
+      <p class="payment-number">
+        📱 9555497601
+      </p>
+
+      <p>
+        Offline fee submission is also available.
+        Contact Maa Institute for details.
+      </p>
+
+      <a
+        class="btn"
+        href="tel:+919555497601"
+      >
+        Fee Enquiry
+      </a>
+
+    </div>
+
+
+    <div class="qr-box">
+
+      <h3>
+        Scan to Pay
+      </h3>
+
+      <img
+        src="qr.jpg"
+        alt="Maa Institute Payment QR"
+      >
+
+      <p>
+        Scan QR for online fee payment.
+      </p>
+
+      <div class="payment-apps">
+
+        <a
+          class="payment-app"
+          href="upi://pay?pa=9555497601"
+        >
+          GPay
+        </a>
+
+        <a
+          class="payment-app"
+          href="upi://pay?pa=9555497601"
+        >
+          PhonePe
+        </a>
+
+        <a
+          class="payment-app"
+          href="upi://pay?pa=9555497601"
+        >
+          Paytm
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- NOTICES -->
+
+<section id="notices">
+
+  <h2 class="section-title">
+    Latest Notices
+  </h2>
+
+  <div class="notice">
+
+    <strong>New Batches:</strong>
+
+    Contact Maa Institute for current
+    batch availability.
+
+  </div>
+
+
+  <div class="notice">
+
+    <strong>Classes:</strong>
+
+    Students are requested to attend their
+    respective batches regularly.
+
+  </div>
+
+
+  <div class="notice">
+
+    <strong>Fee:</strong>
+
+    Online and offline fee payment facilities
+    are available.
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section
+  id="contact"
+  class="contact"
+>
+
+  <h2 class="section-title">
+    Contact Maa Institute
+  </h2>
+
+  <div class="contact-item">
+
+    📞 Call:
+
+    <a
+      href="tel:+919335893878"
+    >
+      +91 93358 93878
+    </a>
+
+  </div>
+
+
+  <div class="contact-item">
+
+    💬 WhatsApp:
+
+    <a
+      href="https://wa.me/919555497601"
+    >
+      +91 95554 97601
+    </a>
+
+  </div>
+
+
+  <div class="contact-item">
+
+    ✉️ Email:
+
+    <a
+      href="mailto:ssshobhitsingh786@gmail.com"
+    >
+      ssshobhitsingh786@gmail.com
+    </a>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <p>
+    © 2026 Maa Institute |
+    English by Shobhit Sir
+  </p>
+
+  <p>
+    Shiksha + Sanskar
+  </p>
+
+</footer>
+
+</div>
+
+
+<!-- =====================================================
+     PART 2 — STUDENT PORTAL
+===================================================== -->
+
+<style>
+
+/* PORTAL */
+
+#portalPage{
+  display:none;
+  min-height:100vh;
+  background:linear-gradient(
+    135deg,
+    var(--blue),
+    var(--blue2)
+  );
+  padding:30px 15px;
+}
+
+.portal-container{
+  max-width:1100px;
+  margin:auto;
+}
+
+.portal-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:white;
+  margin-bottom:30px;
+}
+
+.portal-title{
+  font-size:30px;
+  font-weight:bold;
+}
+
+.portal-title span{
+  color:var(--yellow);
+}
+
+.back-btn{
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.portal-card{
+  max-width:470px;
+  margin:40px auto;
+  background:white;
+  padding:35px;
+  border-radius:18px;
+  box-shadow:0 10px 35px rgba(0,0,0,.25);
+}
+
+.portal-card h2{
+  text-align:center;
+  color:var(--blue);
+  margin-bottom:8px;
+}
+
+.portal-card p{
+  text-align:center;
+  color:#666;
+  margin-bottom:25px;
+}
+
+.input{
+  width:100%;
+  padding:13px;
+  margin-bottom:14px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  outline:none;
+  font-size:15px;
+}
+
+.input:focus{
+  border-color:var(--yellow);
+}
+
+.portal-btn{
+  width:100%;
+  padding:14px;
+  background:var(--yellow);
+  color:var(--blue);
+  border:none;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:16px;
+}
+
+.portal-btn:hover{
+  opacity:.9;
+}
+
+.portal-message{
+  text-align:center;
+  margin-top:15px;
+  font-weight:bold;
+}
+
+
+/* DASHBOARD */
+
+#dashboard{
+  display:none;
+  min-height:100vh;
+  background:#f5f7fb;
+}
+
+.dashboard-header{
+  background:var(--blue);
+  color:white;
+  padding:18px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.dashboard-header h2 span{
+  color:var(--yellow);
+}
+
+.logout-btn{
+  background:var(--yellow);
+  color:var(--blue);
+  border:none;
+  padding:9px 15px;
+  border-radius:7px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.dashboard-content{
+  max-width:1100px;
+  margin:auto;
+  padding:35px 20px;
+}
+
+.dashboard-card{
+  background:white;
+  border-radius:15px;
+  padding:25px;
+  margin-bottom:20px;
+  box-shadow:0 5px 18px rgba(0,0,0,.08);
+  border-top:4px solid var(--yellow);
+}
+
+.dashboard-card h3{
+  color:var(--blue);
+  margin-bottom:10px;
+}
+
+
+/* STUDENT INFORMATION */
+
+.student-info-grid{
+  display:grid;
+  grid-template-columns:
+    repeat(auto-fit,minmax(190px,1fr));
+  gap:15px;
+  margin-top:20px;
+}
+
+.info-box{
+  background:#f5f7fb;
+  padding:15px;
+  border-radius:10px;
+  border-left:4px solid var(--yellow);
+}
+
+.info-label{
+  display:block;
+  color:#777;
+  font-size:13px;
+  margin-bottom:4px;
+}
+
+.info-value{
+  display:block;
+  color:var(--blue);
+  font-size:17px;
+  font-weight:bold;
+}
+
+
+/* STATUS */
+
+.status{
+  display:inline-block;
+  padding:5px 12px;
+  border-radius:20px;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.status-paid{
+  background:#d9f7df;
+  color:#16752b;
+}
+
+.status-pending{
+  background:#ffe0e0;
+  color:#b00000;
+}
+
+.status-active{
+  background:#dceaff;
+  color:#1557a5;
+}
+
+
+/* ADMIN */
+
+.admin-badge{
+  display:inline-block;
+  background:var(--yellow);
+  color:var(--blue);
+  padding:5px 12px;
+  border-radius:20px;
+  font-weight:bold;
+  margin-top:8px;
+}
+
+.admin-grid{
+  display:grid;
+  grid-template-columns:
+    repeat(auto-fit,minmax(210px,1fr));
+  gap:15px;
+  margin-top:20px;
+}
+
+.admin-action{
+  padding:18px;
+  background:#f5f7fb;
+  border-radius:12px;
+  border:2px solid #eee;
+  cursor:pointer;
+  text-align:center;
+}
+
+.admin-action:hover{
+  border-color:var(--yellow);
+  background:#fffbea;
+}
+
+.admin-action h4{
+  color:var(--blue);
+  margin-bottom:5px;
+}
+
+.admin-action p{
+  color:#666;
+  font-size:13px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
   .portal-top{
     flex-direction:column;
     gap:15px;
@@ -796,594 +1497,1463 @@ footer p{
     gap:12px;
   }
 
-  .admin-grid{
-    grid-template-columns:1fr;
-  }
 }
+
 </style>
-</head>
 
-<body>
 
-<!-- ================= MAIN WEBSITE ================= -->
-
-<div id="mainWebsite">
-
-<header>
-
-<div class="logo-area">
-<img src="logo.jpg" class="logo-img" alt="Maa Institute Logo">
-
-<div class="logo">
-Maa <span>Institute</span>
-</div>
-</div>
-
-<nav>
-<a href="#home">Home</a>
-<a href="#aim">Aim</a>
-<a href="#teacher">Sir</a>
-<a href="#batches">Batches</a>
-<a href="#results">Results</a>
-<a href="#payment">Fees</a>
-<a href="#notices">Notices</a>
-<a href="#contact">Contact</a>
-<a href="#" onclick="openPortal();return false;">Student Portal</a>
-</nav>
-
-</header>
-
-<section class="hero" id="home">
-
-<div class="hero-content">
-
-<div class="badge">
-SHIKSHA + SANSKAR
-</div>
-
-<h1>
-Welcome to <span>Maa Institute</span>
-</h1>
-
-<h2>
-English by Shobhit Sir
-</h2>
-
-<p>
-Learn • Practice • Improve • Succeed
-</p>
-
-<p>
-Quality Education • Strong Character • Moral Values
-</p>
-
-<a class="btn" href="#batches">
-View Batches
-</a>
-
-<a class="btn" href="#" onclick="openPortal();return false;">
-Student Portal
-</a>
-
-</div>
-
-</section>
-
-<section id="aim">
-
-<h2 class="section-title">Our Aim</h2>
-
-<p class="section-subtitle">
-Our vision is to make education simple, meaningful and accessible.
-</p>
-
-<div class="aim-box">
-
-<ul>
-<li>To make any subject so easy that even an average student can understand it.</li>
-
-<li>To provide best quality in terms of content as well as in teaching.</li>
-
-<li>To build good characters having great moral values as well as deep current knowledge.</li>
-</ul>
-
-<div class="motto">
-Shiksha + Sanskar
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<h2 class="section-title">
-Subjects We Teach
-</h2>
-
-<p class="section-subtitle">
-Academic and competitive preparation with concept-focused teaching.
-</p>
-
-<div class="cards">
-
-<div class="card">
-<h3>English</h3>
-<p>Grammar, academic English and competitive examination preparation.</p>
-</div>
-
-<div class="card">
-<h3>Physics</h3>
-<p>Concept-based Physics learning with simple explanations and practice.</p>
-</div>
-
-<div class="card">
-<h3>Reasoning</h3>
-<p>Logical thinking and reasoning practice for competitive preparation.</p>
-</div>
-
-<div class="card">
-<h3>Academic + Competitive</h3>
-<p>Focused teaching for school students and competitive examinations.</p>
-</div>
-
-</div>
-</section>
-
-<section id="teacher">
-
-<h2 class="section-title">
-Meet Your Educator
-</h2>
-
-<div class="teacher">
-
-<div class="teacher-photo">
-<img src="shobhit-sir.jpg" alt="Shobhit Singh">
-</div>
-
-<div>
-
-<h3>Shobhit Singh</h3>
-
-<div class="teacher-role">
-Educator • Motivator • Social Worker
-</div>
-
-<p>
-Highly spiritual and intellectual personality,
-motivator, social worker and nature lover.
-</p>
-
-<br>
-
-<p>
-<strong>Qualifications:</strong>
-B.Tech (Mechanical), D.El.Ed (Hons.), M.A. (English)
-</p>
-
-<p>
-<strong>Experience:</strong>
-9 Years of Deep Teaching Experience
-</p>
-
-<p>
-<strong>Teaching:</strong>
-English + Physics + Reasoning
-</p>
-
-<p>
-<strong>Area:</strong>
-Competitive + Academic
-</p>
-
-</div>
-</div>
-</section>
-
-<section id="batches">
-
-<h2 class="section-title">
-Our Batches
-</h2>
-
-<p class="section-subtitle">
-Total – 08 batches
-</p>
-
-<div class="batch-grid">
-
-<div class="batch">
-<span class="class-name">CLASS 12TH</span>
-<h3>Batch 01</h3>
-<p class="time">7:00 AM – 8:00 AM</p>
-</div>
-
-<div class="batch">
-<span class="class-name">CLASS 12TH</span>
-<h3>Batch 02</h3>
-<p class="time">1:00 PM – 2:00 PM</p>
-</div>
-
-<div class="batch">
-<span class="class-name">CLASS 12TH</span>
-<h3>Batch 03</h3>
-<p class="time">2:00 PM – 3:00 PM</p>
-</div>
-
-<div class="batch">
-<span class="class-name">CLASS 12TH</span>
-<h3>Batch 04</h3>
-<p class="time">6:00 PM – 7:00 PM</p>
-</div>
-
-<div class="batch">
-<span class="class-name">CLASS 11TH</span>
-<h3>Batch 05</h3>
-<p class="time">6:00 AM – 7:00 AM</p>
-</div>
-
-<div class="batch">
-<span class="class-name">CLASS 10TH</span>
-<h3>Batch 06</h3>
-<p class="time">3:00 PM – 4:00 PM</p>
-</div>
-
-<div class="batch">
-<span class="class-name">CLASS 10TH</span>
-<h3>Batch 07</h3>
-<p class="time">5:00 PM – 6:00 PM</p>
-</div>
-
-<div class="batch">
-<span class="class-name">CLASS 9TH</span>
-<h3>Batch 08</h3>
-<p class="time">4:00 PM – 5:00 PM</p>
-</div>
-
-</div>
-</section>
-
-<section>
-
-<h2 class="section-title">
-Institute Overview
-</h2>
-
-<div class="stats">
-
-<div class="stat">
-<strong>08</strong>
-Total Batches
-</div>
-
-<div class="stat">
-<strong>9th–12th</strong>
-Classes
-</div>
-
-<div class="stat">
-<strong>9+</strong>
-Years Experience
-</div>
-
-<div class="stat">
-<strong>3</strong>
-Core Subjects
-</div>
-
-</div>
-</section>
-
-<section id="results">
-
-<h2 class="section-title">
-Our Results
-</h2>
-
-<div class="results">
-
-<div class="result-card">
-<div class="result-title">2023 Result</div>
-<img src="2023.jpg" alt="2023 Result">
-</div>
-
-<div class="result-card">
-<div class="result-title">2024 Result</div>
-<img src="2024.jpg" alt="2024 Result">
-</div>
-
-<div class="result-card">
-<div class="result-title">2025 Result</div>
-<img src="2025.jpg" alt="2025 Result">
-</div>
-
-<div class="result-card">
-<div class="result-title">2026 Result</div>
-<img src="2026.jpg" alt="2026 Result">
-</div>
-
-</div>
-</section>
-
-<section id="payment">
-
-<h2 class="section-title">
-Fee & Online Payment
-</h2>
-
-<p class="section-subtitle">
-Fee facility available through both online and offline mode.
-</p>
-
-<div class="payment">
-
-<div class="payment-info">
-
-<h3>Online / Offline Fee</h3>
-
-<p><strong>Online Payment:</strong></p>
-
-<p class="payment-number">
-📱 9555497601
-</p>
-
-<h3 style="margin-top:25px;">
-Class 12th Fee
-</h3>
-
-<p>
-1 Month: <strong>₹350</strong>
-</p>
-
-<p>
-2 Months Together: <strong>₹600</strong>
-</p>
-
-<p style="margin-top:15px;">
-Class 9th: <strong>₹....</strong>
-</p>
-
-<p>
-Class 10th: <strong>₹....</strong>
-</p>
-
-<p>
-Class 11th: <strong>₹....</strong>
-</p>
-
-<a class="btn" href="tel:+919555497601">
-Fee Enquiry
-</a>
-
-</div>
-
-<div class="qr-box">
-
-<h3>Scan to Pay</h3>
-
-<img src="qr.jpg" alt="Maa Institute Payment QR">
-
-<p>
-Scan QR for online fee payment.
-</p>
-
-</div>
-
-</div>
-</section>
-
-<section id="notices">
-
-<h2 class="section-title">
-Latest Notices
-</h2>
-
-<div class="notice">
-<strong>New Batches:</strong>
-Contact Maa Institute for current batch availability.
-</div>
-
-<div class="notice">
-<strong>Classes:</strong>
-Students are requested to attend their respective batches regularly.
-</div>
-
-<div class="notice">
-<strong>Fee:</strong>
-Online and offline fee payment facilities are available.
-</div>
-
-</section>
-
-<section id="contact" class="contact">
-
-<h2 class="section-title">
-Contact Maa Institute
-</h2>
-
-<div class="contact-item">
-📞 Call:
-<a href="tel:+919335893878">
-+91 93358 93878
-</a>
-</div>
-
-<div class="contact-item">
-💬 WhatsApp:
-<a href="https://wa.me/919555497601">
-+91 95554 97601
-</a>
-</div>
-
-<div class="contact-item">
-✉️ Email:
-<a href="mailto:ssshobhitsingh786@gmail.com">
-ssshobhitsingh786@gmail.com
-</a>
-</div>
-
-</section>
-
-<footer>
-<p>© 2026 Maa Institute | English by Shobhit Sir</p>
-<p>Shiksha + Sanskar</p>
-</footer>
-
-</div>
-
-
-<!-- ================= PORTAL LOGIN ================= -->
+<!-- =====================================================
+     PORTAL PAGE
+===================================================== -->
 
 <div id="portalPage">
 
-<div class="portal-container">
+  <div class="portal-container">
 
-<div class="portal-top">
+    <div class="portal-top">
 
-<div class="portal-title">
-Maa <span>Institute</span> Portal
+      <div class="portal-title">
+        Maa <span>Institute</span> Portal
+      </div>
+
+      <a
+        class="back-btn"
+        onclick="closePortal()"
+      >
+        ← Back to Website
+      </a>
+
+    </div>
+
+
+    <!-- LOGIN CARD -->
+
+    <div
+      class="portal-card"
+      id="loginCard"
+    >
+
+      <h2>
+        Student / Admin Login
+      </h2>
+
+      <p>
+        Login using your registered email
+        and password.
+      </p>
+
+
+      <input
+        class="input"
+        type="email"
+        id="loginEmail"
+        placeholder="Enter Email"
+        autocomplete="email"
+      >
+
+
+      <input
+        class="input"
+        type="password"
+        id="loginPassword"
+        placeholder="Enter Password"
+        autocomplete="current-password"
+      >
+
+
+      <button
+        class="portal-btn"
+        onclick="loginUser()"
+      >
+        Login
+      </button>
+
+
+      <div
+        id="loginMessage"
+        class="portal-message"
+      ></div>
+
+    </div>
+
+  </div>
+
 </div>
 
-<a class="back-btn" onclick="closePortal()">
-← Back to Website
-</a>
 
-</div>
-
-<div class="portal-card">
-
-<h2>Student / Admin Login</h2>
-
-<p>
-Login using your registered email and password.
-</p>
-
-<input
-class="input"
-type="email"
-id="loginEmail"
-placeholder="Enter Email"
-autocomplete="email">
-
-<input
-class="input"
-type="password"
-id="loginPassword"
-placeholder="Enter Password"
-autocomplete="current-password">
-
-<button class="portal-btn" onclick="loginUser()">
-Login
-</button>
-
-<div id="loginMessage" class="portal-message"></div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- ================= DASHBOARD ================= -->
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
 
 <div id="dashboard">
 
-<div class="dashboard-header">
+  <div class="dashboard-header">
 
-<h2>
-Maa <span>Institute</span> Dashboard
-</h2>
+    <h2>
+      Maa <span>Institute</span>
+      Dashboard
+    </h2>
 
-<button class="logout-btn" onclick="logoutUser()">
-Logout
-</button>
+    <button
+      class="logout-btn"
+      onclick="logoutUser()"
+    >
+      Logout
+    </button>
 
-</div>
-
-<div class="dashboard-content">
-
-<!-- USER INFO -->
-
-<div class="dashboard-card">
-
-<h3>Welcome 👋</h3>
-
-<p id="userEmail">
-Loading...
-</p>
-
-<div
-id="adminBadge"
-class="admin-badge"
-style="display:none;">
-ADMIN / SIR
-</div>
-
-</div>
+  </div>
 
 
-<!-- STUDENT PROFILE -->
-
-<div
-id="studentProfileCard"
-class="dashboard-card"
-style="display:none;">
-
-<h3>
-Student Profile 🎓
-</h3>
-
-<div id="studentProfile"
-class="profile-grid">
-</div>
-
-</div>
+  <div class="dashboard-content">
 
 
-<!-- STUDENT MESSAGE -->
+    <!-- WELCOME -->
 
-<div
-id="studentEmptyCard"
-class="dashboard-card"
-style="display:none;">
+    <div class="dashboard-card">
 
-<h3>
-Student Portal
-</h3>
+      <h3>
+        Welcome 👋
+      </h3>
 
-<p>
-Your account is logged in, but your student record has not
-been added yet. Please contact Maa Institute.
-</p>
+      <p id="userEmail">
+        Loading...
+      </p>
 
-</div>
+      <div
+        id="adminBadge"
+        class="admin-badge"
+        style="display:none;"
+      >
+        ADMIN / SIR
+      </div>
+
+    </div>
 
 
-<!-- ADMIN PANEL -->
+    <!-- STUDENT PROFILE -->
 
-<div
-id="adminPanel"
-class="dashboard-card"
-style="display:none;">
+    <div
+      class="dashboard-card"
+      id="studentProfileCard"
+    >
 
-<h3>
-Admin Panel 👨‍🏫
-</h3>
+      <h3>
+        Student Profile 🎓
+      </h3>
 
-<p>
-Authorized administrator controls.
-</p>
+      <p id="studentLoading">
+        Loading student information...
+      </p>
 
-<div class="admin-grid">
 
-<!-- ADD / UPDATE STUDENT -->
+      <div
+        id="studentInfo"
+        class="student-info-grid"
+        style="display:none;"
+      >
 
-<div class="admin-form">
+        <div class="info-box">
 
-<h4>
-Create / Update Student Record
-</h4>
+          <span class="info-label">
+            Student Name
+          </span>
 
-<label>Stud
+          <span
+            class="info-value"
+            id="studentName"
+          >
+            —
+          </span>
+
+        </div>
+
+
+        <div class="info-box">
+
+          <span class="info-label">
+            Student ID
+          </span>
+
+          <span
+            class="info-value"
+            id="studentId"
+          >
+            —
+          </span>
+
+        </div>
+
+
+        <div class="info-box">
+
+          <span class="info-label">
+            Class
+          </span>
+
+          <span
+            class="info-value"
+            id="studentClass"
+          >
+            —
+          </span>
+
+        </div>
+
+
+        <div class="info-box">
+
+          <span class="info-label">
+            Batch
+          </span>
+
+          <span
+            class="info-value"
+            id="studentBatch"
+          >
+            —
+          </span>
+
+        </div>
+
+
+        <div class="info-box">
+
+          <span class="info-label">
+            Student Mobile
+          </span>
+
+          <span
+            class="info-value"
+            id="studentMobile"
+          >
+            —
+          </span>
+
+        </div>
+
+
+        <div class="info-box">
+
+          <span class="info-label">
+            Parent Mobile
+          </span>
+
+          <span
+            class="info-value"
+            id="parentMobile"
+          >
+            —
+          </span>
+
+        </div>
+
+
+        <div class="info-box">
+
+          <span class="info-label">
+            Course
+          </span>
+
+          <span
+            class="info-value"
+            id="studentCourse"
+          >
+            —
+          </span>
+
+        </div>
+
+
+        <div class="info-box">
+
+          <span class="info-label">
+            Admission Date
+          </span>
+
+          <span
+            class="info-value"
+            id="admissionDate"
+          >
+            —
+          </span>
+
+        </div>
+
+
+        <div class="info-box">
+
+          <span class="info-label">
+            Fee Status
+          </span>
+
+          <span
+            class="info-value"
+            id="feeStatus"
+          >
+            —
+          </span>
+
+        </div>
+
+
+        <div class="info-box">
+
+          <span class="info-label">
+            Fee Paid Until
+          </span>
+
+          <span
+            class="info-value"
+            id="feePaidUntil"
+          >
+            —
+          </span>
+
+        </div>
+
+
+        <div class="info-box">
+
+          <span class="info-label">
+            Account Status
+          </span>
+
+          <span
+            class="info-value"
+            id="activeStatus"
+          >
+            —
+          </span>
+
+        </div>
+
+
+        <div class="info-box">
+
+          <span class="info-label">
+            Fee Plan
+          </span>
+
+          <span
+            class="info-value"
+            id="feePlan"
+          >
+            —
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- STUDENT PORTAL -->
+
+    <div class="dashboard-card">
+
+      <h3>
+        Student Portal 📚
+      </h3>
+
+      <p>
+        Your secure Maa Institute portal is
+        connected with Supabase Authentication.
+      </p>
+
+
+      <div
+        class="student-info-grid"
+        style="margin-top:20px;"
+      >
+
+        <div class="info-box">
+
+          <span class="info-label">
+            Attendance
+          </span>
+
+          <span class="info-value">
+            Coming Soon
+          </span>
+
+        </div>
+
+
+        <div class="info-box">
+
+          <span class="info-label">
+            Fees
+          </span>
+
+          <span class="info-value">
+            View Above
+          </span>
+
+        </div>
+
+
+        <div class="info-box">
+
+          <span class="info-label">
+            Notices
+          </span>
+
+          <span class="info-value">
+            Coming Soon
+          </span>
+
+        </div>
+
+
+        <div class="info-box">
+
+          <span class="info-label">
+            Course
+          </span>
+
+          <span
+            class="info-value"
+            id="dashboardCourse"
+          >
+            —
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ADMIN PANEL -->
+
+    <div
+      id="adminPanel"
+      class="dashboard-card"
+      style="display:none;"
+    >
+
+      <h3>
+        Admin Panel 👨‍🏫
+      </h3>
+
+      <p>
+        You are logged in as an authorized
+        administrator.
+      </p>
+
+
+      <div class="admin-grid">
+
+
+        <div
+          class="admin-action"
+          onclick="openAdminMessage('admission')"
+        >
+
+          <h4>
+            ➕ New Student
+          </h4>
+
+          <p>
+            Create new student admission
+            record.
+          </p>
+
+        </div>
+
+
+        <div
+          class="admin-action"
+          onclick="openAdminMessage('students')"
+        >
+
+          <h4>
+            👨‍🎓 Students
+          </h4>
+
+          <p>
+            Manage student records.
+          </p>
+
+        </div>
+
+
+        <div
+          class="admin-action"
+          onclick="openAdminMessage('fees')"
+        >
+
+          <h4>
+            💰 Fees
+          </h4>
+
+          <p>
+            Update fee status and paid-until
+            date.
+          </p>
+
+        </div>
+
+
+        <div
+          class="admin-action"
+          onclick="openAdminMessage('attendance')"
+        >
+
+          <h4>
+            📋 Attendance
+          </h4>
+
+          <p>
+            Manage student attendance.
+          </p>
+
+        </div>
+
+
+        <div
+          class="admin-action"
+          onclick="openAdminMessage('notices')"
+        >
+
+          <h4>
+            📢 Notices
+          </h4>
+
+          <p>
+            Publish institute notices.
+          </p>
+
+        </div>
+
+
+        <div
+          class="admin-action"
+          onclick="openAdminMessage('records')"
+        >
+
+          <h4>
+            📊 Records
+          </h4>
+
+          <p>
+            View student records.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="adminMessage"
+        class="portal-message"
+        style="margin-top:20px;"
+      ></div>
+
+    </div>
+
+  </div>
+
+  </div>
+  <!-- =====================================================
+     PART 3 — SUPABASE + LOGIN + STUDENT DATA
+===================================================== -->
+
+<script>
+
+/* =====================================================
+   SUPABASE CONNECTION
+===================================================== */
+
+const SUPABASE_URL =
+"https://pfrhffflhfgzlmadxerj.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_8swiPL_ZNFOCDHUsGN4ciA_iiSoTvAB";
+
+const supabaseClient =
+supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
+
+/* =====================================================
+   OPEN PORTAL
+===================================================== */
+
+function openPortal(){
+
+  document.getElementById("mainWebsite")
+    .style.display="none";
+
+  document.getElementById("portalPage")
+    .style.display="block";
+
+  document.getElementById("dashboard")
+    .style.display="none";
+
+  window.scrollTo(0,0);
+}
+
+
+/* =====================================================
+   CLOSE PORTAL
+===================================================== */
+
+function closePortal(){
+
+  document.getElementById("portalPage")
+    .style.display="none";
+
+  document.getElementById("dashboard")
+    .style.display="none";
+
+  document.getElementById("mainWebsite")
+    .style.display="block";
+
+  window.scrollTo(0,0);
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+async function loginUser(){
+
+  const email =
+    document
+      .getElementById("loginEmail")
+      .value
+      .trim();
+
+  const password =
+    document
+      .getElementById("loginPassword")
+      .value;
+
+  const message =
+    document.getElementById("loginMessage");
+
+
+  message.style.color="#102a63";
+
+
+  if(!email || !password){
+
+    message.innerText =
+      "Email aur password dono bharo.";
+
+    return;
+  }
+
+
+  message.innerText =
+    "Logging in...";
+
+
+  const {data,error} =
+    await supabaseClient.auth
+      .signInWithPassword({
+
+        email:email,
+
+        password:password
+
+      });
+
+
+  if(error){
+
+    message.style.color="red";
+
+    message.innerText =
+      "Login failed: " + error.message;
+
+    return;
+  }
+
+
+  message.style.color="green";
+
+  message.innerText =
+    "Login successful!";
+
+
+  if(data && data.user){
+
+    await showDashboard(data.user);
+
+  }
+
+}
+
+
+/* =====================================================
+   SHOW DASHBOARD
+===================================================== */
+
+async function showDashboard(user){
+
+  document.getElementById("mainWebsite")
+    .style.display="none";
+
+  document.getElementById("portalPage")
+    .style.display="none";
+
+  document.getElementById("dashboard")
+    .style.display="block";
+
+  window.scrollTo(0,0);
+
+
+  document.getElementById("userEmail")
+    .innerText =
+      "Logged in as: " + (user.email || "User");
+
+
+  /* Reset admin UI */
+
+  document.getElementById("adminBadge")
+    .style.display="none";
+
+  document.getElementById("adminPanel")
+    .style.display="none";
+
+
+  /* Check admin */
+
+  await checkAdmin(user);
+
+
+  /* Load student */
+
+  await loadStudentRecord(user);
+
+}
+
+
+/* =====================================================
+   CHECK ADMIN
+===================================================== */
+
+async function checkAdmin(user){
+
+  try{
+
+    const {data,error} =
+      await supabaseClient
+        .from("admin_users")
+        .select("*")
+        .limit(100);
+
+
+    if(error){
+
+      console.log(
+        "Admin check error:",
+        error.message
+      );
+
+      return false;
+    }
+
+
+    if(!data || !Array.isArray(data)){
+
+      return false;
+    }
+
+
+    const isAdmin =
+      data.some(function(row){
+
+        return (
+
+          row.user_id === user.id ||
+
+          row.User_id === user.id ||
+
+          row["User ID"] === user.id ||
+
+          row["user id"] === user.id
+
+        );
+
+      });
+
+
+    if(isAdmin){
+
+      document.getElementById("adminBadge")
+        .style.display="inline-block";
+
+      document.getElementById("adminPanel")
+        .style.display="block";
+
+      return true;
+
+    }
+
+
+    return false;
+
+  }catch(error){
+
+    console.log(
+      "Admin check failed:",
+      error
+    );
+
+    return false;
+
+  }
+
+}
+
+
+/* =====================================================
+   FIND VALUE FROM DIFFERENT COLUMN NAMINGS
+===================================================== */
+
+function getColumnValue(row,names){
+
+  for(let i=0;i<names.length;i++){
+
+    const key=names[i];
+
+    if(
+      Object.prototype.hasOwnProperty
+        .call(row,key)
+    ){
+
+      return row[key];
+
+    }
+
+  }
+
+  return null;
+
+}
+
+
+/* =====================================================
+   LOAD STUDENT RECORD
+===================================================== */
+
+async function loadStudentRecord(user){
+
+  const loading =
+    document.getElementById(
+      "studentLoading"
+    );
+
+  const studentInfo =
+    document.getElementById(
+      "studentInfo"
+    );
+
+
+  loading.innerText =
+    "Loading student information...";
+
+  studentInfo.style.display="none";
+
+
+  try{
+
+    /*
+      RLS policy ke through student ko
+      sirf allowed record(s) milenge.
+    */
+
+    const {data,error} =
+      await supabaseClient
+        .from("students")
+        .select("*")
+        .limit(100);
+
+
+    if(error){
+
+      console.log(
+        "Students table error:",
+        error.message
+      );
+
+      loading.style.color="red";
+
+      loading.innerText =
+        "Student record load nahi ho saka.";
+
+      return;
+    }
+
+
+    if(!data || data.length===0){
+
+      loading.style.color="#666";
+
+      loading.innerText =
+        "Abhi aapka student record database mein nahi mila.";
+
+      return;
+    }
+
+
+    /*
+      RLS normally already filters the result.
+      Phir bhi user_id match karne ki koshish.
+    */
+
+    let student=null;
+
+
+    for(let i=0;i<data.length;i++){
+
+      const row=data[i];
+
+      const rowUserId =
+        getColumnValue(
+          row,
+          [
+            "user_id",
+            "User_id",
+            "User ID",
+            "user id"
+          ]
+        );
+
+
+      if(rowUserId===user.id){
+
+        student=row;
+
+        break;
+
+      }
+
+    }
+
+
+    /*
+      Agar exact user_id column match nahi mila,
+      aur RLS ne ek hi record diya hai,
+      to us record ko use karenge.
+    */
+
+    if(!student && data.length===1){
+
+      student=data[0];
+
+    }
+
+
+    if(!student){
+
+      loading.style.color="#b00000";
+
+      loading.innerText =
+        "Is account ke liye student record nahi mila.";
+
+      return;
+    }
+
+
+    /* ---------------------------------------------
+       GET STUDENT VALUES
+    --------------------------------------------- */
+
+    const studentName =
+      getColumnValue(
+        student,
+        [
+          "student_name",
+          "Student_name",
+          "Student Name",
+          "student name"
+        ]
+      );
+
+
+    const studentId =
+      getColumnValue(
+        student,
+        [
+          "student_id",
+          "Student_id",
+          "Student ID",
+          "student id"
+        ]
+      );
+
+
+    const studentClass =
+      getColumnValue(
+        student,
+        [
+          "class",
+          "Class"
+        ]
+      );
+
+
+    const batch =
+      getColumnValue(
+        student,
+        [
+          "batch",
+          "Batch"
+        ]
+      );
+
+
+    const studentMobile =
+      getColumnValue(
+        student,
+        [
+          "student_mobile",
+          "Student_mobile",
+          "Student Mobile",
+          "student mobile"
+        ]
+      );
+
+
+    const parentMobile =
+      getColumnValue(
+        student,
+        [
+          "parent_mobile",
+          "Parent_mobile",
+          "Parent Mobile",
+          "parent mobile"
+        ]
+      );
+
+
+    const feePlan =
+      getColumnValue(
+        student,
+        [
+          "fee_plan",
+          "Fee_plan",
+          "Fee Plan",
+          "fee plan"
+        ]
+      );
+
+
+    const admissionDate =
+      getColumnValue(
+        student,
+        [
+          "admission_date",
+          "Admission_date",
+          "Admission Date",
+          "admission date"
+        ]
+      );
+
+
+    const feeStatus =
+      getColumnValue(
+        student,
+        [
+          "fee_status",
+          "Fee_status",
+          "Fee Status",
+          "fee status"
+        ]
+      );
+
+
+    const feePaidUntil =
+      getColumnValue(
+        student,
+        [
+          "fee_paid_until",
+          "Fee_paid_until",
+          "Fee Paid Until",
+          "fee paid until"
+        ]
+      );
+
+
+    const isActive =
+      getColumnValue(
+        student,
+        [
+          "is_active",
+          "Is_active",
+          "Is Active",
+          "is active"
+        ]
+      );
+
+
+    const course =
+      getColumnValue(
+        student,
+        [
+          "course",
+          "Course"
+        ]
+      );
+
+
+    /* ---------------------------------------------
+       SHOW VALUES
+    --------------------------------------------- */
+
+    document.getElementById("studentName")
+      .innerText =
+        studentName || "—";
+
+
+    document.getElementById("studentId")
+      .innerText =
+        studentId || "—";
+
+
+    document.getElementById("studentClass")
+      .innerText =
+        studentClass || "—";
+
+
+    document.getElementById("studentBatch")
+      .innerText =
+        batch || "—";
+
+
+    document.getElementById("studentMobile")
+      .innerText =
+        studentMobile || "—";
+
+
+    document.getElementById("parentMobile")
+      .innerText =
+        parentMobile || "—";
+
+
+    document.getElementById("studentCourse")
+      .innerText =
+        course || "—";
+
+
+    document.getElementById("dashboardCourse")
+      .innerText =
+        course || "—";
+
+
+    document.getElementById("admissionDate")
+      .innerText =
+        formatDate(admissionDate);
+
+
+    document.getElementById("feePaidUntil")
+      .innerText =
+        formatDate(feePaidUntil);
+
+
+    document.getElementById("feePlan")
+      .innerText =
+        feePlan || "—";
+
+
+    /* Fee status */
+
+    const feeElement =
+      document.getElementById(
+        "feeStatus"
+      );
+
+
+    feeElement.innerText =
+      feeStatus || "—";
+
+
+    if(
+      String(feeStatus || "")
+        .toLowerCase()
+        .includes("paid")
+    ){
+
+      feeElement.className =
+        "info-value status status-paid";
+
+    }else{
+
+      feeElement.className =
+        "info-value status status-pending";
+
+    }
+
+
+    /* Active status */
+
+    const activeElement =
+      document.getElementById(
+        "activeStatus"
+      );
+
+
+    if(isActive===true){
+
+      activeElement.innerText =
+        "Active";
+
+      activeElement.className =
+        "info-value status status-active";
+
+    }else if(isActive===false){
+
+      activeElement.innerText =
+        "Inactive";
+
+      activeElement.className =
+        "info-value status status-pending";
+
+    }else{
+
+      activeElement.innerText =
+        "—";
+
+    }
+
+
+    loading.style.display="none";
+
+    studentInfo.style.display="grid";
+
+
+  }catch(error){
+
+    console.log(
+      "Student loading failed:",
+      error
+    );
+
+    loading.style.color="red";
+
+    loading.innerText =
+      "Student information load karte waqt error aaya.";
+
+  }
+
+}
+
+
+/* =====================================================
+   DATE FORMAT
+===================================================== */
+
+function formatDate(value){
+
+  if(!value){
+
+    return "—";
+
+  }
+
+
+  try{
+
+    const date =
+      new Date(value);
+
+
+    if(isNaN(date.getTime())){
+
+      return String(value);
+
+    }
+
+
+    return date.toLocaleDateString(
+      "en-IN",
+      {
+        day:"2-digit",
+        month:"2-digit",
+        year:"numeric"
+      }
+    );
+
+  }catch(error){
+
+    return String(value);
+
+  }
+
+}
+
+
+/* =====================================================
+   ADMIN ACTION MESSAGE
+===================================================== */
+
+function openAdminMessage(type){
+
+  const box =
+    document.getElementById(
+      "adminMessage"
+    );
+
+
+  const messages={
+
+    admission:
+      "New Student Admission module Part 4 mein connect karenge.",
+
+    students:
+      "Student Management module database ke saath connect karenge.",
+
+    fees:
+      "Fee Management module next phase mein connect karenge.",
+
+    attendance:
+      "Attendance module next phase mein connect karenge.",
+
+    notices:
+      "Notice Management module next phase mein connect karenge.",
+
+    records:
+      "Student Records module next phase mein connect karenge."
+
+  };
+
+
+  box.style.color="#102a63";
+
+  box.innerText =
+    messages[type] ||
+    "Module coming soon.";
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+async function logoutUser(){
+
+  const {error} =
+    await supabaseClient
+      .auth
+      .signOut();
+
+
+  if(error){
+
+    console.log(
+      "Logout error:",
+      error.message
+    );
+
+  }
+
+
+  document.getElementById("dashboard")
+    .style.display="none";
+
+  document.getElementById("portalPage")
+    .style.display="block";
+
+  document.getElementById("loginEmail")
+    .value="";
+
+  document.getElementById("loginPassword")
+    .value="";
+
+  document.getElementById("loginMessage")
+    .innerText="";
+
+  window.scrollTo(0,0);
+
+}
+
+
+/* =====================================================
+   CHECK EXISTING SESSION
+===================================================== */
+
+async function checkSession(){
+
+  const {data,error} =
+    await supabaseClient
+      .auth
+      .getSession();
+
+
+  if(error){
+
+    console.log(
+      "Session error:",
+      error.message
+    );
+
+    return;
+
+  }
+
+
+  if(
+    data &&
+    data.session &&
+    data.session.user
+  ){
+
+    await showDashboard(
+      data.session.user
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   AUTH STATE CHANGE
+===================================================== */
+
+const {
+  data:authListener
+} =
+supabaseClient.auth.onAuthStateChange(
+  async (event,session)=>{
+
+    if(event==="SIGNED_OUT"){
+
+      document.getElementById("dashboard")
+        .style.display="none";
+
+      document.getElementById("portalPage")
+        .style.display="block";
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   START
+===================================================== */
+
+checkSession();
+
+</script>
+
+
+<!-- =====================================================
+     END OF WEBSITE
+===================================================== -->
+
+</body>
+</html>
