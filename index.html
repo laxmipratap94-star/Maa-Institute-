@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Maa Institute | Shobhit Singh</title>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<title>Maa Institute | English by Shobhit Sir</title>
 
 <style>
 *{
@@ -22,10 +24,19 @@ body{
   background:#f5f7fb;
   color:#222;
   line-height:1.6;
-  position:relative;
 }
 
-/* Krishna Ji Peacock Feather Watermark */
+/* ================= THEME ================= */
+
+:root{
+  --blue:#102a63;
+  --blue2:#1d4fa3;
+  --dark:#07183d;
+  --yellow:#f4c542;
+  --light:#f5f7fb;
+  --white:#fff;
+}
+
 body::before{
   content:"🪶";
   position:fixed;
@@ -33,23 +44,24 @@ body::before{
   top:50%;
   transform:translate(-50%,-50%);
   font-size:180px;
-  opacity:.07;
+  opacity:.05;
   z-index:-1;
   pointer-events:none;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
+
 header{
   position:sticky;
   top:0;
   z-index:1000;
-  background:#102a63;
+  background:var(--blue);
   color:white;
-  padding:14px 6%;
+  padding:12px 5%;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  box-shadow:0 3px 12px rgba(0,0,0,.15);
+  box-shadow:0 3px 15px rgba(0,0,0,.18);
 }
 
 .logo-area{
@@ -59,11 +71,12 @@ header{
 }
 
 .logo-img{
-  width:45px;
-  height:45px;
+  width:48px;
+  height:48px;
   border-radius:50%;
   object-fit:cover;
   background:white;
+  border:2px solid var(--yellow);
 }
 
 .logo{
@@ -72,78 +85,113 @@ header{
 }
 
 .logo span{
-  color:#f4c542;
+  color:var(--yellow);
 }
 
 nav{
   display:flex;
-  gap:18px;
+  gap:14px;
+  flex-wrap:wrap;
+  justify-content:center;
 }
 
 nav a{
   color:white;
   text-decoration:none;
-  font-size:14px;
+  font-size:13px;
+  font-weight:bold;
 }
 
 nav a:hover{
-  color:#f4c542;
+  color:var(--yellow);
 }
 
-/* HERO */
+/* ================= HERO ================= */
+
 .hero{
-  min-height:520px;
+  min-height:560px;
   display:flex;
   justify-content:center;
   align-items:center;
   text-align:center;
   color:white;
-  padding:70px 20px;
-  background:linear-gradient(135deg,#102a63,#1d4fa3);
+  padding:80px 20px;
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+}
+
+.hero-content{
+  max-width:900px;
+}
+
+.badge{
+  display:inline-block;
+  padding:7px 15px;
+  border-radius:30px;
+  background:rgba(244,197,66,.18);
+  border:1px solid var(--yellow);
+  color:var(--yellow);
+  margin-bottom:18px;
+  font-weight:bold;
 }
 
 .hero h1{
-  font-size:46px;
+  font-size:50px;
   margin-bottom:12px;
 }
 
 .hero h1 span{
-  color:#f4c542;
+  color:var(--yellow);
+}
+
+.hero h2{
+  font-size:25px;
+  margin-bottom:15px;
 }
 
 .hero p{
-  font-size:19px;
-  margin-bottom:12px;
+  font-size:18px;
+  margin-bottom:10px;
 }
 
 .btn{
   display:inline-block;
-  padding:13px 25px;
-  background:#f4c542;
-  color:#102a63;
+  padding:13px 23px;
+  background:var(--yellow);
+  color:var(--blue);
   text-decoration:none;
   border-radius:8px;
   font-weight:bold;
-  margin:12px 5px 5px;
+  margin:6px;
+  border:none;
+  cursor:pointer;
 }
 
 .btn:hover{
   opacity:.9;
 }
 
-/* SECTIONS */
+/* ================= SECTIONS ================= */
+
 section{
-  padding:60px 6%;
+  padding:65px 6%;
 }
 
 .section-title{
   text-align:center;
-  color:#102a63;
-  font-size:31px;
-  margin-bottom:30px;
+  color:var(--blue);
+  font-size:32px;
+  margin-bottom:12px;
 }
 
-/* CARDS */
+.section-subtitle{
+  text-align:center;
+  max-width:800px;
+  margin:0 auto 35px;
+  color:#666;
+}
+
+/* ================= CARDS ================= */
+
 .cards{
   max-width:1100px;
   margin:auto;
@@ -157,35 +205,63 @@ section{
   padding:25px;
   border-radius:14px;
   box-shadow:0 5px 18px rgba(0,0,0,.08);
-  border-top:4px solid #f4c542;
+  border-top:4px solid var(--yellow);
 }
 
 .card h3{
-  color:#102a63;
+  color:var(--blue);
   margin-bottom:10px;
 }
 
-/* TEACHER */
+/* ================= AIM ================= */
+
+.aim-box{
+  max-width:1000px;
+  margin:auto;
+  background:white;
+  padding:35px;
+  border-radius:16px;
+  box-shadow:0 5px 18px rgba(0,0,0,.08);
+}
+
+.aim-box ul{
+  padding-left:22px;
+}
+
+.aim-box li{
+  margin:12px 0;
+}
+
+.motto{
+  margin-top:25px;
+  text-align:center;
+  font-size:25px;
+  font-weight:bold;
+  color:var(--blue);
+}
+
+/* ================= TEACHER ================= */
+
 .teacher{
-  max-width:900px;
+  max-width:1000px;
   margin:auto;
   display:grid;
-  grid-template-columns:180px 1fr;
-  gap:30px;
+  grid-template-columns:200px 1fr;
+  gap:35px;
   align-items:center;
   background:white;
-  padding:30px;
-  border-radius:14px;
+  padding:35px;
+  border-radius:16px;
   box-shadow:0 5px 18px rgba(0,0,0,.08);
 }
 
 .teacher-photo{
-  height:180px;
-  width:180px;
+  height:190px;
+  width:190px;
   border-radius:50%;
   overflow:hidden;
-  border:5px solid #f4c542;
-  background:#102a63;
+  border:5px solid var(--yellow);
+  background:var(--blue);
 }
 
 .teacher-photo img{
@@ -195,12 +271,82 @@ section{
 }
 
 .teacher h3{
-  color:#102a63;
-  font-size:26px;
-  margin-bottom:10px;
+  color:var(--blue);
+  font-size:29px;
 }
 
-/* RESULT BANNERS */
+.teacher-role{
+  color:#c18b00;
+  font-weight:bold;
+  margin:8px 0 15px;
+}
+
+/* ================= BATCHES ================= */
+
+.batch-grid{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:20px;
+}
+
+.batch{
+  background:white;
+  border-radius:15px;
+  padding:24px;
+  box-shadow:0 5px 18px rgba(0,0,0,.08);
+  border-left:5px solid var(--yellow);
+}
+
+.batch h3{
+  color:var(--blue);
+  font-size:22px;
+  margin-bottom:12px;
+}
+
+.class-name{
+  display:inline-block;
+  background:var(--blue);
+  color:white;
+  padding:5px 12px;
+  border-radius:20px;
+  margin-bottom:12px;
+  font-size:13px;
+}
+
+.time{
+  font-size:20px;
+  font-weight:bold;
+  color:var(--blue);
+}
+
+/* ================= STATS ================= */
+
+.stats{
+  max-width:1000px;
+  margin:35px auto 0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:18px;
+}
+
+.stat{
+  background:var(--blue);
+  color:white;
+  text-align:center;
+  padding:25px;
+  border-radius:12px;
+}
+
+.stat strong{
+  display:block;
+  font-size:32px;
+  color:var(--yellow);
+}
+
+/* ================= RESULTS ================= */
+
 .results{
   max-width:1100px;
   margin:auto;
@@ -211,7 +357,7 @@ section{
   padding:12px;
   margin-bottom:25px;
   border-radius:16px;
-  box-shadow:0 5px 18px rgba(0,0,0,.10);
+  box-shadow:0 5px 18px rgba(0,0,0,.1);
   overflow:hidden;
 }
 
@@ -225,86 +371,69 @@ section{
 
 .result-title{
   text-align:center;
-  color:#102a63;
+  color:var(--blue);
   font-size:20px;
   font-weight:bold;
   padding:10px;
 }
 
-/* STATS */
-.stats{
+/* ================= PAYMENT ================= */
+
+.payment{
   max-width:1000px;
   margin:auto;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:18px;
+  grid-template-columns:1fr 330px;
+  gap:30px;
 }
 
-.stat{
-  background:#102a63;
-  color:white;
-  text-align:center;
-  padding:25px;
-  border-radius:12px;
-}
-
-.stat strong{
-  display:block;
-  font-size:32px;
-  color:#f4c542;
-}
-
-/* FEE TABLE */
-.fee-table{
-  max-width:1000px;
-  margin:auto;
-  overflow-x:auto;
+.payment-info,
+.qr-box{
   background:white;
-  border-radius:12px;
+  padding:30px;
+  border-radius:16px;
   box-shadow:0 5px 18px rgba(0,0,0,.08);
 }
 
-table{
+.payment-info h3,
+.qr-box h3{
+  color:var(--blue);
+  margin-bottom:15px;
+}
+
+.payment-number{
+  font-size:22px;
+  color:var(--blue);
+  font-weight:bold;
+  margin:10px 0;
+}
+
+.qr-box{
+  text-align:center;
+}
+
+.qr-box img{
   width:100%;
-  border-collapse:collapse;
-  min-width:600px;
+  max-width:280px;
+  border-radius:10px;
 }
 
-th,td{
-  padding:14px;
-  text-align:left;
-  border-bottom:1px solid #ddd;
-}
+/* ================= NOTICES ================= */
 
-th{
-  background:#102a63;
-  color:white;
-}
-
-.paid{
-  color:green;
-  font-weight:bold;
-}
-
-.pending{
-  color:#d28b00;
-  font-weight:bold;
-}
-
-/* STATIC NOTICES */
 .notice{
   max-width:900px;
   margin:12px auto;
   background:white;
   padding:18px;
-  border-left:5px solid #f4c542;
+  border-left:5px solid var(--yellow);
   border-radius:8px;
   box-shadow:0 3px 12px rgba(0,0,0,.06);
 }
 
-/* CONTACT */
+/* ================= CONTACT ================= */
+
 .contact{
-  background:#102a63;
+  background:var(--blue);
   color:white;
   text-align:center;
 }
@@ -313,28 +442,188 @@ th{
   color:white;
 }
 
-.phone{
-  color:#f4c542;
-  font-size:24px;
-  font-weight:bold;
+.contact-item{
+  margin:14px 0;
+  font-size:18px;
+}
+
+.contact-item a{
+  color:var(--yellow);
   text-decoration:none;
+  font-weight:bold;
+}
+
+/* ================= PORTAL LOGIN PAGE ================= */
+
+#portalPage{
+  display:none;
+  min-height:100vh;
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  padding:30px 15px;
+}
+
+.portal-container{
+  max-width:1000px;
+  margin:auto;
+}
+
+.portal-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:white;
+  margin-bottom:30px;
+}
+
+.portal-title{
+  font-size:30px;
+  font-weight:bold;
+}
+
+.portal-title span{
+  color:var(--yellow);
+}
+
+.portal-card{
+  max-width:460px;
+  margin:40px auto;
+  background:white;
+  padding:35px;
+  border-radius:18px;
+  box-shadow:0 10px 35px rgba(0,0,0,.25);
+}
+
+.portal-card h2{
+  text-align:center;
+  color:var(--blue);
+  margin-bottom:8px;
+}
+
+.portal-card p{
+  text-align:center;
+  color:#666;
+  margin-bottom:25px;
+}
+
+.input{
+  width:100%;
+  padding:13px;
+  margin-bottom:14px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  outline:none;
+  font-size:15px;
+}
+
+.input:focus{
+  border-color:var(--yellow);
+}
+
+.portal-btn{
+  width:100%;
+  padding:14px;
+  background:var(--yellow);
+  color:var(--blue);
+  border:none;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:16px;
+}
+
+.portal-btn:hover{
+  opacity:.9;
+}
+
+.portal-message{
+  text-align:center;
+  margin-top:15px;
+  font-weight:bold;
+}
+
+.back-btn{
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* ================= DASHBOARD ================= */
+
+#dashboard{
+  display:none;
+  min-height:100vh;
+  background:#f5f7fb;
+}
+
+.dashboard-header{
+  background:var(--blue);
+  color:white;
+  padding:18px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.dashboard-header h2 span{
+  color:var(--yellow);
+}
+
+.logout-btn{
+  background:var(--yellow);
+  color:var(--blue);
+  border:none;
+  padding:9px 15px;
+  border-radius:7px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.dashboard-content{
+  max-width:1100px;
+  margin:auto;
+  padding:35px 20px;
+}
+
+.dashboard-card{
+  background:white;
+  border-radius:15px;
+  padding:25px;
+  margin-bottom:20px;
+  box-shadow:0 5px 18px rgba(0,0,0,.08);
+  border-top:4px solid var(--yellow);
+}
+
+.dashboard-card h3{
+  color:var(--blue);
+  margin-bottom:10px;
+}
+
+.admin-badge{
   display:inline-block;
-  margin:12px 0;
+  background:var(--yellow);
+  color:var(--blue);
+  padding:5px 12px;
+  border-radius:20px;
+  font-weight:bold;
+  margin-top:8px;
 }
 
-.phone:hover{
-  text-decoration:underline;
-}
+/* ================= FOOTER ================= */
 
-/* FOOTER */
 footer{
-  background:#07183d;
+  background:var(--dark);
   color:white;
   text-align:center;
-  padding:22px;
+  padding:25px;
 }
 
-/* MOBILE */
+footer p{
+  margin:5px;
+}
+
+/* ================= MOBILE ================= */
+
 @media(max-width:700px){
 
   header{
@@ -343,21 +632,23 @@ footer{
   }
 
   nav{
-    gap:10px;
-    flex-wrap:wrap;
-    justify-content:center;
+    gap:9px;
   }
 
   nav a{
-    font-size:12px;
+    font-size:11px;
   }
 
   .hero h1{
-    font-size:34px;
+    font-size:35px;
   }
 
-  .hero p{
-    font-size:16px;
+  .hero h2{
+    font-size:21px;
+  }
+
+  section{
+    padding:48px 5%;
   }
 
   .teacher{
@@ -369,16 +660,19 @@ footer{
     margin:auto;
   }
 
-  section{
-    padding:45px 5%;
+  .payment{
+    grid-template-columns:1fr;
   }
 
-  .phone{
-    font-size:21px;
+  .portal-top{
+    flex-direction:column;
+    gap:15px;
+    text-align:center;
   }
 
-  .result-card img{
-    max-height:400px;
+  .dashboard-header{
+    flex-direction:column;
+    gap:12px;
   }
 }
 </style>
@@ -386,7 +680,12 @@ footer{
 
 <body>
 
-<!-- HEADER -->
+<!-- =====================================================
+     MAIN WEBSITE
+===================================================== -->
+
+<div id="mainWebsite">
+
 <header>
 
   <div class="logo-area">
@@ -403,40 +702,53 @@ footer{
 
   <nav>
     <a href="#home">Home</a>
-    <a href="#courses">Courses</a>
+    <a href="#aim">Aim</a>
     <a href="#teacher">Sir</a>
     <a href="#batches">Batches</a>
     <a href="#results">Results</a>
-    <a href="#fees">Fees</a>
+    <a href="#payment">Fees</a>
     <a href="#notices">Notices</a>
     <a href="#contact">Contact</a>
-    <a href="student-login.html">🎓 Student Portal</a>
+    <a href="#" onclick="openPortal();return false;">Portal</a>
   </nav>
 
 </header>
 
 
 <!-- HERO -->
+
 <section class="hero" id="home">
 
-  <div>
+  <div class="hero-content">
+
+    <div class="badge">
+      SHIKSHA + SANSKAR
+    </div>
 
     <h1>
       Welcome to <span>Maa Institute</span>
     </h1>
 
-    <p>English by Shobhit Sir</p>
+    <h2>
+      English by Shobhit Sir
+    </h2>
 
     <p>
       Learn • Practice • Improve • Succeed
     </p>
 
-    <a class="btn" href="#courses">
-      Explore Courses
+    <p>
+      Quality Education • Strong Character • Moral Values
+    </p>
+
+    <a class="btn"
+       href="#batches">
+      View Batches
     </a>
 
-    <a class="btn" href="#contact">
-      Admission Enquiry
+    <a class="btn"
+       href="#" onclick="openPortal();return false;">
+      Student Portal
     </a>
 
   </div>
@@ -444,44 +756,87 @@ footer{
 </section>
 
 
-<!-- COURSES -->
-<section id="courses">
+<!-- AIM -->
+
+<section id="aim">
 
   <h2 class="section-title">
-    Our Courses
+    Our Aim
   </h2>
+
+  <p class="section-subtitle">
+    Our vision is to make education simple, meaningful and accessible.
+  </p>
+
+  <div class="aim-box">
+
+    <ul>
+
+      <li>
+        To make any subject so easy that even an average student
+        can understand it.
+      </li>
+
+      <li>
+        To provide best quality in terms of content as well as
+        in teaching.
+      </li>
+
+      <li>
+        To build good characters having great moral values as well
+        as deep current knowledge.
+      </li>
+
+    </ul>
+
+    <div class="motto">
+      Shiksha + Sanskar
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SUBJECTS -->
+
+<section>
+
+  <h2 class="section-title">
+    Subjects We Teach
+  </h2>
+
+  <p class="section-subtitle">
+    Academic and competitive preparation with concept-focused teaching.
+  </p>
 
   <div class="cards">
 
     <div class="card">
-      <h3>English Grammar</h3>
+      <h3>English</h3>
       <p>
-        Learn grammar concepts with simple explanations
-        and regular practice.
+        Grammar, academic English and competitive examination preparation.
       </p>
     </div>
 
     <div class="card">
-      <h3>Spoken English</h3>
+      <h3>Physics</h3>
       <p>
-        Improve communication skills and everyday
-        English confidence.
+        Concept-based Physics learning with simple explanations and practice.
       </p>
     </div>
 
     <div class="card">
-      <h3>School English</h3>
+      <h3>Reasoning</h3>
       <p>
-        Focused preparation for school examinations
-        and academics.
+        Logical thinking and reasoning practice for competitive preparation.
       </p>
     </div>
 
     <div class="card">
-      <h3>Competitive English</h3>
+      <h3>Academic + Competitive</h3>
       <p>
-        Practice important English topics for
-        competitive examinations.
+        Focused teaching for school students and competitive examinations.
       </p>
     </div>
 
@@ -491,10 +846,11 @@ footer{
 
 
 <!-- TEACHER -->
+
 <section id="teacher">
 
   <h2 class="section-title">
-    Meet Your Teacher
+    Meet Your Educator
   </h2>
 
   <div class="teacher">
@@ -502,24 +858,43 @@ footer{
     <div class="teacher-photo">
 
       <img src="shobhit-sir.jpg"
-           alt="Shobhit Sir">
+           alt="Shobhit Singh">
 
     </div>
 
     <div>
 
-      <h3>Shobhit Sir</h3>
+      <h3>Shobhit Singh</h3>
+
+      <div class="teacher-role">
+        Educator • Motivator • Social Worker
+      </div>
 
       <p>
-        Welcome to Maa Institute. Learn English through
-        simple, practical and student-friendly teaching.
+        Highly spiritual and intellectual personality,
+        motivator, social worker and nature lover.
       </p>
 
       <br>
 
       <p>
-        Our goal is to help students build strong English
-        fundamentals, confidence and communication skills.
+        <strong>Qualifications:</strong>
+        B.Tech (Mechanical), D.El.Ed (Hons.), M.A. (English)
+      </p>
+
+      <p>
+        <strong>Experience:</strong>
+        9 Years of Deep Teaching Experience
+      </p>
+
+      <p>
+        <strong>Teaching:</strong>
+        English + Physics + Reasoning
+      </p>
+
+      <p>
+        <strong>Area:</strong>
+        Competitive + Academic
       </p>
 
     </div>
@@ -530,56 +905,65 @@ footer{
 
 
 <!-- BATCHES -->
+
 <section id="batches">
 
   <h2 class="section-title">
     Our Batches
   </h2>
 
-  <div class="cards">
+  <p class="section-subtitle">
+    Total – 08 batches
+  </p>
 
-    <div class="card">
+  <div class="batch-grid">
 
-      <h3>Morning Batch</h3>
-
-      <p>
-        English learning and regular practice.
-      </p>
-
-      <p>
-        <strong>Timing:</strong> 7:00 AM
-      </p>
-
+    <div class="batch">
+      <span class="class-name">CLASS 12TH</span>
+      <h3>Batch 01</h3>
+      <p class="time">7:00 AM – 8:00 AM</p>
     </div>
 
-
-    <div class="card">
-
-      <h3>Evening Batch</h3>
-
-      <p>
-        School and competitive English preparation.
-      </p>
-
-      <p>
-        <strong>Timing:</strong> 5:00 PM
-      </p>
-
+    <div class="batch">
+      <span class="class-name">CLASS 12TH</span>
+      <h3>Batch 02</h3>
+      <p class="time">1:00 PM – 2:00 PM</p>
     </div>
 
+    <div class="batch">
+      <span class="class-name">CLASS 12TH</span>
+      <h3>Batch 03</h3>
+      <p class="time">2:00 PM – 3:00 PM</p>
+    </div>
 
-    <div class="card">
+    <div class="batch">
+      <span class="class-name">CLASS 12TH</span>
+      <h3>Batch 04</h3>
+      <p class="time">6:00 PM – 7:00 PM</p>
+    </div>
 
-      <h3>Special Batch</h3>
+    <div class="batch">
+      <span class="class-name">CLASS 11TH</span>
+      <h3>Batch 05</h3>
+      <p class="time">6:00 AM – 7:00 AM</p>
+    </div>
 
-      <p>
-        Focused English practice and doubt support.
-      </p>
+    <div class="batch">
+      <span class="class-name">CLASS 10TH</span>
+      <h3>Batch 06</h3>
+      <p class="time">3:00 PM – 4:00 PM</p>
+    </div>
 
-      <p>
-        <strong>Seats:</strong> Limited
-      </p>
+    <div class="batch">
+      <span class="class-name">CLASS 10TH</span>
+      <h3>Batch 07</h3>
+      <p class="time">5:00 PM – 6:00 PM</p>
+    </div>
 
+    <div class="batch">
+      <span class="class-name">CLASS 9TH</span>
+      <h3>Batch 08</h3>
+      <p class="time">4:00 PM – 5:00 PM</p>
     </div>
 
   </div>
@@ -587,7 +971,8 @@ footer{
 </section>
 
 
-<!-- INSTITUTE OVERVIEW -->
+<!-- STATS -->
+
 <section>
 
   <h2 class="section-title">
@@ -597,23 +982,23 @@ footer{
   <div class="stats">
 
     <div class="stat">
-      <strong>100+</strong>
-      Students
+      <strong>08</strong>
+      Total Batches
     </div>
 
     <div class="stat">
-      <strong>4</strong>
-      Courses
+      <strong>9th–12th</strong>
+      Classes
+    </div>
+
+    <div class="stat">
+      <strong>9+</strong>
+      Years Experience
     </div>
 
     <div class="stat">
       <strong>3</strong>
-      Batches
-    </div>
-
-    <div class="stat">
-      <strong>24/7</strong>
-      Learning Support
+      Core Subjects
     </div>
 
   </div>
@@ -622,6 +1007,7 @@ footer{
 
 
 <!-- RESULTS -->
+
 <section id="results">
 
   <h2 class="section-title">
@@ -631,50 +1017,23 @@ footer{
   <div class="results">
 
     <div class="result-card">
-
-      <div class="result-title">
-        2023 Result
-      </div>
-
-      <img src="2023.jpg"
-           alt="Maa Institute 2023 Result">
-
+      <div class="result-title">2023 Result</div>
+      <img src="2023.jpg" alt="2023 Result">
     </div>
 
-
     <div class="result-card">
-
-      <div class="result-title">
-        2024 Result
-      </div>
-
-      <img src="2024.jpg"
-           alt="Maa Institute 2024 Result">
-
+      <div class="result-title">2024 Result</div>
+      <img src="2024.jpg" alt="2024 Result">
     </div>
 
-
     <div class="result-card">
-
-      <div class="result-title">
-        2025 Result
-      </div>
-
-      <img src="2025.jpg"
-           alt="Maa Institute 2025 Result">
-
+      <div class="result-title">2025 Result</div>
+      <img src="2025.jpg" alt="2025 Result">
     </div>
 
-
     <div class="result-card">
-
-      <div class="result-title">
-        2026 Result
-      </div>
-
-      <img src="2026.jpg"
-           alt="Maa Institute 2026 Result">
-
+      <div class="result-title">2026 Result</div>
+      <img src="2026.jpg" alt="2026 Result">
     </div>
 
   </div>
@@ -682,53 +1041,64 @@ footer{
 </section>
 
 
-<!-- FEES -->
-<section id="fees">
+<!-- PAYMENT -->
+
+<section id="payment">
 
   <h2 class="section-title">
-    Fee Management Demo
+    Fee & Online Payment
   </h2>
 
-  <div class="fee-table">
+  <p class="section-subtitle">
+    Fee facility available through both online and offline mode.
+  </p>
 
-    <table>
+  <div class="payment">
 
-      <tr>
-        <th>Student</th>
-        <th>Course</th>
-        <th>Fee</th>
-        <th>Status</th>
-      </tr>
+    <div class="payment-info">
 
-      <tr>
-        <td>Student 01</td>
-        <td>Spoken English</td>
-        <td>₹1,500</td>
-        <td class="paid">Paid</td>
-      </tr>
+      <h3>Online / Offline Fee</h3>
 
-      <tr>
-        <td>Student 02</td>
-        <td>Grammar</td>
-        <td>₹1,200</td>
-        <td class="pending">Pending</td>
-      </tr>
+      <p>
+        <strong>Online Payment:</strong>
+      </p>
 
-      <tr>
-        <td>Student 03</td>
-        <td>Competitive English</td>
-        <td>₹2,000</td>
-        <td class="paid">Paid</td>
-      </tr>
+      <p class="payment-number">
+        📱 9555497601
+      </p>
 
-    </table>
+      <p>
+        Offline fee submission is also available.
+        Contact Maa Institute for details.
+      </p>
+
+      <a class="btn"
+         href="tel:+919555497601">
+        Fee Enquiry
+      </a>
+
+    </div>
+
+    <div class="qr-box">
+
+      <h3>Scan to Pay</h3>
+
+      <img src="qr.jpg"
+           alt="Maa Institute Payment QR">
+
+      <p>
+        Scan QR for online fee payment.
+      </p>
+
+    </div>
 
   </div>
 
 </section>
 
 
-<!-- STATIC NOTICES -->
+<!-- NOTICES -->
+
 <section id="notices">
 
   <h2 class="section-title">
@@ -736,86 +1106,440 @@ footer{
   </h2>
 
   <div class="notice">
-
-    <strong>New Batch:</strong>
-    New English batch admissions are open.
-
+    <strong>New Batches:</strong>
+    Contact Maa Institute for current batch availability.
   </div>
 
   <div class="notice">
-
-    <strong>Important:</strong>
-    Students are requested to attend classes regularly.
-
+    <strong>Classes:</strong>
+    Students are requested to attend their respective batches regularly.
   </div>
 
   <div class="notice">
-
-    <strong>Demo Notice:</strong>
-    This section can be used for future institute announcements.
-
+    <strong>Fee:</strong>
+    Online and offline fee payment facilities are available.
   </div>
 
 </section>
 
 
 <!-- CONTACT -->
+
 <section id="contact" class="contact">
 
   <h2 class="section-title">
     Contact Maa Institute
   </h2>
 
-  <p>
-    For admission and course information,
-    contact Maa Institute.
-  </p>
+  <div class="contact-item">
+    📞 Call:
+    <a href="tel:+919335893878">
+      +91 93358 93878
+    </a>
+  </div>
 
-  <p>
-    <strong>Call / Enquiry:</strong>
-  </p>
+  <div class="contact-item">
+    💬 WhatsApp:
+    <a href="https://wa.me/919555497601">
+      +91 95554 97601
+    </a>
+  </div>
 
-  <a
-    class="phone"
-    href="tel:+919335893878">
-
-    📞 +91 93358 93878
-
-  </a>
-
-  <br>
-
-  <a
-    class="btn"
-    href="tel:+919335893878">
-
-    Call Now
-
-  </a>
+  <div class="contact-item">
+    ✉️ Email:
+    <a href="mailto:ssshobhitsingh786@gmail.com">
+      ssshobhitsingh786@gmail.com
+    </a>
+  </div>
 
 </section>
 
 
-<!-- FOOTER -->
 <footer>
 
-  <p>
-    © 2026 Maa Institute | English by Shobhit Sir
-  </p>
-
-  <p>
-    Official Coaching Website Demo
-  </p>
+  <p>© 2026 Maa Institute | English by Shobhit Sir</p>
+  <p>Shiksha + Sanskar</p>
 
 </footer>
-<script>
-const SUPABASE_URL = "https://pfrhffflhfgzlmadxerj.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_8swiPL_ZNFOCDHUsGN4ciA_iiSoTvAB";
 
-const supabaseClient = supabase.createClient(
+</div>
+
+
+<!-- =====================================================
+     SECOND PAGE / PORTAL
+===================================================== -->
+
+<div id="portalPage">
+
+  <div class="portal-container">
+
+    <div class="portal-top">
+
+      <div class="portal-title">
+        Maa <span>Institute</span> Portal
+      </div>
+
+      <a class="back-btn"
+         onclick="closePortal()">
+        ← Back to Website
+      </a>
+
+    </div>
+
+
+    <div class="portal-card">
+
+      <h2>Student / Admin Login</h2>
+
+      <p>
+        Login using your registered email and password.
+      </p>
+
+      <input
+        class="input"
+        type="email"
+        id="loginEmail"
+        placeholder="Enter Email"
+        autocomplete="email"
+      >
+
+      <input
+        class="input"
+        type="password"
+        id="loginPassword"
+        placeholder="Enter Password"
+        autocomplete="current-password"
+      >
+
+      <button
+        class="portal-btn"
+        onclick="loginUser()">
+        Login
+      </button>
+
+      <div
+        id="loginMessage"
+        class="portal-message">
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<div id="dashboard">
+
+  <div class="dashboard-header">
+
+    <h2>
+      Maa <span>Institute</span> Dashboard
+    </h2>
+
+    <button
+      class="logout-btn"
+      onclick="logoutUser()">
+      Logout
+    </button>
+
+  </div>
+
+
+  <div class="dashboard-content">
+
+    <div class="dashboard-card">
+
+      <h3>
+        Welcome 👋
+      </h3>
+
+      <p id="userEmail">
+        Loading...
+      </p>
+
+      <div
+        id="adminBadge"
+        class="admin-badge"
+        style="display:none;">
+        ADMIN / SIR
+      </div>
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+      <h3>
+        Student Portal
+      </h3>
+
+      <p>
+        Your secure Maa Institute portal is connected with
+        Supabase Authentication.
+      </p>
+
+      <p style="margin-top:10px;">
+        Student profile, attendance, fees, notices and other
+        records can be added here in the next portal phase.
+      </p>
+
+    </div>
+
+
+    <div
+      id="adminPanel"
+      class="dashboard-card"
+      style="display:none;">
+
+      <h3>
+        Admin Panel 👨‍🏫
+      </h3>
+
+      <p>
+        You are logged in as an authorized administrator.
+      </p>
+
+      <p style="margin-top:10px;">
+        Student management features will be connected to the
+        database after the exact students-table fields are finalized.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   SUPABASE CONNECTION
+===================================================== */
+
+const SUPABASE_URL =
+"https://pfrhffflhfgzlmadxerj.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_8swiPL_ZNFOCDHUsGN4ciA_iiSoTvAB";
+
+const supabaseClient =
+supabase.createClient(
   SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY
 );
+
+
+/* =====================================================
+   OPEN PORTAL
+===================================================== */
+
+function openPortal(){
+
+  document.getElementById("mainWebsite").style.display="none";
+
+  document.getElementById("portalPage").style.display="block";
+
+  document.getElementById("dashboard").style.display="none";
+
+  window.scrollTo(0,0);
+}
+
+
+/* =====================================================
+   CLOSE PORTAL
+===================================================== */
+
+function closePortal(){
+
+  document.getElementById("portalPage").style.display="none";
+
+  document.getElementById("dashboard").style.display="none";
+
+  document.getElementById("mainWebsite").style.display="block";
+
+  window.scrollTo(0,0);
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+async function loginUser(){
+
+  const email =
+    document.getElementById("loginEmail").value.trim();
+
+  const password =
+    document.getElementById("loginPassword").value;
+
+  const message =
+    document.getElementById("loginMessage");
+
+  message.style.color="#102a63";
+
+  if(!email || !password){
+
+    message.innerText =
+      "Email aur password dono bharo.";
+
+    return;
+  }
+
+  message.innerText =
+    "Logging in...";
+
+  const {data,error} =
+    await supabaseClient.auth.signInWithPassword({
+
+      email:email,
+
+      password:password
+
+    });
+
+
+  if(error){
+
+    message.style.color="red";
+
+    message.innerText =
+      "Login failed: " + error.message;
+
+    return;
+  }
+
+
+  message.style.color="green";
+
+  message.innerText =
+    "Login successful!";
+
+
+  await showDashboard(data.user);
+}
+
+
+/* =====================================================
+   SHOW DASHBOARD
+===================================================== */
+
+async function showDashboard(user){
+
+  document.getElementById("mainWebsite").style.display="none";
+
+  document.getElementById("portalPage").style.display="none";
+
+  document.getElementById("dashboard").style.display="block";
+
+  window.scrollTo(0,0);
+
+
+  document.getElementById("userEmail").innerText =
+    "Logged in as: " + user.email;
+
+
+  /*
+    Check whether this user exists inside
+    public.admin_users.
+  */
+
+  const {data,error} =
+    await supabaseClient
+      .from("admin_users")
+      .select("user_id")
+      .eq("user_id",user.id)
+      .maybeSingle();
+
+
+  if(!error && data){
+
+    document.getElementById("adminBadge")
+      .style.display="inline-block";
+
+    document.getElementById("adminPanel")
+      .style.display="block";
+
+  }else{
+
+    document.getElementById("adminBadge")
+      .style.display="none";
+
+    document.getElementById("adminPanel")
+      .style.display="none";
+  }
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+async function logoutUser(){
+
+  await supabaseClient.auth.signOut();
+
+  document.getElementById("dashboard").style.display="none";
+
+  document.getElementById("portalPage").style.display="block";
+
+  document.getElementById("loginEmail").value="";
+
+  document.getElementById("loginPassword").value="";
+
+  document.getElementById("loginMessage").innerText="";
+
+  window.scrollTo(0,0);
+}
+
+
+/* =====================================================
+   CHECK EXISTING SESSION
+===================================================== */
+
+async function checkSession(){
+
+  const {data} =
+    await supabaseClient.auth.getSession();
+
+  if(data && data.session){
+
+    await showDashboard(data.session.user);
+
+  }
+}
+
+
+/* =====================================================
+   AUTH STATE
+===================================================== */
+
+supabaseClient.auth.onAuthStateChange(
+  async (event,session)=>{
+
+    if(event==="SIGNED_OUT"){
+
+      document.getElementById("dashboard").style.display="none";
+
+      document.getElementById("portalPage").style.display="block";
+
+    }
+
+  }
+);
+
+
+/* Check login when website opens */
+
+checkSession();
+
 </script>
+
 </body>
 </html>
