@@ -2174,9 +2174,8 @@ function openPortal(){
 
   document.getElementById("dashboard")
     .style.display="none";
-
-  window.scrollTo(0,0);
-}
+window.scrollTo(0,0);
+  
 /* =====================================================
    OPEN SIGNUP
 ===================================================== */
@@ -2192,7 +2191,11 @@ function openSignup(){
   document.getElementById("signupMessage")
     .innerText="";
 
-  window.scrollTo(0,0);
+  document.getElementById("signupCard")
+  .scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
 
 }
 
