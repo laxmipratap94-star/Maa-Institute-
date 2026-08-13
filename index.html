@@ -2177,7 +2177,42 @@ function openPortal(){
 
   window.scrollTo(0,0);
 }
+/* =====================================================
+   OPEN SIGNUP
+===================================================== */
 
+function openSignup(){
+
+  document.getElementById("loginCard")
+    .style.display="none";
+
+  document.getElementById("signupCard")
+    .style.display="block";
+
+  document.getElementById("signupMessage")
+    .innerText="";
+
+  window.scrollTo(0,0);
+
+}
+
+
+/* =====================================================
+   CLOSE SIGNUP
+===================================================== */
+
+function closeSignup(){
+
+  document.getElementById("signupCard")
+    .style.display="none";
+
+  document.getElementById("loginCard")
+    .style.display="block";
+
+  document.getElementById("signupMessage")
+    .innerText="";
+
+}
 
 /* =====================================================
    CLOSE PORTAL
