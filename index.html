@@ -2231,7 +2231,74 @@ function closePortal(){
 
   window.scrollTo(0,0);
 }
+/* =====================================================
+   STUDENT SIGNUP
+===================================================== */
 
+async function signupStudent(){
+
+  const inviteCode =
+    document.getElementById("signupInviteCode").value.trim();
+
+  const email =
+    document.getElementById("signupEmail").value.trim();
+
+  const password =
+    document.getElementById("signupPassword").value;
+
+  const message =
+    document.getElementById("signupMessage");
+
+  if(!inviteCode || !email || !password){
+    message.style.color="red";
+    message.innerText="Invite code, email aur password tino bharo.";
+    return;
+  }
+
+  message.style.color="#102a63";
+  message.innerText="Invite code verify ho raha hai...";
+
+  const {data,error} =
+    await supabaseClient.rpc(
+      "verify_student_invite",
+      { p_invite_code: inviteCode }
+    );
+
+  if(error){
+    message.style.color="red";
+    message.innerText="Verification error: " + error.message;
+    return;
+  }
+
+  if(!data || data.length === 0){
+    message.style.color="red";
+    message.innerText="Invalid ya used invite code.";
+    return;
+  }
+
+  message.innerText="Invite valid hai. Account create ho raha hai...";
+
+  const {data:authData,error:authError} =
+    await supabaseClient.auth.signUp({
+      email:email,
+      password:password
+    });
+
+  if(authError){
+    message.style.color="red";
+    message.innerText="Account create nahi hua: " + authError.message;
+    return;
+  }
+
+  message.style.color="green";
+
+  if(authData.session){
+    message.innerText="Account successfully created!";
+  }else{
+    message.innerText="Account created. Email verify karke login karo.";
+  }
+
+}
 
 /* =====================================================
    LOGIN
