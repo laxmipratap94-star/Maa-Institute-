@@ -1595,7 +1595,70 @@ footer p{
   </div>
 
 </div>
+<!-- SIGNUP CARD -->
 
+<div
+  class="portal-card"
+  id="signupCard"
+  style="display:none;"
+>
+
+  <h2>Create Student Account</h2>
+
+  <p>
+    Enter your invite code and account details.
+  </p>
+
+  <input
+    class="input"
+    type="text"
+    id="signupInviteCode"
+    placeholder="Enter Invite Code"
+    autocomplete="off"
+  >
+
+  <input
+    class="input"
+    type="email"
+    id="signupEmail"
+    placeholder="Enter Email"
+    autocomplete="email"
+  >
+
+  <input
+    class="input"
+    type="password"
+    id="signupPassword"
+    placeholder="Create Password"
+    autocomplete="new-password"
+  >
+
+  <button
+    type="button"
+    class="portal-btn"
+    onclick="signupStudent()"
+  >
+    Create Account
+  </button>
+
+  <div
+    id="signupMessage"
+    class="portal-message"
+  ></div>
+
+  <div style="text-align:center;margin-top:15px;">
+
+    <button
+      type="button"
+      onclick="closeSignup()"
+      style="background:none;border:none;color:var(--blue);font-weight:bold;cursor:pointer;"
+    >
+      ← Back to Login
+    </button>
+
+  </div>
+
+</div>
 
 <!-- =====================================================
      DASHBOARD
