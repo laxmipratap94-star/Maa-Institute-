@@ -2280,10 +2280,17 @@ const parentMobile =
   const message =
     document.getElementById("signupMessage");
 
-  if(!inviteCode || !email || !password){
-    message.style.color="red";
-    message.innerText="Invite code, email aur password tino bharo.";
-    return;
+  if(
+  !inviteCode ||
+  !email ||
+  !password ||
+  !studentName ||
+  !studentMobile ||
+  !parentMobile
+){
+  message.style.color="red";
+  message.innerText="Sabhi details bharo.";
+  return;
   }
 
   message.style.color="#102a63";
