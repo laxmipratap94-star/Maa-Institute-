@@ -2322,6 +2322,11 @@ const parentMobile =
       password:password
     });
 const userId = authData?.user?.id;
+  if(!userId){
+  message.style.color="red";
+  message.innerText="User ID create nahi hua.";
+  return;
+  }
   if(authError){
     message.style.color="red";
     message.innerText="Account create nahi hua: " + authError.message;
