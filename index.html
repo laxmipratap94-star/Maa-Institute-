@@ -2646,10 +2646,11 @@ async function loadStudentRecord(user){
     */
 
     const {data,error} =
-      await supabaseClient
-        .from("students")
-        .select("*")
-        .limit(100);
+  await supabaseClient
+    .from("students")
+    .select("*")
+    .eq("User_id", user.id)
+    .limit(1);
 
 
     if(error){
