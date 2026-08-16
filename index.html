@@ -2371,8 +2371,15 @@ const { error: studentError } =
       "Student_mobile": studentMobile,
       "Parent_mobile": parentMobile,
       "Class": studentClass,
-"Batch": studentBatch,
-"Course": studentCourse,
+      "Batch": studentBatch,
+      "Course": studentCourse,
+      "Student_id": "STU-" + Date.now(),
+      "Fee_plan": feePlan,
+      "Admission_date": new Date().toISOString().split("T")[0],
+      "Fee_status": "Pending",
+      "Fee_paid_until": null,
+      "Is_active": true,
+      "Notes": null,
       "User_id": userId
     });
 
