@@ -2321,17 +2321,19 @@ const parentMobile =
       email:email,
       password:password
     });
+if(authError){
+  message.style.color="red";
+  message.innerText="Account create nahi hua: " + authError.message;
+  return;
+}
+
 const userId = authData?.user?.id;
-  if(!userId){
+
+if(!userId){
   message.style.color="red";
   message.innerText="User ID create nahi hua.";
   return;
-  }
-  if(authError){
-    message.style.color="red";
-    message.innerText="Account create nahi hua: " + authError.message;
-    return;
-  }
+}
 const { error: studentError } =
   await supabaseClient
     .from("students")
