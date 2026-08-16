@@ -2336,15 +2336,16 @@ const { error: studentError } =
   await supabaseClient
     .from("students")
     .insert({
-      student_name: studentName,
-      student_mobile: studentMobile,
-      parent_mobile: parentMobile,
-      user_id: userId
+      "Student_name": studentName,
+      "Student_mobile": studentMobile,
+      "Parent_mobile": parentMobile,
+      "User_id": userId
     });
 
 if(studentError){
   message.style.color="red";
-  message.innerText="Student details save nahi hui: " + studentError.message;
+  message.innerText =
+    "Student details save nahi hui: " + studentError.message;
   return;
 }
   message.style.color="green";
