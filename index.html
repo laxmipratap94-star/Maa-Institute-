@@ -2714,17 +2714,7 @@ async function loadStudentRecord(user){
     }
 
 
-    /*
-      Agar exact user_id column match nahi mila,
-      aur RLS ne ek hi record diya hai,
-      to us record ko use karenge.
-    */
 
-    if(!student && data.length===1){
-
-      student=data[0];
-
-    }
 
 
     if(!student){
