@@ -2663,8 +2663,7 @@ async function loadStudentRecord(user){
       loading.style.color="red";
 
       loading.innerText =
-        "Student record load nahi ho saka.";
-
+    "ERROR: " + error.message;
       return;
     }
 
