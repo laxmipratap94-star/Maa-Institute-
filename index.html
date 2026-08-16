@@ -2332,7 +2332,21 @@ const userId = authData?.user?.id;
     message.innerText="Account create nahi hua: " + authError.message;
     return;
   }
+const { error: studentError } =
+  await supabaseClient
+    .from("students")
+    .insert({
+      student_name: studentName,
+      student_mobile: studentMobile,
+      parent_mobile: parentMobile,
+      user_id: userId
+    });
 
+if(studentError){
+  message.style.color="red";
+  message.innerText="Student details save nahi hui: " + studentError.message;
+  return;
+}
   message.style.color="green";
 
   if(authData.session){
