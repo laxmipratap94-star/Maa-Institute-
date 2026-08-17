@@ -2044,7 +2044,89 @@ footer p{
 
     </div>
 
+<!-- ONLINE TEST SECTION -->
 
+<div class="dashboard-card" id="onlineTestCard" style="margin-top:20px;">
+
+  <h3>📝 Online Tests</h3>
+
+  <p>
+    Enter the test code provided by your teacher to access an active online test.
+  </p>
+
+  <div style="margin-top:20px;">
+
+    <input
+      type="text"
+      id="studentTestCode"
+      placeholder="Enter Test Code"
+      maxlength="20"
+      style="
+        width:100%;
+        padding:14px;
+        border:1px solid #ddd;
+        border-radius:10px;
+        font-size:16px;
+        box-sizing:border-box;
+      "
+    >
+
+    <button
+      type="button"
+      onclick="openStudentTest()"
+      style="
+        width:100%;
+        margin-top:12px;
+        padding:14px;
+        border:none;
+        border-radius:10px;
+        background:var(--blue);
+        color:white;
+        font-size:16px;
+        font-weight:bold;
+        cursor:pointer;
+      "
+    >
+      Enter Test
+    </button>
+
+  </div>
+
+  <div
+    id="studentTestMessage"
+    style="
+      margin-top:15px;
+      text-align:center;
+      font-weight:600;
+    "
+  ></div>
+
+</div>
+
+<script>
+function openStudentTest() {
+
+  const code = document
+    .getElementById("studentTestCode")
+    .value
+    .trim();
+
+  const message = document.getElementById("studentTestMessage");
+
+  if (!code) {
+    message.style.color = "#d32f2f";
+    message.innerText = "Please enter a test code.";
+    return;
+  }
+
+  message.style.color = "#102a63";
+  message.innerText =
+    "Test code received. The active test system will open here.";
+
+}
+</script>
+
+<!-- ADMIN PANEL -->
     <!-- ADMIN PANEL -->
 
     <div
