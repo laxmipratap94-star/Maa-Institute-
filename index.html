@@ -2410,7 +2410,38 @@ if(studentError){
 /* =====================================================
    LOGIN
 ===================================================== */
+async function forgotPassword(){
 
+  const email = document.getElementById("loginEmail").value.trim();
+
+  const message = document.getElementById("loginMessage");
+
+  if(!email){
+    message.style.color = "red";
+    message.innerText = "Pehle apna registered email enter karo.";
+    return;
+  }
+
+  message.style.color = "#102a63";
+  message.innerText = "Password reset email bhej rahe hain...";
+
+  const { error } = await supabaseClient.auth.resetPasswordForEmail(
+    email,
+    {
+      redirectTo: "https://mehervan18.github.io/Maa-Institute-/"
+    }
+  );
+
+  if(error){
+    message.style.color = "red";
+    message.innerText = "Reset email nahi bheja gaya: " + error.message;
+    return;
+  }
+
+  message.style.color = "green";
+  message.innerText =
+    "Password reset link aapke email par bhej diya gaya hai. Email check karo.";
+}
 async function loginUser(){
 
   const email =
