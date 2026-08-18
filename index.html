@@ -3742,18 +3742,33 @@ async function openStudentEditor(index){
 
     if(feeStatus === null) return;
 
+  const feePlan = prompt(
+    "Fee Plan:",
+    student.Fee_plan || ""
+);
+
+if(feePlan === null) return;
+
+const feePaidUntil = prompt(
+    "Fee Paid Until (YYYY-MM-DD):",
+    student.Fee_paid_until || ""
+);
+
+if(feePaidUntil === null) return;
     try{
 
         const { error } = await supabaseClient
             .from("students")
             .update({
-                student_name: name,
-                Student_id: studentId,
-                Class: studentClass,
-                Batch: batch,
-                Fee_status: feeStatus
-            })
-            .eq("Student_id", student.Student_id);
+    student_name: name,
+    Student_id: studentId,
+    Class: studentClass,
+    Batch: batch,
+    Fee_status: feeStatus,
+    Fee_plan: feePlan,
+    Fee_paid_until: feePaidUntil
+})
+.eq("Student_id", student.Student_id);
 
         if(error){
             console.error(error);
