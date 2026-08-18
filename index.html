@@ -2264,7 +2264,51 @@ function openStudentTest() {
         class="portal-message"
         style="margin-top:20px;"
       ></div>
+<!-- STUDENT MANAGEMENT PANEL -->
+<div
+    id="studentManagementPanel"
+    class="dashboard-card"
+    style="display:none; margin-top:20px;"
+>
+    <h3>👨‍🎓 Student Management</h3>
 
+    <button
+        onclick="closeStudentManagement()"
+        style="
+            width:100%;
+            margin:10px 0;
+            padding:12px;
+            border:none;
+            border-radius:10px;
+            background:#eee;
+            cursor:pointer;
+            font-weight:bold;
+        "
+    >
+        ← Back to Admin Panel
+    </button>
+
+    <input
+        id="studentSearch"
+        type="text"
+        placeholder="Search student by name or Student ID..."
+        oninput="filterStudents()"
+        style="
+            width:100%;
+            padding:12px;
+            margin:10px 0;
+            border:1px solid #ddd;
+            border-radius:10px;
+            box-sizing:border-box;
+        "
+    >
+
+    <p id="studentManagementLoading">
+        Loading students...
+    </p>
+
+    <div id="studentManagementList"></div>
+</div>
     </div>
 
   </div>
@@ -3504,17 +3548,205 @@ supabaseClient.auth.onAuthStateChange(
 ===================================================== */
 
 checkSession();
-function openStudentManagement(){
+async function openStudentManagement(){
+
+    const panel =
+        document.getElementById("studentManagementPanel");
+
+    const adminMessage =
+        document.getElementById("adminMessage");
+
+    const loading =
+        document.getElementById("studentManagementLoading");
+
+    const list =
+        document.getElementById("studentManagementList");
+
+    if(!panel) return;
+
+    if(adminMessage){
+        adminMessage.innerText = "";
+    }
+
+    panel.style.display = "block";
+
+    loading.innerText = "Loading students...";
+    list.innerHTML = "";
+
+    try{
+
+        const { data, error } =
+            await supabaseClient
+            .from("students")
+            .select("*")
+            .order("student_name", { ascending:true });
+
+        if(error){
+
+            console.error("Student management error:", error);
+
+            loading.style.color = "red";
+            loading.innerText =
+                "ERROR: " + error.message;
+
+            return;
+        }
+
+        loading.style.color = "#666";
+
+        if(!data || data.length === 0){
+
+            loading.innerText =
+                "No student records found.";
+
+            return;
+        }
+
+        loading.innerText =
+            data.length + " student(s) found.";
+
+        window.allStudents = data;
+
+        renderStudentList(data);
+
+    }catch(error){
+
+        console.error(error);
+
+        loading.style.color = "red";
+        loading.innerText =
+            "ERROR: " + error.message;
+    }
+}
+
+
+function renderStudentList(students){
+
+    const list =
+        document.getElementById("studentManagementList");
+
+    if(!list) return;
+
+    list.innerHTML = "";
+
+    students.forEach(function(student){
+
+        const name =
+            student.student_name || "-";
+
+        const studentId =
+            student.Student_id || "-";
+
+        const studentClass =
+            student.Class || "-";
+
+        const batch =
+            student.Batch || "-";
+
+        const feeStatus =
+            student.Fee_status || "Pending";
+
+        const card =
+            document.createElement("div");
+
+        card.style.cssText = `
+            background:#f7f8fb;
+            border:1px solid #ddd;
+            border-radius:12px;
+            padding:15px;
+            margin:12px 0;
+        `;
+
+        card.innerHTML = `
+            <h4 style="margin:0 0 10px;color:#102a63;">
+                👨‍🎓 ${escapeStudentHTML(name)}
+            </h4>
+
+            <p><b>Student ID:</b>
+                ${escapeStudentHTML(studentId)}
+            </p>
+
+            <p><b>Class:</b>
+                ${escapeStudentHTML(studentClass)}
+            </p>
+
+            <p><b>Batch:</b>
+                ${escapeStudentHTML(batch)}
+            </p>
+
+            <p><b>Fee Status:</b>
+                ${escapeStudentHTML(feeStatus)}
+            </p>
+        `;
+
+        list.appendChild(card);
+    });
+}
+
+
+function filterStudents(){
+
+    const search =
+        document.getElementById("studentSearch")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const students =
+        window.allStudents || [];
+
+    const filtered =
+        students.filter(function(student){
+
+            const name =
+                String(student.student_name || "")
+                .toLowerCase();
+
+            const id =
+                String(student.Student_id || "")
+                .toLowerCase();
+
+            return name.includes(search) ||
+                   id.includes(search);
+        });
+
+    renderStudentList(filtered);
+}
+
+
+function closeStudentManagement(){
+
+    const panel =
+        document.getElementById("studentManagementPanel");
+
+    if(panel){
+        panel.style.display = "none";
+    }
+
+    const search =
+        document.getElementById("studentSearch");
+
+    if(search){
+        search.value = "";
+    }
 
     const adminMessage =
         document.getElementById("adminMessage");
 
     if(adminMessage){
-        adminMessage.style.color = "#102a63";
-        adminMessage.innerText =
-            "Student Management module ab next step me connect karenge.";
+        adminMessage.innerText = "";
     }
+}
 
+
+function escapeStudentHTML(value){
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 </script>
 
