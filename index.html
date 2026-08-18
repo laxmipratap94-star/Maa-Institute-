@@ -2383,112 +2383,147 @@ async function signupStudent(){
 
   const password =
     document.getElementById("signupPassword").value;
-const studentName =
-  document.getElementById("studentName").value.trim();
 
-const studentMobile =
-  document.getElementById("studentMobile").value.trim();
+  const studentName =
+    document.getElementById("studentName").value.trim();
 
-const parentMobile =
-  document.getElementById("parentMobile").value.trim();
+  const studentMobile =
+    document.getElementById("studentMobile").value.trim();
+
+  const parentMobile =
+    document.getElementById("parentMobile").value.trim();
+
   const studentClass =
-  document.getElementById("studentClass").value;
+    document.getElementById("studentClass").value;
 
-const studentBatch =
-  document.getElementById("studentBatch").value.trim();
+  const studentBatch =
+    document.getElementById("studentBatch").value.trim();
 
-const studentCourse =
-  document.getElementById("studentCourse").value.trim();
+  const studentCourse =
+    document.getElementById("studentCourse").value.trim();
+
   const message =
     document.getElementById("signupMessage");
 
+
+  /* BASIC VALIDATION */
+
   if(
-  !inviteCode ||
-  !email ||
-  !password ||
-  !studentName ||
-  !studentMobile ||
-  !parentMobile
-){
-  message.style.color="red";
-  message.innerText="Sabhi details bharo.";
-  return;
+    !inviteCode ||
+    !email ||
+    !password ||
+    !studentName ||
+    !studentMobile ||
+    !parentMobile
+  ){
+    message.style.color = "red";
+    message.innerText = "Sabhi details bharo.";
+    return;
   }
 
-  message.style.color="#102a63";
-  message.innerText="Invite code verify ho raha hai...";
 
-  const {data,error} =
+  /* VERIFY INVITE CODE */
+
+  message.style.color = "#102a63";
+  message.innerText = "Invite code verify ho raha hai...";
+
+
+  const { data, error } =
     await supabaseClient.rpc(
       "verify_student_invite",
-      { p_invite_code: inviteCode }
+      {
+        p_invite_code: inviteCode
+      }
     );
 
+
   if(error){
-    message.style.color="red";
-    message.innerText="Verification error: " + error.message;
+    message.style.color = "red";
+    message.innerText =
+      "Verification error: " + error.message;
     return;
   }
+
 
   if(!data || data.length === 0){
-    message.style.color="red";
-    message.innerText="Invalid ya used invite code.";
+    message.style.color = "red";
+    message.innerText =
+      "Invalid ya used invite code.";
     return;
   }
 
-  message.innerText="Invite valid hai. Account create ho raha hai...";
 
-  const {data:authData,error:authError} =
-    await supabaseClient.auth.signUp({
-      email:email,
-      password:password
-    });
-if(authError){
-  message.style.color="red";
-  message.innerText="Account create nahi hua: " + authError.message;
-  return;
-}
+  /* CREATE AUTH ACCOUNT */
 
-const userId = authData?.user?.id;
-
-if(!userId){
-    message.style.color="red";
-    message.innerText="User ID create nahi hua. Account create nahi ho saka.";
-    return;
-}
-const { error: studentError } =
-  await supabaseClient
-    .from("students")
-    .insert({
-      "student_name": studentName,
-      "Student_mobile": studentMobile,
-      "Parent_mobile": parentMobile,
-      "Class": studentClass,
-      "Batch": studentBatch,
-      "Course": studentCourse,
-      "Student_id": "STU-" + Date.now(),
-      "Fee_plan": feePlan,
-      "Admission_date": new Date().toISOString().split("T")[0],
-      "Fee_status": "Pending",
-      "Fee_paid_until": null,
-      "Is_active": true,
-      "Notes": null,
-      "User_id": userId
-    });
-
-if(studentError){
-  message.style.color="red";
+  message.style.color = "#102a63";
   message.innerText =
-    "Student details save nahi hui: " + studentError.message;
-  return;
-}
-  message.style.color="green";
+    "Invite valid hai. Account create ho raha hai...";
 
-  if(authData.session){
-    message.innerText="Account successfully created!";
-  }else{
-    message.innerText="Account created. Email verify karke login karo.";
+
+  const { data: authData, error: authError } =
+    await supabaseClient.auth.signUp({
+
+      email: email,
+
+      password: password,
+
+      options: {
+
+        data: {
+
+          student_name: studentName,
+          student_mobile: studentMobile,
+          parent_mobile: parentMobile,
+          student_class: studentClass,
+          student_batch: studentBatch,
+          student_course: studentCourse
+
+        }
+
+      }
+
+    });
+
+
+  if(authError){
+
+    message.style.color = "red";
+
+    message.innerText =
+      "Account create nahi hua: " +
+      authError.message;
+
+    return;
   }
+
+
+  if(!authData || !authData.user){
+
+    message.style.color = "red";
+
+    message.innerText =
+      "User account create nahi hua.";
+
+    return;
+  }
+
+
+  /*
+    IMPORTANT:
+
+    Yahan students table mein INSERT nahi karna hai.
+
+    Agar email verification ON hai,
+    to signUp ke baad session null ho sakta hai.
+
+    Student record login ke baad create hoga.
+  */
+
+
+  message.style.color = "green";
+
+  message.innerText =
+    "Account created. Email verify karke login karo.";
 
 }
 
