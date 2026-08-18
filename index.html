@@ -3504,7 +3504,18 @@ supabaseClient.auth.onAuthStateChange(
 ===================================================== */
 
 checkSession();
+function openStudentManagement(){
 
+    const adminMessage =
+        document.getElementById("adminMessage");
+
+    if(adminMessage){
+        adminMessage.style.color = "#102a63";
+        adminMessage.innerText =
+            "Student Management module ab next step me connect karenge.";
+    }
+
+}
 </script>
 
 
