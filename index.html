@@ -3629,7 +3629,7 @@ function renderStudentList(students){
 
     list.innerHTML = "";
 
-    students.forEach(function(student){
+    students.forEach(function(student, index){
 
         const name =
             student.student_name || "-";
@@ -3677,13 +3677,103 @@ function renderStudentList(students){
             <p><b>Fee Status:</b>
                 ${escapeStudentHTML(feeStatus)}
             </p>
+            <button
+    onclick="openStudentEditor(${index})"
+    style="
+        width:100%;
+        margin-top:12px;
+        padding:12px;
+        border:none;
+        border-radius:10px;
+        background:#102a63;
+        color:white;
+        font-weight:bold;
+        font-size:15px;
+        cursor:pointer;
+    "
+>
+    ✏️ View / Edit Student
+</button>
         `;
 
         list.appendChild(card);
     });
 }
 
+async function openStudentEditor(index){
 
+    const student = window.allStudents[index];
+
+    if(!student){
+        alert("Student record not found.");
+        return;
+    }
+
+    const name = prompt(
+        "Student Name:",
+        student.student_name || ""
+    );
+
+    if(name === null) return;
+
+    const studentId = prompt(
+        "Student ID:",
+        student.Student_id || ""
+    );
+
+    if(studentId === null) return;
+
+    const studentClass = prompt(
+        "Class:",
+        student.Class || ""
+    );
+
+    if(studentClass === null) return;
+
+    const batch = prompt(
+        "Batch:",
+        student.Batch || ""
+    );
+
+    if(batch === null) return;
+
+    const feeStatus = prompt(
+        "Fee Status:",
+        student.Fee_status || "Pending"
+    );
+
+    if(feeStatus === null) return;
+
+    try{
+
+        const { error } = await supabaseClient
+            .from("students")
+            .update({
+                student_name: name,
+                Student_id: studentId,
+                Class: studentClass,
+                Batch: batch,
+                Fee_status: feeStatus
+            })
+            .eq("Student_id", student.Student_id);
+
+        if(error){
+            console.error(error);
+            alert("Update failed: " + error.message);
+            return;
+        }
+
+        alert("Student updated successfully! ✅");
+
+        openStudentManagement();
+
+    }catch(error){
+
+        console.error(error);
+        alert("Error: " + error.message);
+
+    }
+}
 function filterStudents(){
 
     const search =
