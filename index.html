@@ -2741,8 +2741,20 @@ async function loginUser(){
 
   if(data && data.user){
 
-    await showDashboard(data.user);
+    const studentCreated =
+      await createStudentRecordIfNeeded(data.user);
 
+    if(!studentCreated){
+
+      message.style.color = "red";
+
+      message.innerText =
+        "Student record create nahi ho saka.";
+
+      return;
+    }
+
+    await showDashboard(data.user);
   }
 
 }
