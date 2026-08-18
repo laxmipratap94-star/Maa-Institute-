@@ -2526,7 +2526,123 @@ async function signupStudent(){
     "Account created. Email verify karke login karo.";
 
 }
+async function createStudentRecordIfNeeded(user){
 
+  if(!user || !user.id){
+    return false;
+  }
+
+
+  /* Check whether student record already exists */
+
+  const { data: existingStudent, error: checkError } =
+    await supabaseClient
+      .from("students")
+      .select("id")
+      .eq("User_id", user.id)
+      .limit(1);
+
+
+  if(checkError){
+
+    console.error(
+      "Student record check error:",
+      checkError.message
+    );
+
+    return false;
+  }
+
+
+  /* Already exists */
+
+  if(existingStudent && existingStudent.length > 0){
+    return true;
+  }
+
+
+  /* Get signup data from Auth metadata */
+
+  const meta = user.user_metadata || {};
+
+
+  if(!meta.student_name){
+
+    console.log(
+      "Student signup metadata nahi mila."
+    );
+
+    return false;
+  }
+
+
+  /* Create student record */
+
+  const { error: studentError } =
+    await supabaseClient
+      .from("students")
+      .insert({
+
+        "student_name":
+          meta.student_name,
+
+        "Student_mobile":
+          meta.student_mobile || null,
+
+        "Parent_mobile":
+          meta.parent_mobile || null,
+
+        "Class":
+          meta.student_class || null,
+
+        "Batch":
+          meta.student_batch || null,
+
+        "Course":
+          meta.student_course || null,
+
+        "Student_id":
+          "STU-" + Date.now(),
+
+        "Fee_plan":
+          null,
+
+        "Admission_date":
+          new Date()
+            .toISOString()
+            .split("T")[0],
+
+        "Fee_status":
+          "Pending",
+
+        "Fee_paid_until":
+          null,
+
+        "Is_active":
+          true,
+
+        "Notes":
+          null,
+
+        "User_id":
+          user.id
+
+      });
+
+
+  if(studentError){
+
+    console.error(
+      "Student record create error:",
+      studentError.message
+    );
+
+    return false;
+  }
+
+
+  return true;
+}
 /* =====================================================
    LOGIN
 ===================================================== */
