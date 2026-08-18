@@ -2452,9 +2452,9 @@ if(authError){
 const userId = authData?.user?.id;
 
 if(!userId){
-  message.style.color="red";
-  message.innerText="User ID create nahi hua.";
-  return;
+    message.style.color="red";
+    message.innerText="User ID create nahi hua. Account create nahi ho saka.";
+    return;
 }
 const { error: studentError } =
   await supabaseClient
