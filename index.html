@@ -3749,12 +3749,14 @@ async function openStudentEditor(index){
 
 if(feePlan === null) return;
 
-const feePaidUntil = prompt(
-    "Fee Paid Until (YYYY-MM-DD):",
-    student.Fee_paid_until || ""
+const feePaidUntilInput = prompt(
+  "Fee Paid Until (YYYY-MM-DD):",
+  student.Fee_paid_until || ""
 );
 
-if(feePaidUntil === null) return;
+if(feePaidUntilInput === null) return;
+
+const feePaidUntil = feePaidUntilInput.trim() || null;
     try{
 
         const { error } = await supabaseClient
