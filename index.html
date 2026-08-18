@@ -3056,13 +3056,11 @@ async function loadStudentRecord(user){
 
 
     if(!student){
+    loading.style.color="#b00000";
 
-      loading.style.color="#b00000";
-
-      loading.innerText =
+    loading.innerText =
         "Is account ke liye student record nahi mila.";
-
-      return;
+    return;
     }
 
 
