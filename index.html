@@ -2409,7 +2409,189 @@ supabase.createClient(
 
   window.scrollTo(0,0);
   }
-  
+  /* =====================================================
+   FEE MANAGEMENT
+===================================================== */
+
+async function openFeeManagement(){
+
+    document.getElementById("dashboard").style.display = "none";
+
+    const panel = document.getElementById("feeManagementPanel");
+
+    if(panel){
+        panel.style.display = "block";
+    }
+
+    window.scrollTo(0,0);
+
+    await loadFeeStudents();
+}
+
+
+function closeFeeManagement(){
+
+    const panel = document.getElementById("feeManagementPanel");
+
+    if(panel){
+        panel.style.display = "none";
+    }
+
+    const dashboard = document.getElementById("dashboard");
+
+    if(dashboard){
+        dashboard.style.display = "block";
+    }
+
+    window.scrollTo(0,0);
+}
+
+
+async function loadFeeStudents(){
+
+    const loading = document.getElementById("feeManagementLoading");
+    const list = document.getElementById("feeManagementList");
+
+    if(!list) return;
+
+    if(loading){
+        loading.style.display = "block";
+    }
+
+    list.innerHTML = "";
+
+    try{
+
+        const { data, error } = await supabaseClient
+            .from("students")
+            .select("*")
+            .order("id", { ascending: true });
+
+        if(error){
+            console.error(error);
+
+            if(loading){
+                loading.innerText = "Failed to load students.";
+            }
+
+            return;
+        }
+
+        window.allFeeStudents = data || [];
+
+        renderFeeStudents(window.allFeeStudents);
+
+        if(loading){
+            loading.style.display = "none";
+        }
+
+    }catch(error){
+
+        console.error(error);
+
+        if(loading){
+            loading.innerText = "Error loading students.";
+        }
+    }
+}
+
+
+function renderFeeStudents(students){
+
+    const list = document.getElementById("feeManagementList");
+
+    if(!list) return;
+
+    list.innerHTML = "";
+
+    if(!students || students.length === 0){
+
+        list.innerHTML = `
+            <p style="text-align:center;color:#666;">
+                No students found.
+            </p>
+        `;
+
+        return;
+    }
+
+    students.forEach(function(student){
+
+        const card = document.createElement("div");
+
+        card.style.cssText = `
+            background:#fff;
+            border:1px solid #ddd;
+            border-radius:12px;
+            padding:15px;
+            margin:10px 0;
+            box-shadow:0 2px 8px rgba(0,0,0,0.08);
+        `;
+
+        const name = student.student_name || "Unnamed Student";
+        const studentId = student.Student_id || "-";
+        const feePlan = student.Fee_plan || "-";
+        const feeStatus = student.Fee_status || "Pending";
+        const paidUntil = student.Fee_paid_until || "-";
+
+        card.innerHTML = `
+            <h3 style="margin:0 0 10px;color:#102a63;">
+                👨‍🎓 ${escapeStudentHTML(name)}
+            </h3>
+
+            <p><b>Student ID:</b> ${escapeStudentHTML(studentId)}</p>
+
+            <p><b>Fee Plan:</b> ${escapeStudentHTML(feePlan)}</p>
+
+            <p><b>Fee Status:</b> ${escapeStudentHTML(feeStatus)}</p>
+
+            <p><b>Fee Paid Until:</b> ${escapeStudentHTML(paidUntil)}</p>
+
+            <button
+                onclick="openStudentEditor(window.allStudents ? window.allStudents.findIndex(s => s.Student_id === student.Student_id) : -1)"
+                style="
+                    width:100%;
+                    padding:12px;
+                    border:none;
+                    border-radius:10px;
+                    background:#102a63;
+                    color:white;
+                    font-weight:bold;
+                    cursor:pointer;
+                "
+            >
+                ✏️ Update Student
+            </button>
+        `;
+
+        list.appendChild(card);
+    });
+}
+
+
+function filterFeeStudents(){
+
+    const searchBox = document.getElementById("feeStudentSearch");
+
+    const search = searchBox
+        ? searchBox.value.toLowerCase().trim()
+        : "";
+
+    const students = window.allFeeStudents || [];
+
+    const filtered = students.filter(function(student){
+
+        const name = String(student.student_name || "")
+            .toLowerCase();
+
+        const id = String(student.Student_id || "")
+            .toLowerCase();
+
+        return name.includes(search) || id.includes(search);
+    });
+
+    renderFeeStudents(filtered);
+}
 /* =====================================================
    OPEN SIGNUP
 ===================================================== */
