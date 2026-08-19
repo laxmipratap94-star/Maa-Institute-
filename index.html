@@ -4482,6 +4482,64 @@ async function deleteNotice(id){
 }
 
 loadPublicNotices();
+  async function loadPublicNotices(){
+
+  const list = document.getElementById("publicNoticesList");
+
+  if(!list) return;
+
+  try{
+
+    const { data, error } = await supabaseClient
+      .from("notices")
+      .select("id,title,message,created_at")
+      .order("created_at", { ascending:false });
+
+    if(error){
+      console.error(error);
+      list.innerHTML =
+        '<p style="text-align:center;color:#d32f2f;">Unable to load notices.</p>';
+      return;
+    }
+
+    if(!data || data.length === 0){
+      list.innerHTML =
+        '<p style="text-align:center;color:#666;">No notices published yet.</p>';
+      return;
+    }
+
+    list.innerHTML = "";
+
+    data.forEach(function(notice){
+
+      const card = document.createElement("div");
+      card.className = "notice";
+
+      card.innerHTML = `
+        <strong>${escapeStudentHTML(notice.title)}</strong>
+        <p style="margin:8px 0 0;white-space:pre-wrap;">
+          ${escapeStudentHTML(notice.message)}
+        </p>
+        <small style="color:#666;">
+          ${new Date(notice.created_at).toLocaleDateString("en-IN")}
+        </small>
+      `;
+
+      list.appendChild(card);
+
+    });
+
+  }catch(error){
+
+    console.error(error);
+
+    list.innerHTML =
+      '<p style="text-align:center;color:#d32f2f;">Error loading notices.</p>';
+
+  }
+}
+
+
 </script>
 
 
