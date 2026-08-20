@@ -3945,11 +3945,11 @@ async function openStudentEditor(index){
 
     const student = window.allStudents[index];
 
-    const student = window.allStudents[index];
+    
 
-if(student){
-  alert("Student record not found.");
-  return;
+if(!student){
+    alert("Student record not found.");
+    return;
 }
 
     const name = prompt(
