@@ -4188,63 +4188,9 @@ async function loadNoticeManagement(){
 
     console.error(error);
 
-    list.innerHTML = "Error loading notices.";
+    list.innerHTML = "Error loading notices."
 
-  }
-}
-
-
-async function publishNotice(){
-
-  const titleInput = document.getElementById("noticeTitle");
-  const messageInput = document.getElementById("noticeMessage");
-
-  const title = titleInput.value.trim();
-  const message = messageInput.value.trim();
-
-if(!title){
-    alert("Please enter notice title.");
-    return;
-}
-  if(!message){
-    alert("Please enter notice message.");
-    return;
-  }
-
-  try{
-
-    const { error } = await supabaseClient
-      .from("notices")
-      .insert([
-        {
-          title: title,
-          message: message
-        }
-      ]);
-
-    if(error){
-
-      console.error(error);
-
-      alert("Failed to publish notice: " + error.message);
-
-      return;
-    }
-
-    alert("Notice published successfully! 📢");
-
-    titleInput.value = "";
-    messageInput.value = "";
-
-    await loadNoticeManagement();
-
-  }catch(error){
-
-    console.error(error);
-
-    alert("Error: " + error.message);
-
-  }
+      
 }
 
 
