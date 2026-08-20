@@ -1984,7 +1984,16 @@ footer p{
 
         </div>
 
+<div class="info-box">
+ >
+<span class="info-label">
+Notices
+ </span>
+<span class="info-value">
+ Coming Soon
+ </span>
 
+</div>
 
 
 
@@ -2177,7 +2186,26 @@ function openStudentTest() {
         </div>
 
 
-        
+
+      <div
+
+class="admin-action"
+
+onclick="openNotice Management()"
+
+<h4>
+
+Notices
+
+</h4>
+
+<p>
+
+Publish institute notices.
+
+</p>
+
+      </div>
 
 
         <div
@@ -3890,10 +3918,12 @@ async function openStudentEditor(index){
 
     const student = window.allStudents[index];
 
-    if(!student){
-        alert("Student record not found.");
-        return;
-    }
+    const student = window.allStudents[index];
+
+if(student){
+  alert("Student record not found.");
+  return;
+}
 
     const name = prompt(
         "Student Name:",
