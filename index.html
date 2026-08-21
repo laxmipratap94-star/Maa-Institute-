@@ -2061,24 +2061,98 @@ footer p{
 </div>
 
 <script>
-function openStudentTest() {
+async function openStudentTest(){
 
-  const code = document
-    .getElementById("studentTestCode")
-    .value
-    .trim();
+  const code =
+    document
+      .getElementById("studentTestCode")
+      .value
+      .trim()
+      .toUpperCase();
 
-  const message = document.getElementById("studentTestMessage");
+  const message =
+    document.getElementById("studentTestMessage");
 
-  if (!code) {
+  if(!code){
+
     message.style.color = "#d32f2f";
-    message.innerText = "Please enter a test code.";
+
+    message.innerText =
+      "Please enter a test code.";
+
     return;
   }
 
   message.style.color = "#102a63";
+
   message.innerText =
-    "Test code received. The active test system will open here.";
+    "Test load ho raha hai...";
+
+  try{
+
+    const { data, error } =
+      await supabaseClient
+        .from("online_tests")
+        .select("*")
+        .eq("test_code", code)
+        .eq("is_active", true)
+        .single();
+
+    if(error){
+
+      console.error(
+        "Student test fetch error:",
+        error
+      );
+
+      message.style.color = "#d32f2f";
+
+      message.innerText =
+        "Test nahi mila. Test Code check karo.";
+
+      return;
+    }
+
+    if(!data){
+
+      message.style.color = "#d32f2f";
+
+      message.innerText =
+        "Ye test available nahi hai.";
+
+      return;
+    }
+
+    message.style.color = "green";
+
+    message.innerText =
+      "Test mil gaya: " + data.test_name;
+
+    alert(
+      "Test: " +
+      data.test_name +
+      "\n\n" +
+      "Duration: " +
+      data.duration_minutes +
+      " minutes" +
+      "\n\n" +
+      "Test Type: " +
+      data.test_type
+    );
+
+  }catch(error){
+
+    console.error(
+      "Open student test error:",
+      error
+    );
+
+    message.style.color = "#d32f2f";
+
+    message.innerText =
+      "Test open nahi ho saka: " +
+      error.message;
+  }
 
 }
 </script>
