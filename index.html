@@ -4174,6 +4174,248 @@ function closeOnlineTestManagement(){
     panel.style.display = "none";
   }
 
+} 
+  /* =========================================
+   CREATE ONLINE TEST
+========================================= */
+
+async function createOnlineTest(){
+
+  const testName =
+    document.getElementById("adminTestName").value.trim();
+
+  const testCode =
+    document.getElementById("adminTestCode").value.trim();
+
+  const testStart =
+    document.getElementById("adminTestStart").value;
+
+  const testDuration =
+    document.getElementById("adminTestDuration").value;
+
+  const testType =
+    document.getElementById("adminTestType").value;
+
+  const testContent =
+    document.getElementById("adminTestContent").value.trim();
+
+  const whatsappLink =
+    document.getElementById("adminWhatsAppLink").value.trim();
+
+  const instructions =
+    document.getElementById("adminTestInstructions").value.trim();
+
+  const message =
+    document.getElementById("onlineTestAdminMessage");
+
+
+  /* BASIC VALIDATION */
+
+  if(
+    !testName ||
+    !testCode ||
+    !testStart ||
+    !testDuration ||
+    !testType
+  ){
+
+    message.style.color = "red";
+
+    message.innerText =
+      "Test Name, Code, Start Time, Duration aur Test Type bharo.";
+
+    return;
+  }
+
+
+  const durationMinutes =
+    Number(testDuration);
+
+
+  if(
+    !Number.isInteger(durationMinutes) ||
+    durationMinutes <= 0
+  ){
+
+    message.style.color = "red";
+
+    message.innerText =
+      "Duration valid minutes mein enter karo.";
+
+    return;
+  }
+
+
+  /* TEST CODE NORMALIZE */
+
+  const cleanTestCode =
+    testCode.toUpperCase();
+
+
+  message.style.color = "#102a63";
+
+  message.innerText =
+    "Test publish ho raha hai...";
+
+
+  try{
+
+    /* GET CURRENT USER */
+
+    const {
+      data:sessionData,
+      error:sessionError
+    } =
+      await supabaseClient.auth.getSession();
+
+
+    if(sessionError || !sessionData.session){
+
+      message.style.color = "red";
+
+      message.innerText =
+        "Admin session nahi mila. Dobara login karo.";
+
+      return;
+    }
+
+
+    const user =
+      sessionData.session.user;
+
+
+    /* CONVERT START TIME */
+
+    const startAt =
+      new Date(testStart).toISOString();
+
+
+    /* INSERT TEST */
+
+    const { data, error } =
+      await supabaseClient
+        .from("online_tests")
+        .insert({
+
+          test_name:
+            testName,
+
+          test_code:
+            cleanTestCode,
+
+          start_at:
+            startAt,
+
+          duration_minutes:
+            durationMinutes,
+
+          test_type:
+            testType,
+
+          test_content:
+            testContent || null,
+
+          test_image_url:
+            null,
+
+          whatsapp_link:
+            whatsappLink || null,
+
+          instructions:
+            instructions || null,
+
+          is_active:
+            true,
+
+          created_by:
+            user.id
+
+        })
+        .select()
+        .single();
+
+
+    if(error){
+
+      console.error(
+        "Create online test error:",
+        error
+      );
+
+      message.style.color = "red";
+
+      if(
+        error.code === "23505"
+      ){
+
+        message.innerText =
+          "Ye Test Code pehle se use ho chuka hai. Naya unique code do.";
+
+      }else{
+
+        message.innerText =
+          "Test create nahi hua: " +
+          error.message;
+
+      }
+
+      return;
+    }
+
+
+    console.log(
+      "Online test created:",
+      data
+    );
+
+
+    message.style.color = "green";
+
+    message.innerText =
+      "Online Test successfully publish ho gaya ✅";
+
+
+    /* CLEAR FORM */
+
+    document.getElementById("adminTestName")
+      .value = "";
+
+    document.getElementById("adminTestCode")
+      .value = "";
+
+    document.getElementById("adminTestStart")
+      .value = "";
+
+    document.getElementById("adminTestDuration")
+      .value = "";
+
+    document.getElementById("adminTestType")
+      .value = "";
+
+    document.getElementById("adminTestContent")
+      .value = "";
+
+    document.getElementById("adminWhatsAppLink")
+      .value = "";
+
+    document.getElementById("adminTestInstructions")
+      .value = "";
+
+
+  }catch(error){
+
+    console.error(
+      "Online test creation failed:",
+      error
+    );
+
+    message.style.color = "red";
+
+    message.innerText =
+      "Error: " + error.message;
+
+  }
+
 }
   /* =========================================
    NOTICE MANAGEMENT
