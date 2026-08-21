@@ -2178,7 +2178,7 @@ function openStudentTest() {
         </div>
 <div
     class="admin-action"
-    onclick="openAdminMessage('onlineTest')"
+   onclick="openOnlineTestManagement()"
 >
     <h4>
         📝 Online Tests
@@ -2196,7 +2196,113 @@ function openStudentTest() {
         class="portal-message"
         style="margin-top:20px;"
       ></div>
+<!-- ONLINE TEST MANAGEMENT PANEL -->
 
+<div
+  id="onlineTestManagementPanel"
+  class="dashboard-card"
+  style="display:none; margin-top:20px;"
+>
+
+  <h3 style="margin:0 0 10px; color:#102a63;">
+    📝 Online Test Management
+  </h3>
+
+  <button
+    type="button"
+    onclick="closeOnlineTestManagement()"
+    style="
+      width:100%;
+      margin:10px 0;
+      padding:12px;
+      border:none;
+      border-radius:10px;
+      background:#eee;
+      cursor:pointer;
+      font-weight:bold;
+    "
+  >
+    ← Back to Admin Panel
+  </button>
+
+  <div style="margin-top:20px;">
+
+    <input
+      id="adminTestName"
+      type="text"
+      placeholder="Test Name"
+      class="input"
+    >
+
+    <input
+      id="adminTestCode"
+      type="text"
+      placeholder="Unique Test Code"
+      class="input"
+      maxlength="30"
+    >
+
+    <input
+      id="adminTestStart"
+      type="datetime-local"
+      class="input"
+    >
+
+    <input
+      id="adminTestDuration"
+      type="number"
+      min="1"
+      placeholder="Duration in minutes"
+      class="input"
+    >
+
+    <select
+      id="adminTestType"
+      class="input"
+    >
+      <option value="">Select Test Type</option>
+      <option value="image">Test Image</option>
+      <option value="written">Written Test</option>
+      <option value="both">Image + Written</option>
+    </select>
+
+    <textarea
+      id="adminTestContent"
+      class="input"
+      rows="8"
+      placeholder="Enter test questions/content here..."
+    ></textarea>
+
+    <input
+      id="adminWhatsAppLink"
+      type="url"
+      placeholder="WhatsApp Group Link"
+      class="input"
+    >
+
+    <textarea
+      id="adminTestInstructions"
+      class="input"
+      rows="4"
+      placeholder="Test Instructions"
+    ></textarea>
+
+    <button
+      type="button"
+      onclick="createOnlineTest()"
+      class="portal-btn"
+    >
+      Publish Test
+    </button>
+
+    <div
+      id="onlineTestAdminMessage"
+      class="portal-message"
+    ></div>
+
+  </div>
+
+</div>
 <!-- STUDENT MANAGEMENT PANEL -->
 <div
     id="studentManagementPanel"
@@ -4035,6 +4141,39 @@ function escapeStudentHTML(value){
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+}   
+  /* =========================================
+   ONLINE TEST MANAGEMENT
+========================================= */
+
+function openOnlineTestManagement(){
+
+  const panel =
+    document.getElementById("onlineTestManagementPanel");
+
+  if(!panel){
+    alert("Online Test Management panel not found.");
+    return;
+  }
+
+  panel.style.display = "block";
+
+  panel.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
+
+
+function closeOnlineTestManagement(){
+
+  const panel =
+    document.getElementById("onlineTestManagementPanel");
+
+  if(panel){
+    panel.style.display = "none";
+  }
+
 }
   /* =========================================
    NOTICE MANAGEMENT
