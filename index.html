@@ -2209,6 +2209,7 @@ async function openStudentTest(){
       <button
         id="submitStudentTest"
         style="
+        disabled
           width:100%;
           margin-top:14px;
           padding:13px;
@@ -2291,13 +2292,11 @@ let remainingSeconds =
           timerElement.innerText =
             "TIME UP";
 
-          document
-            .getElementById("studentTestAnswers")
-            .disabled = true;
+         
 
           document
             .getElementById("submitStudentTest")
-            .disabled = true;
+            .disabled = false;
 
           document
             .getElementById("studentSubmitMessage")
@@ -2323,25 +2322,7 @@ let remainingSeconds =
       .getElementById("submitStudentTest")
       .onclick = function(){
 
-        const answers =
-          document
-          .getElementById("studentTestAnswers")
-          .value
-          .trim();
-
-        const submitMessage =
-          document
-          .getElementById("studentSubmitMessage");
-
-        if(!answers){
-
-          submitMessage.style.color = "#d32f2f";
-
-          submitMessage.innerText =
-            "Pehle apne answers likho.";
-
-          return;
-        }
+       const submitMessage = document.getElementById("studentSubmitMessage");
 
         clearInterval(timer);
 
