@@ -2263,7 +2263,23 @@ async function openStudentTest(){
        TIMER
     ================================= */
 
-    let remainingSeconds = duration * 60;
+  const testStartKey = "test_started_" + code;
+
+let startedAt = localStorage.getItem(testStartKey);
+
+if(!startedAt){
+  startedAt = Date.now();
+  localStorage.setItem(testStartKey, startedAt);
+}
+
+const expiryTime =
+  Number(startedAt) + (duration * 60 * 1000);
+
+let remainingSeconds =
+  Math.max(
+    0,
+    Math.ceil((expiryTime - Date.now()) / 1000)
+  );
 
     const timerElement =
       document.getElementById("studentTestTimer");
