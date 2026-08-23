@@ -4658,7 +4658,7 @@ function escapeStudentHTML(value){
    ONLINE TEST MANAGEMENT
 ========================================= */
 
-function openOnlineTestManagement(){
+async function openOnlineTestManagement(){
 
   const panel =
     document.getElementById("onlineTestManagementPanel");
@@ -4669,7 +4669,7 @@ function openOnlineTestManagement(){
   }
 
   panel.style.display = "block";
-
+await loadOnlineTestsAdmin();
   panel.scrollIntoView({
     behavior:"smooth",
     block:"start"
