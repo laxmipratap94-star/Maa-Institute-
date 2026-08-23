@@ -2397,6 +2397,116 @@ async function deleteOnlineTest(testId){
 
   }
 }
+  /* =========================================
+   LOAD ADMIN ONLINE TESTS
+========================================= */
+
+async function loadOnlineTestsAdmin(){
+
+  const list =
+    document.getElementById("onlineTestsAdminList");
+
+  if(!list){
+    return;
+  }
+
+  list.innerHTML =
+    "Online tests load ho rahe hain...";
+
+  try{
+
+    const { data, error } =
+      await supabaseClient
+      .from("online_tests")
+      .select("*")
+      .order("created_at", {
+        ascending:false
+      });
+
+    if(error){
+      console.error(
+        "Admin online tests error:",
+        error
+      );
+
+      list.innerHTML =
+        "Online tests load nahi ho sake.";
+
+      return;
+    }
+
+    if(!data || data.length === 0){
+
+      list.innerHTML =
+        "Abhi koi online test published nahi hai.";
+
+      return;
+    }
+
+    list.innerHTML = "";
+
+    data.forEach(test => {
+
+      const card =
+        document.createElement("div");
+
+      card.style.cssText =
+        "border:1px solid #ddd;" +
+        "border-radius:12px;" +
+        "padding:15px;" +
+        "margin-top:12px;" +
+        "background:#f8faff;";
+
+      card.innerHTML =
+
+        "<b style='font-size:18px;'>" +
+        (test.test_name || "Untitled Test") +
+        "</b>" +
+
+        "<div style='margin-top:6px;'>" +
+        "Test Code: " +
+        (test.test_code || "-") +
+        "</div>" +
+
+        "<div style='margin-top:6px;'>" +
+        "Duration: " +
+        (test.duration_minutes || "-") +
+        " minutes" +
+        "</div>" +
+
+        "<button " +
+        "type='button' " +
+        "onclick=\"deleteOnlineTest('" +
+        test.id +
+        "')\" " +
+        "style='margin-top:12px;" +
+        "background:#d32f2f;" +
+        "color:white;" +
+        "border:none;" +
+        "padding:10px 18px;" +
+        "border-radius:8px;" +
+        "cursor:pointer;" +
+        "font-weight:bold;'>" +
+
+        "Delete Test" +
+
+        "</button>";
+
+      list.appendChild(card);
+
+    });
+
+  }catch(error){
+
+    console.error(
+      "Load admin online tests error:",
+      error
+    );
+
+    list.innerHTML =
+      "Online tests load nahi ho sake.";
+  }
+}
 </script>
 
 <!-- ADMIN PANEL -->
@@ -2615,7 +2725,11 @@ async function deleteOnlineTest(testId){
       id="onlineTestAdminMessage"
       class="portal-message"
     ></div>
-
+<div
+  id="onlineTestsAdminList"
+  style="margin-top:20px;"
+>
+</div>
   </div>
 
 </div>
