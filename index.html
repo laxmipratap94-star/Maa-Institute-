@@ -2363,6 +2363,40 @@ let remainingSeconds =
       error.message;
   }
 }
+  /* DELETE ONLINE TEST */
+
+async function deleteOnlineTest(testId){
+
+  const confirmDelete = confirm(
+    "Kya aap is online test ko permanently delete karna chahte hain?"
+  );
+
+  if(!confirmDelete){
+    return;
+  }
+
+  try{
+
+    const { error } = await supabaseClient
+      .from("online_tests")
+      .delete()
+      .eq("id", testId);
+
+    if(error){
+      console.error("Delete test error:", error);
+      alert("Test delete nahi ho saka: " + error.message);
+      return;
+    }
+
+    alert("Online test successfully delete ho gaya.");
+
+  }catch(error){
+
+    console.error("Delete online test error:", error);
+    alert("Test delete nahi ho saka.");
+
+  }
+}
 </script>
 
 <!-- ADMIN PANEL -->
