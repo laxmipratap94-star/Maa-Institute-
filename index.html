@@ -2403,9 +2403,10 @@ let remainingSeconds =
 
 async function deleteOnlineTest(testId){
 
-  const confirmDelete = confirm(
-    "Kya aap is online test ko permanently delete karna chahte hain?"
-  );
+  const confirmDelete =
+    confirm(
+      "Kya aap is online test ko permanently delete karna chahte hain?"
+    );
 
   if(!confirmDelete){
     return;
@@ -2413,25 +2414,128 @@ async function deleteOnlineTest(testId){
 
   try{
 
-    const { error } = await supabaseClient
-      .from("online_tests")
-      .delete()
-      .eq("id", testId);
+    /* GET TEST DATA FIRST */
 
-    if(error){
-      console.error("Delete test error:", error);
-      alert("Test delete nahi ho saka: " + error.message);
+    const {
+      data:testData,
+      error:fetchError
+    } =
+      await supabaseClient
+        .from("online_tests")
+        .select("test_image_url")
+        .eq("id", testId)
+        .single();
+
+
+    if(fetchError){
+
+      console.error(
+        "Test fetch error:",
+        fetchError
+      );
+
+      alert(
+        "Test delete nahi ho saka: " +
+        fetchError.message
+      );
+
       return;
     }
 
-    alert("Online test successfully delete ho gaya.");
-await loadOnlineTestsAdmin();
+
+    /* DELETE IMAGE FROM STORAGE */
+
+    if(testData?.test_image_url){
+
+      const marker =
+        "/test-images/";
+
+      const markerIndex =
+        testData.test_image_url.indexOf(marker);
+
+
+      if(markerIndex !== -1){
+
+        const filePath =
+          testData.test_image_url
+            .substring(
+              markerIndex + marker.length
+            );
+
+
+        const {
+          error:storageError
+        } =
+          await supabaseClient
+            .storage
+            .from("test-images")
+            .remove([filePath]);
+
+
+        if(storageError){
+
+          console.error(
+            "Test image delete error:",
+            storageError
+          );
+
+        }
+
+      }
+
+    }
+
+
+    /* DELETE DATABASE ROW */
+
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("online_tests")
+        .delete()
+        .eq("id", testId);
+
+
+    if(error){
+
+      console.error(
+        "Delete test error:",
+        error
+      );
+
+      alert(
+        "Test delete nahi ho saka: " +
+        error.message
+      );
+
+      return;
+    }
+
+
+    alert(
+      "Online test successfully delete ho gaya."
+    );
+
+
+    /* REFRESH ADMIN LIST */
+
+    await loadOnlineTestsAdmin();
+
+
   }catch(error){
 
-    console.error("Delete online test error:", error);
-    alert("Test delete nahi ho saka.");
+    console.error(
+      "Delete online test error:",
+      error
+    );
+
+    alert(
+      "Test delete nahi ho saka."
+    );
 
   }
+
 }
   /* =========================================
    LOAD ADMIN ONLINE TESTS
