@@ -2102,7 +2102,24 @@ async function openStudentTest(){
 
       return;
     }
+/* CHECK TEST START TIME */
 
+const now =
+  new Date();
+
+const startTime =
+  new Date(data.start_at);
+
+if(now < startTime){
+
+  message.style.color =
+    "#d32f2f";
+
+  message.innerText =
+    "Test abhi start nahi hua. Test start time ka wait karo.";
+
+  return;
+}
     if(!data){
 
       message.style.color = "#d32f2f";
