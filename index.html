@@ -4761,10 +4761,88 @@ async function createOnlineTest(){
       sessionData.session.user;
 
 
-    /* CONVERT START TIME */
 
-    const startAt =
-      new Date(testStart).toISOString();
+/* IMAGE UPLOAD */
+
+let testImageUrl = null;
+
+if(testType === "image" || testType === "both"){
+
+  const imageFile =
+    document.getElementById("adminTestImage").files[0];
+
+  if(!imageFile){
+
+    message.style.color = "red";
+
+    message.innerText =
+      "Test image select karo.";
+
+    return;
+  }
+
+  const fileExt =
+    imageFile.name.split(".").pop().toLowerCase();
+
+  const fileName =
+    cleanTestCode + "_" + Date.now() + "." + fileExt;
+
+  const filePath =
+    "tests/" + fileName;
+
+
+  const { error:uploadError } =
+    await supabaseClient
+      .storage
+      .from("test-images")
+      .upload(
+        filePath,
+        imageFile,
+        {
+          cacheControl:"3600",
+          upsert:false,
+          contentType:imageFile.type
+        }
+      );
+
+
+  if(uploadError){
+
+    console.error(
+      "Test image upload error:",
+      uploadError
+    );
+
+    message.style.color = "red";
+
+    message.innerText =
+      "Test image upload nahi hua: " +
+      uploadError.message;
+
+    return;
+  }
+
+
+  const {
+    data:publicUrlData
+  } =
+    supabaseClient
+      .storage
+      .from("test-images")
+      .getPublicUrl(filePath);
+
+
+  testImageUrl =
+    publicUrlData.publicUrl;
+
+}
+
+/* CONVERT START TIME */
+
+const startAt =
+  new Date(testStart).toISOString();
+
+   
 
 
     /* INSERT TEST */
@@ -4792,8 +4870,8 @@ async function createOnlineTest(){
           test_content:
             testContent || null,
 
-          test_image_url:
-            null,
+        test_image_url:
+  testImageUrl,
 
           whatsapp_link:
             whatsappLink || null,
@@ -4892,6 +4970,104 @@ async function createOnlineTest(){
       "Error: " + error.message;
 
   }
+
+}
+  /* =========================================
+   ONLINE TEST TYPE + IMAGE UPLOAD UI
+========================================= */
+
+const adminTestType =
+  document.getElementById("adminTestType");
+
+if(adminTestType){
+
+  adminTestType.addEventListener("change", function(){
+
+    const type = this.value;
+
+    const contentBox =
+      document.getElementById("adminTestContent");
+
+    const imageBox =
+      document.getElementById("adminTestImageBox");
+
+    if(!contentBox || !imageBox){
+      return;
+    }
+
+    if(type === "image"){
+
+      contentBox.style.display = "none";
+      imageBox.style.display = "block";
+
+    }else if(type === "written"){
+
+      contentBox.style.display = "block";
+      imageBox.style.display = "none";
+
+    }else if(type === "both"){
+
+      contentBox.style.display = "block";
+      imageBox.style.display = "block";
+
+    }else{
+
+      contentBox.style.display = "block";
+      imageBox.style.display = "none";
+
+    }
+
+  });
+
+}
+
+
+/* IMAGE PREVIEW */
+
+const adminTestImage =
+  document.getElementById("adminTestImage");
+
+if(adminTestImage){
+
+  adminTestImage.addEventListener("change", function(){
+
+    const file = this.files[0];
+
+    const preview =
+      document.getElementById("adminTestImagePreview");
+
+    if(!preview){
+      return;
+    }
+
+    preview.innerHTML = "";
+
+    if(!file){
+      return;
+    }
+
+    if(!file.type.startsWith("image/")){
+      alert("Sirf image file select karo.");
+      this.value = "";
+      return;
+    }
+
+    const imageURL =
+      URL.createObjectURL(file);
+
+    const img =
+      document.createElement("img");
+
+    img.src = imageURL;
+
+    img.style.maxWidth = "100%";
+    img.style.maxHeight = "300px";
+    img.style.borderRadius = "10px";
+    img.style.marginTop = "5px";
+
+    preview.appendChild(img);
+
+  });
 
 }
   /* =========================================
