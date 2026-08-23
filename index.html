@@ -2195,15 +2195,35 @@ async function openStudentTest(){
         </div>
       </div>
 
-      <div style="
-        white-space:pre-wrap;
-        line-height:1.7;
-        color:#222;
-        margin-bottom:15px;
-      ">
-        ${data.test_content || "No questions available."}
-      </div>
+     ${data.test_image_url ? `
+  <div style="
+    margin-bottom:15px;
+    text-align:center;
+  ">
+    <img
+      src="${data.test_image_url}"
+      alt="Test Image"
+      style="
+        max-width:100%;
+        height:auto;
+        border-radius:10px;
+        display:block;
+        margin:0 auto;
+      "
+    >
+  </div>
+` : ""}
 
+${data.test_content ? `
+  <div style="
+    white-space:pre-wrap;
+    line-height:1.7;
+    color:#222;
+    margin-bottom:15px;
+  ">
+    ${data.test_content}
+  </div>
+` : ""}
      
 
       <button
