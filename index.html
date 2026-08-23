@@ -2425,7 +2425,7 @@ async function deleteOnlineTest(testId){
     }
 
     alert("Online test successfully delete ho gaya.");
-
+await loadOnlineTestsAdmin();
   }catch(error){
 
     console.error("Delete online test error:", error);
