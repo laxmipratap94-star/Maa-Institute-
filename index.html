@@ -3580,14 +3580,15 @@ async function createStudentRecordIfNeeded(user){
 
   if(studentError){
 
-    console.error(
-      "Student record create error:",
-      studentError.message
-    );
+  console.error(
+    "Student record create error:",
+    studentError.message
+  );
 
-    return false;
+  alert("Student record error: " + studentError.message);
+
+  return false;
   }
-
 
   return true;
 }
