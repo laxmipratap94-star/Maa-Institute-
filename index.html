@@ -4668,6 +4668,46 @@ function renderStudentList(students){
             <p><b>Fee Status:</b>
                 ${escapeStudentHTML(feeStatus)}
             </p>
+            <p>
+    <b>Approval:</b>
+    ${escapeStudentHTML(student.approval_status || "pending")}
+</p>
+
+<div style="display:flex; gap:8px; margin-top:10px;">
+
+    <button
+        onclick="approveStudent(${index})"
+        style="
+            flex:1;
+            padding:10px;
+            border:none;
+            border-radius:8px;
+            background:#198754;
+            color:white;
+            font-weight:bold;
+            cursor:pointer;
+        "
+    >
+        ✓ Approve
+    </button>
+
+    <button
+        onclick="rejectStudent(${index})"
+        style="
+            flex:1;
+            padding:10px;
+            border:none;
+            border-radius:8px;
+            background:#dc3545;
+            color:white;
+            font-weight:bold;
+            cursor:pointer;
+        "
+    >
+        ✕ Reject
+    </button>
+
+</div>
             <button
     onclick="openStudentEditor(${index})"
     style="
