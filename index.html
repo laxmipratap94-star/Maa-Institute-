@@ -4759,11 +4759,58 @@ async function approveStudent(index){
   }
 
   alert("Student approved successfully. ✅");
-
+await sendApprovalEmail(student, "approved");
   openStudentManagement();
 }
 
+async function sendApprovalEmail(student, status){
 
+  const email = student.email;
+
+  if(!email){
+    console.error("Student email not found.");
+    return false;
+  }
+
+  const subject =
+    status === "approved"
+      ? "Maa Institute - Admission Approved"
+      : "Maa Institute - Admission Rejected";
+
+  const html =
+    status === "approved"
+      ? `
+        <h2>Maa Institute</h2>
+        <p>Dear ${student.student_name || "Student"},</p>
+        <p>Your student registration has been <b>approved</b>.</p>
+        <p>You can now login to your Maa Institute Student Portal.</p>
+        <p>Regards,<br>Shobhit Sir<br>Maa Institute</p>
+      `
+      : `
+        <h2>Maa Institute</h2>
+        <p>Dear ${student.student_name || "Student"},</p>
+        <p>We regret to inform you that your student registration has been <b>rejected</b>.</p>
+        <p>Please contact Shobhit Sir for more information.</p>
+        <p>Regards,<br>Shobhit Sir<br>Maa Institute</p>
+      `;
+
+  const { data, error } =
+    await supabaseClient.functions.invoke("resend-email", {
+      body: {
+        to: email,
+        subject: subject,
+        html: html
+      }
+    });
+
+  if(error){
+    console.error("Email error:", error);
+    return false;
+  }
+
+  console.log("Email sent:", data);
+  return true;
+}
 async function rejectStudent(index){
 
   const student = window.allStudents[index];
@@ -4797,7 +4844,7 @@ async function rejectStudent(index){
   }
 
   alert("Student rejected. ❌");
-
+await sendApprovalEmail(student, "rejected");
   openStudentManagement();
 }
 
