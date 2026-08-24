@@ -4550,6 +4550,42 @@ supabaseClient.auth.onAuthStateChange(
 ===================================================== */
 
 checkSession();
+  async function generateInviteCode(){
+
+  const { data, error } =
+    await supabaseClient.rpc(
+      "generate_student_invite"
+    );
+
+  if(error){
+
+    console.error(
+      "Invite code error:",
+      error
+    );
+
+    alert(
+      "Invite code generate nahi hua: " +
+      error.message
+    );
+
+    return;
+  }
+
+  if(!data){
+
+    alert(
+      "Invite code generate nahi hua."
+    );
+
+    return;
+  }
+
+  prompt(
+    "New Student Invite Code:",
+    data
+  );
+}
 async function openStudentManagement(){
 
     const panel =
