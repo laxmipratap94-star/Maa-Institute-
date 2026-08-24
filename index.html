@@ -4724,6 +4724,85 @@ function filterStudents(){
 }
 
 
+
+async function approveStudent(index){
+
+  const student = window.allStudents[index];
+
+  if(!student){
+    alert("Student record not found.");
+    return;
+  }
+
+  const confirmApprove =
+    confirm(
+      "Approve " +
+      (student.student_name || "this student") +
+      "?"
+    );
+
+  if(!confirmApprove) return;
+
+  const { error } = await supabaseClient
+    .from("students")
+    .update({
+      approval_status: "approved",
+      Is_active: true
+    })
+    .eq("id", student.id);
+
+  if(error){
+    console.error(error);
+    alert("Approval failed: " + error.message);
+    return;
+  }
+
+  alert("Student approved successfully. ✅");
+
+  openStudentManagement();
+}
+
+
+async function rejectStudent(index){
+
+  const student = window.allStudents[index];
+
+  if(!student){
+    alert("Student record not found.");
+    return;
+  }
+
+  const confirmReject =
+    confirm(
+      "Reject " +
+      (student.student_name || "this student") +
+      "?"
+    );
+
+  if(!confirmReject) return;
+
+  const { error } = await supabaseClient
+    .from("students")
+    .update({
+      approval_status: "rejected",
+      Is_active: false
+    })
+    .eq("id", student.id);
+
+  if(error){
+    console.error(error);
+    alert("Rejection failed: " + error.message);
+    return;
+  }
+
+  alert("Student rejected. ❌");
+
+  openStudentManagement();
+}
+
+
+
+
 function closeStudentManagement(){
 
     const panel =
