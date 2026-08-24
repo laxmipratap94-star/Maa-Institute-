@@ -3404,12 +3404,18 @@ async function signupStudent(){
   }
 
 
-  if(!data || data.length === 0){
-    message.style.color = "red";
-    message.innerText =
-      "Invalid ya used invite code.";
-    return;
-  }
+const inviteRow =
+  Array.isArray(data) ? data[0] : data;
+
+if(!inviteRow || !inviteRow.invite_code){
+
+  message.style.color = "red";
+
+  message.innerText =
+    "Invalid ya used invite code.";
+
+  return;
+}
 
 
   /* CREATE AUTH ACCOUNT */
