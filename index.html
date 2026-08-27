@@ -1475,7 +1475,102 @@ footer p{
   }
 
 }
+/* =====================================================
+   STUDENT MANAGEMENT — UI POLISH
+===================================================== */
 
+#studentManagementPanel{
+    background:#ffffff;
+    border-top:5px solid var(--yellow);
+    padding:28px;
+    border-radius:16px;
+    box-shadow:0 8px 28px rgba(7,24,61,.10);
+}
+
+#studentManagementPanel h3{
+    font-size:25px;
+    color:var(--blue);
+    margin-bottom:5px;
+}
+
+#studentManagementPanel button{
+    transition:all .2s ease;
+}
+
+#studentManagementPanel button:hover{
+    transform:translateY(-1px);
+    box-shadow:0 5px 12px rgba(16,42,99,.15);
+}
+
+#studentSearch{
+    background:#f8faff;
+    border:1px solid #d9e0ec !important;
+    padding:14px !important;
+    font-size:15px;
+    transition:all .2s ease;
+}
+
+#studentSearch:focus{
+    outline:none;
+    border-color:var(--blue) !important;
+    background:#fff;
+    box-shadow:0 0 0 3px rgba(29,79,163,.10);
+}
+
+#studentManagementList{
+    margin-top:18px;
+}
+
+#studentManagementList > div{
+    background:#fff !important;
+    border:1px solid #e1e6ef !important;
+    border-left:5px solid var(--yellow) !important;
+    border-radius:14px !important;
+    padding:20px !important;
+    margin:14px 0 !important;
+    box-shadow:0 4px 15px rgba(7,24,61,.07);
+    transition:all .2s ease;
+}
+
+#studentManagementList > div:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 22px rgba(7,24,61,.11);
+}
+
+#studentManagementList h4{
+    font-size:18px !important;
+    margin-bottom:14px !important;
+    color:var(--blue) !important;
+}
+
+#studentManagementList p{
+    margin:7px 0 !important;
+    color:#555;
+    font-size:14px;
+}
+
+#studentManagementList p b{
+    color:#102a63;
+}
+
+#studentManagementLoading{
+    margin-top:14px;
+    color:#666;
+    font-size:14px;
+}
+
+#studentManagementList button{
+    font-size:14px;
+    min-height:42px;
+}
+
+#studentManagementList button[onclick*="openStudentEditor"]{
+    background:var(--blue) !important;
+}
+
+#studentManagementList button[onclick*="openStudentEditor"]:hover{
+    background:var(--blue2) !important;
+}
 </style>
 
 
