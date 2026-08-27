@@ -2007,6 +2007,29 @@ body{
     linear-gradient(135deg,#f8fbff 0%,#eef4fb 50%,#f9fbff 100%) !important;
   min-height:100vh !important;
 }
+  /* =========================================
+   PREMIUM MAIN WEBSITE BACKGROUND
+========================================= */
+
+body{
+  background:
+    radial-gradient(circle at 8% 12%, rgba(255,193,7,.16), transparent 25%),
+    radial-gradient(circle at 92% 18%, rgba(16,42,99,.14), transparent 28%),
+    radial-gradient(circle at 50% 85%, rgba(255,193,7,.10), transparent 30%),
+    linear-gradient(135deg,#f8fbff 0%,#eef4fb 48%,#f8fafc 100%) !important;
+}
+
+/* subtle premium glow */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 20% 70%, rgba(16,42,99,.035), transparent 25%),
+    radial-gradient(circle at 80% 60%, rgba(255,193,7,.045), transparent 25%);
+  z-index:-1;
+}
 </style>
 
 
