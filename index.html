@@ -3739,76 +3739,9 @@ if(adminCheckError){
 }
 
 
-/* STUDENT APPROVAL CHECK */
-
-if(!adminRecord){
-
-  const {
-    data:studentRecord,
-    error:approvalError
-  } =
-    await supabaseClient
-      .from("students")
-      .select("approval_status")
-      .eq("User_id", data.user.id)
-      .maybeSingle();
-
-  if(approvalError){
-
-    message.style.color = "red";
-
-    message.innerText =
-      "Approval status check nahi ho saka.";
-
-    await supabaseClient.auth.signOut();
-
-    return;
-  }
 
 
-  if(!studentRecord){
 
-    message.style.color = "red";
-
-    message.innerText =
-      "Student record nahi mila.";
-
-    await supabaseClient.auth.signOut();
-
-    return;
-  }
-
-
-  if(
-    studentRecord.approval_status === "pending"
-  ){
-
-    message.style.color = "#c28a00";
-
-    message.innerText =
-      "Your registration is pending admin approval. Please wait for approval.";
-
-    await supabaseClient.auth.signOut();
-
-    return;
-  }
-
-
-  if(
-    studentRecord.approval_status === "rejected"
-  ){
-
-    message.style.color = "red";
-
-    message.innerText =
-      "Your registration has been rejected. Please contact Maa Institute.";
-
-    await supabaseClient.auth.signOut();
-
-    return;
-  }
-
-}
     await showDashboard(data.user);
   }
 
